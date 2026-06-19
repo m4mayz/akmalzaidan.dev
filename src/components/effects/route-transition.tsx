@@ -157,7 +157,11 @@ export function RouteTransition() {
             fallbackTimer.current = null;
         }
 
-        setPhase("opening");
+        const frame = window.requestAnimationFrame(() => {
+            setPhase("opening");
+        });
+
+        return () => window.cancelAnimationFrame(frame);
     }, [currentRoute]);
 
     useEffect(() => {

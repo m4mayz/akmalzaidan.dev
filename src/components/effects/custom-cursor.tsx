@@ -49,7 +49,9 @@ export function CustomCursor() {
             return undefined;
         }
 
-        setEnabled(true);
+        const enableFrame = window.requestAnimationFrame(() => {
+            setEnabled(true);
+        });
         document.documentElement.classList.add("custom-cursor-active");
 
         const state: CursorState = {
@@ -95,6 +97,7 @@ export function CustomCursor() {
         render();
 
         return () => {
+            window.cancelAnimationFrame(enableFrame);
             window.removeEventListener("pointermove", onPointerMove);
             window.removeEventListener("pointerdown", onPointerDown);
             window.removeEventListener("pointerup", onPointerUp);

@@ -243,25 +243,8 @@ export default function Galaxy({
       gl.clearColor(0, 0, 0, 1);
     }
 
-    let program: Program | undefined;
-
-    function resize() {
-      renderer.setSize(ctn.offsetWidth, ctn.offsetHeight);
-
-      if (program) {
-        program.uniforms.uResolution.value = new Color(
-          gl.canvas.width,
-          gl.canvas.height,
-          gl.canvas.width / gl.canvas.height,
-        );
-      }
-    }
-
-    window.addEventListener("resize", resize, false);
-    resize();
-
     const geometry = new Triangle(gl);
-    program = new Program(gl, {
+    const program = new Program(gl, {
       vertex: vertexShader,
       fragment: fragmentShader,
       uniforms: {
@@ -297,15 +280,23 @@ export default function Galaxy({
       },
     });
 
+    function resize() {
+      renderer.setSize(ctn.offsetWidth, ctn.offsetHeight);
+      program.uniforms.uResolution.value = new Color(
+        gl.canvas.width,
+        gl.canvas.height,
+        gl.canvas.width / gl.canvas.height,
+      );
+    }
+
+    window.addEventListener("resize", resize, false);
+    resize();
+
     const mesh = new Mesh(gl, { geometry, program });
     let animateId = 0;
 
     function update(time: number) {
       animateId = requestAnimationFrame(update);
-
-      if (!program) {
-        return;
-      }
 
       if (!disableAnimation) {
         program.uniforms.uTime.value = time * 0.001;

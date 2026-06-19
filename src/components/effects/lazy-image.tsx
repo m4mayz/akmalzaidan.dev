@@ -15,6 +15,7 @@ export function LazyImage({
     placeholderClassName,
     className,
     onLoad,
+    alt,
     ...imageProps
 }: LazyImageProps) {
     const rootRef = useRef<HTMLDivElement>(null);
@@ -29,8 +30,11 @@ export function LazyImage({
         }
 
         if (!("IntersectionObserver" in window)) {
-            setShouldLoad(true);
-            return undefined;
+            const loadFrame = globalThis.requestAnimationFrame(() => {
+                setShouldLoad(true);
+            });
+
+            return () => globalThis.cancelAnimationFrame(loadFrame);
         }
 
         const observer = new IntersectionObserver(
@@ -60,6 +64,7 @@ export function LazyImage({
             {shouldLoad ? (
                 <Image
                     {...imageProps}
+                    alt={alt}
                     className={cn(
                         "opacity-0 transition-opacity duration-700 ease-out",
                         isLoaded && "opacity-100",
