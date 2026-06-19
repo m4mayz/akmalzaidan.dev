@@ -2,17 +2,22 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import { LazyImage } from "@/components/effects/lazy-image";
-import { workItems } from "@/lib/ulrych-data";
+import type { WorkSummaryData } from "@/types/content";
 
-export function SelectedWork() {
+type SelectedWorkProps = {
+    items: WorkSummaryData[];
+    title: string;
+};
+
+export function SelectedWork({ items, title }: SelectedWorkProps) {
     return (
         <section className="px-5 py-16 md:px-10 md:py-32">
             <h2 className="font-heading text-3xl font-light leading-[1.05] tracking-normal md:text-[64px]">
-                Selected work
+                {title}
             </h2>
 
             <div className="mt-14 grid gap-x-8 gap-y-20 md:grid-cols-2">
-                {workItems.map((work, index) => (
+                {items.map((work, index) => (
                     <div
                         className={`${index % 2 === 1 ? "md:mt-60" : ""}`}
                         data-reveal

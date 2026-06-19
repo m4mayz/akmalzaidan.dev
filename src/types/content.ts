@@ -49,6 +49,27 @@ export type ServiceItemData = {
   description: string;
 };
 
+export type WorkSummaryData = {
+  slug: string;
+  title: string;
+  year: string;
+  description: string;
+  href: string;
+  image: string;
+  alt: string;
+  category: string;
+};
+
+export type ArticleSummaryData = {
+  slug: string;
+  title: string;
+  description: string;
+  href: string;
+  image: string;
+  alt: string;
+  publishedAt: string;
+};
+
 export type HomeData = {
   hero: {
     headline: string;

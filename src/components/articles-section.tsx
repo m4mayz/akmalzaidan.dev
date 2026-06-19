@@ -1,18 +1,26 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { LazyImage } from "@/components/effects/lazy-image";
-import { articleItems } from "@/lib/ulrych-data";
+import { getArticleSummaries } from "@/lib/content";
+import type { ArticleSummaryData } from "@/types/content";
 
-export function ArticlesSection() {
+type ArticlesSectionProps = {
+    items?: ArticleSummaryData[];
+    title?: string;
+};
+
+export function ArticlesSection({
+    items = getArticleSummaries("en"),
+    title = "Things worth sharing",
+}: ArticlesSectionProps) {
     return (
         <section className="px-5 py-16 md:px-10 md:py-32">
             <h2 className="font-heading text-3xl font-light leading-[1.05] tracking-normal md:text-[64px]">
-                Things worth sharing
+                {title}
             </h2>
 
             <div className="mt-14 grid gap-8 md:grid-cols-3">
-                {articleItems.map((article) => (
+                {items.map((article) => (
                     <Link
                         className="group block"
                         data-cursor="link"
@@ -28,15 +36,6 @@ export function ArticlesSection() {
                                 sizes="(min-width: 768px) 31vw, 100vw"
                                 src={article.image}
                             />
-                            {article.badge ? (
-                                <Image
-                                    alt={article.badgeAlt ?? ""}
-                                    className="absolute right-5 top-5 h-16 w-16 object-contain"
-                                    height={64}
-                                    src={article.badge}
-                                    width={64}
-                                />
-                            ) : null}
                         </div>
                         <h3 className="mt-7 text-[20px] leading-[1.35]">
                             {article.title}

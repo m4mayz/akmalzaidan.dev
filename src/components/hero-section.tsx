@@ -1,21 +1,32 @@
 import type { CSSProperties } from "react";
 
 import { HeroFloatingPortrait } from "@/components/hero-floating-portrait";
-import { heroStats } from "@/lib/ulrych-data";
+import type { HomeData, StatItemData } from "@/types/content";
 
-export function HeroSection() {
+type HeroSectionProps = {
+    data: HomeData["hero"];
+    stats: StatItemData[];
+};
+
+export function HeroSection({ data, stats }: HeroSectionProps) {
+    const [beforeHighlight, afterHighlight] = data.headline.split(
+        data.highlightedWord,
+    );
+
     return (
         <section className="relative flex min-h-[920px] flex-col px-5 pb-12 pt-32 md:min-h-[1200px] md:px-10 md:pt-[140px]">
             <div className="max-w-[1010px]" data-reveal>
                 <h1 className="font-heading text-[48px] font-light leading-[1.02] tracking-tight text-foreground md:text-[86px] xl:text-[92px]">
-                    Designer based in{" "}
+                    {beforeHighlight}
                     <span className="gradient-text inline-block italic underline decoration-current underline-offset-8">
-                        Prague.
+                        {data.highlightedWord}
                     </span>
                     <br />
-                    Shaping digital products, websites and design systems with
-                    clarity and character.
+                    {afterHighlight.trim()}
                 </h1>
+                <p className="mt-8 max-w-[640px] text-[15px] leading-[1.55] text-muted-foreground md:text-[17px]">
+                    {data.body}
+                </p>
             </div>
 
             <div
@@ -31,7 +42,7 @@ export function HeroSection() {
                 data-reveal
                 style={{ "--reveal-delay": "220ms" } as CSSProperties}
             >
-                {heroStats.map((item) => (
+                {stats.map((item) => (
                     <div key={item.label}>
                         <dt className="mb-3 text-[11px] uppercase leading-none text-muted-foreground">
                             {item.label}
