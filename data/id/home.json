@@ -1,0 +1,57 @@
+{
+  "hero": {
+    "headline": "Fullstack developer berbasis di Sukabumi. Saya membangun web app, dashboard, tools, dan sistem backend dengan eksekusi yang praktis.",
+    "highlightedWord": "Sukabumi.",
+    "body": "Saya bekerja di area frontend, backend, dashboard, API, dan bantuan teknis IT. Fokus saya adalah mengubah masalah operasional yang belum rapi menjadi tools yang mudah digunakan, dirawat, dan dikembangkan."
+  },
+  "stats": [
+    { "label": "Domisili", "value": "Sukabumi, Indonesia" },
+    { "label": "Fokus", "value": "Fullstack Web, Dashboard, API" },
+    { "label": "Ketersediaan", "value": "Magang dan proyek freelance" },
+    { "label": "Support", "value": "Bantuan teknis IT dan IT support" }
+  ],
+  "services": [
+    {
+      "number": "01",
+      "title": "Web development",
+      "description": "Membangun website dan aplikasi web yang responsif, terstruktur, mudah dirawat, dan nyaman digunakan."
+    },
+    {
+      "number": "02",
+      "title": "Frontend implementation",
+      "description": "Mengubah desain interface menjadi pengalaman frontend yang rapi, responsif, siap produksi, dan detail secara visual."
+    },
+    {
+      "number": "03",
+      "title": "Dashboard",
+      "description": "Mendesain dan membangun dashboard untuk data operasional, monitoring, reporting, dan workflow harian."
+    },
+    {
+      "number": "04",
+      "title": "Internal tools",
+      "description": "Membuat tools yang membantu mengurangi pekerjaan manual, merapikan informasi, dan mempercepat kerja tim."
+    },
+    {
+      "number": "05",
+      "title": "API dan backend",
+      "description": "Membangun fitur backend, integrasi API, alur data, dan logic server-side untuk aplikasi yang lebih andal."
+    },
+    {
+      "number": "06",
+      "title": "Bantuan teknis IT",
+      "description": "Memberikan bantuan IT praktis, troubleshooting, setup, dan arahan teknis untuk tim maupun individu."
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "Saya peduli pada sistem yang benar-benar berguna untuk pekerjaan nyata, bukan hanya terlihat bagus di screenshot.",
+      "author": "Akmal Zaidan",
+      "role": "Fullstack Developer"
+    },
+    {
+      "quote": "Tools yang baik harus jelas, andal, dan tetap mudah digunakan setelah handoff.",
+      "author": "Akmal Zaidan",
+      "role": "Developer dan technical support"
+    }
+  ]
+}

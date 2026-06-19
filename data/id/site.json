@@ -1,0 +1,30 @@
+{
+  "name": "Akmal Zaidan",
+  "role": "Fullstack Developer",
+  "email": "hello@akmalzaidan.dev",
+  "location": "Sukabumi, Indonesia",
+  "availability": "Tersedia untuk magang dan proyek freelance",
+  "metadata": {
+    "title": "Akmal Zaidan - Fullstack Developer",
+    "description": "Fullstack developer berbasis di Sukabumi yang membangun web app, dashboard, tools, API, dan solusi IT praktis.",
+    "ogAlt": "Akmal Zaidan - Fullstack Developer"
+  },
+  "nav": [
+    { "label": "Work", "href": "/work" },
+    { "label": "Artikel", "href": "/articles" },
+    { "label": "Tentang", "href": "/about" }
+  ],
+  "socials": [
+    { "label": "GitHub", "href": "https://github.com/akmalzaidan" },
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/akmalzaidan" },
+    { "label": "Instagram", "href": "https://www.instagram.com/akmalzaidan" }
+  ],
+  "footer": {
+    "credit": "Didesain dan dibuat oleh Akmal Zaidan",
+    "privacyLabel": "Privasi"
+  },
+  "language": {
+    "current": "ID",
+    "switchTo": "EN"
+  }
+}
