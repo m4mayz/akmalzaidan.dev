@@ -1,0 +1,62 @@
+{
+  "slug": "api-integration",
+  "title": "API Integration Layer",
+  "year": "2026",
+  "description": "A backend integration concept for connecting services, normalizing data, and supporting reliable application features.",
+  "image": "/images/akmal/placeholders/project-api-integration.svg",
+  "alt": "API integration layer placeholder interface",
+  "category": "API, Backend, Integration",
+  "role": "Backend Developer",
+  "client": "Product / Internal",
+  "summary": "A backend integration layer concept for connecting APIs, shaping data, and giving frontend applications a reliable contract.",
+  "sections": [
+    {
+      "slot": "overview",
+      "heading": "Overview",
+      "body": [
+        "This project explores a common backend need: connecting multiple services and exposing a cleaner interface for the application.",
+        "The focus is on reliability, clear data contracts, and predictable error handling."
+      ]
+    },
+    {
+      "slot": "challenge",
+      "heading": "Challenge",
+      "body": [
+        "APIs from different services often return inconsistent structures, errors, and timing behavior.",
+        "Without a clear integration layer, frontend code becomes harder to maintain and product behavior becomes less predictable."
+      ]
+    },
+    {
+      "slot": "approach",
+      "heading": "Approach",
+      "body": [
+        "I structured the concept around typed request/response models, normalization, validation, and focused service modules.",
+        "The API layer is designed to keep frontend implementation simpler while preserving enough backend flexibility for future changes."
+      ]
+    },
+    {
+      "slot": "outcome",
+      "heading": "Outcome",
+      "body": [
+        "The outcome is a backend direction that supports cleaner application development and easier debugging.",
+        "It shows how fullstack context helps connect product behavior with reliable server-side implementation."
+      ]
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/images/akmal/placeholders/project-api-integration.svg",
+      "alt": "API integration overview",
+      "aspect": "16/9",
+      "span": "full",
+      "slot": "overview"
+    },
+    {
+      "src": "/images/akmal/placeholders/project-api-integration.svg",
+      "alt": "API data flow interface",
+      "aspect": "4/3",
+      "span": "half",
+      "slot": "approach"
+    }
+  ]
+}

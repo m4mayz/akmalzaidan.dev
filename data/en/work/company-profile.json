@@ -1,0 +1,62 @@
+{
+  "slug": "company-profile",
+  "title": "Company Profile Website",
+  "year": "2026",
+  "description": "A responsive website structure for presenting a business, its services, and key contact paths with strong clarity.",
+  "image": "/images/akmal/placeholders/project-company-profile.svg",
+  "alt": "Company profile website placeholder interface",
+  "category": "Web Development, Frontend",
+  "role": "Frontend Developer",
+  "client": "Freelance",
+  "summary": "A company profile website direction focused on clear service presentation, responsive layout, and direct conversion paths.",
+  "sections": [
+    {
+      "slot": "overview",
+      "heading": "Overview",
+      "body": [
+        "This project represents the type of web presence many small businesses need: clear positioning, service explanation, trust signals, and a simple path to contact.",
+        "The visual direction is kept clean so content and business value remain easy to understand."
+      ]
+    },
+    {
+      "slot": "challenge",
+      "heading": "Challenge",
+      "body": [
+        "Company profile sites often need to communicate quickly to visitors who do not want to explore many pages.",
+        "The challenge is balancing visual polish with practical information architecture."
+      ]
+    },
+    {
+      "slot": "approach",
+      "heading": "Approach",
+      "body": [
+        "I planned reusable content sections for services, process, work examples, and contact information.",
+        "The frontend approach prioritizes responsive behavior, readable typography, and sections that are easy for the owner to update."
+      ]
+    },
+    {
+      "slot": "outcome",
+      "heading": "Outcome",
+      "body": [
+        "The result is a website foundation that can be adapted for local businesses, service providers, or freelance clients.",
+        "It gives the client a professional online presence without unnecessary complexity."
+      ]
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/images/akmal/placeholders/project-company-profile.svg",
+      "alt": "Company profile homepage",
+      "aspect": "16/9",
+      "span": "full",
+      "slot": "overview"
+    },
+    {
+      "src": "/images/akmal/placeholders/project-company-profile.svg",
+      "alt": "Company profile section layout",
+      "aspect": "4/3",
+      "span": "half",
+      "slot": "approach"
+    }
+  ]
+}

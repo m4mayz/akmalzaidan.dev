@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">API Integration Layer</title>
+  <desc id="desc">Abstract dark API integration flow placeholder.</desc>
+  <rect width="1600" height="1000" fill="#080a10"/>
+  <circle cx="800" cy="500" r="470" fill="#60a5fa" opacity=".11"/>
+  <circle cx="1240" cy="210" r="300" fill="#f59e0b" opacity=".13"/>
+  <rect x="154" y="142" width="1292" height="716" rx="36" fill="#11151d" stroke="#ffffff" stroke-opacity=".12"/>
+  <rect x="242" y="390" width="260" height="220" rx="28" fill="#171c25" stroke="#ffffff" stroke-opacity=".1"/>
+  <rect x="670" y="290" width="260" height="420" rx="28" fill="#171c25" stroke="#ffffff" stroke-opacity=".1"/>
+  <rect x="1098" y="390" width="260" height="220" rx="28" fill="#171c25" stroke="#ffffff" stroke-opacity=".1"/>
+  <path d="M502 500h168M930 500h168" stroke="#f8fafc" stroke-opacity=".32" stroke-width="12" stroke-linecap="round"/>
+  <path d="M626 456l44 44-44 44M1054 456l44 44-44 44" fill="none" stroke="#93c5fd" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M306 470h132M306 530h88M734 408h132M734 500h92M734 592h138M1162 470h132M1162 530h102" stroke="#f8fafc" stroke-opacity=".38" stroke-width="12" stroke-linecap="round"/>
+  <text x="600" y="228" fill="#f8fafc" font-family="Inter,Arial,sans-serif" font-size="42" font-weight="300">API Integration</text>
+</svg>

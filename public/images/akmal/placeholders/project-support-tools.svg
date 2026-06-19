@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">IT Support Toolkit</title>
+  <desc id="desc">Abstract dark support toolkit interface placeholder.</desc>
+  <rect width="1600" height="1000" fill="#080b11"/>
+  <circle cx="1180" cy="700" r="410" fill="#14b8a6" opacity=".13"/>
+  <circle cx="390" cy="260" r="330" fill="#f43f5e" opacity=".12"/>
+  <rect x="164" y="136" width="1272" height="728" rx="36" fill="#11151d" stroke="#ffffff" stroke-opacity=".12"/>
+  <rect x="234" y="216" width="400" height="568" rx="26" fill="#0c1017" stroke="#ffffff" stroke-opacity=".08"/>
+  <rect x="700" y="216" width="660" height="118" rx="24" fill="#171c25" stroke="#ffffff" stroke-opacity=".08"/>
+  <rect x="700" y="390" width="660" height="394" rx="24" fill="#171c25" stroke="#ffffff" stroke-opacity=".08"/>
+  <path d="M300 324h250M300 420h190M300 516h230M300 612h160" stroke="#f8fafc" stroke-opacity=".32" stroke-width="12" stroke-linecap="round"/>
+  <path d="M770 486h330M770 576h250M770 666h380" stroke="#f8fafc" stroke-opacity=".36" stroke-width="12" stroke-linecap="round"/>
+  <path d="M1188 482l36 36 76-90M1188 572l36 36 76-90M1188 662l36 36 76-90" fill="none" stroke="#34d399" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="754" y="292" fill="#f8fafc" font-family="Inter,Arial,sans-serif" font-size="42" font-weight="300">Support Toolkit</text>
+</svg>

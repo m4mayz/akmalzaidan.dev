@@ -60,6 +60,30 @@ export type WorkSummaryData = {
   category: string;
 };
 
+export type WorkSectionSlot = "overview" | "challenge" | "approach" | "outcome";
+
+export type WorkGalleryItemData = {
+  src: string;
+  alt: string;
+  aspect: "16/9" | "4/3";
+  span?: "half" | "full";
+  slot: WorkSectionSlot;
+};
+
+export type WorkDetailData = WorkSummaryData & {
+  role: string;
+  client: string;
+  summary: string;
+  sections: {
+    slot: WorkSectionSlot;
+    heading: string;
+    body: string[];
+  }[];
+  gallery: WorkGalleryItemData[];
+};
+
+export type WorkContentData = Omit<WorkDetailData, "href">;
+
 export type ArticleSummaryData = {
   slug: string;
   title: string;

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Portfolio Dashboard</title>
+  <desc id="desc">Abstract dark dashboard interface placeholder.</desc>
+  <rect width="1600" height="1000" fill="#0b0d12"/>
+  <circle cx="1240" cy="210" r="420" fill="#ff6b2f" opacity=".16"/>
+  <circle cx="440" cy="820" r="360" fill="#7dd3fc" opacity=".11"/>
+  <rect x="168" y="146" width="1264" height="708" rx="34" fill="#11151d" stroke="#ffffff" stroke-opacity=".12"/>
+  <rect x="224" y="210" width="270" height="584" rx="22" fill="#0c1017" stroke="#ffffff" stroke-opacity=".08"/>
+  <rect x="548" y="210" width="828" height="154" rx="22" fill="#171c25" stroke="#ffffff" stroke-opacity=".08"/>
+  <rect x="548" y="420" width="390" height="374" rx="22" fill="#171c25" stroke="#ffffff" stroke-opacity=".08"/>
+  <rect x="986" y="420" width="390" height="374" rx="22" fill="#171c25" stroke="#ffffff" stroke-opacity=".08"/>
+  <path d="M606 732C676 632 744 642 814 548C852 497 886 470 926 462" fill="none" stroke="#ff8a4c" stroke-width="10" stroke-linecap="round"/>
+  <path d="M1048 718h246M1048 650h180M1048 582h266" stroke="#eef2ff" stroke-opacity=".42" stroke-width="12" stroke-linecap="round"/>
+  <path d="M274 296h150M274 374h112M274 452h154M274 530h94" stroke="#eef2ff" stroke-opacity=".28" stroke-width="12" stroke-linecap="round"/>
+  <text x="600" y="302" fill="#f8fafc" font-family="Inter,Arial,sans-serif" font-size="44" font-weight="300">Portfolio Dashboard</text>
+</svg>

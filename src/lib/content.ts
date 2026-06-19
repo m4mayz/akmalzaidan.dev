@@ -1,7 +1,19 @@
 import enHome from "../../data/en/home.json";
 import enSite from "../../data/en/site.json";
+import enApiIntegration from "../../data/en/work/api-integration.json";
+import enCompanyProfile from "../../data/en/work/company-profile.json";
+import enFreelanceWebApp from "../../data/en/work/freelance-web-app.json";
+import enMaintenanceSystem from "../../data/en/work/maintenance-system.json";
+import enPortfolioDashboard from "../../data/en/work/portfolio-dashboard.json";
+import enSupportTools from "../../data/en/work/support-tools.json";
 import idHome from "../../data/id/home.json";
 import idSite from "../../data/id/site.json";
+import idApiIntegration from "../../data/id/work/api-integration.json";
+import idCompanyProfile from "../../data/id/work/company-profile.json";
+import idFreelanceWebApp from "../../data/id/work/freelance-web-app.json";
+import idMaintenanceSystem from "../../data/id/work/maintenance-system.json";
+import idPortfolioDashboard from "../../data/id/work/portfolio-dashboard.json";
+import idSupportTools from "../../data/id/work/support-tools.json";
 
 import { withLocale } from "@/lib/i18n";
 import type {
@@ -9,6 +21,8 @@ import type {
   HomeData,
   Locale,
   SiteData,
+  WorkContentData,
+  WorkDetailData,
   WorkSummaryData,
 } from "@/types/content";
 
@@ -22,70 +36,22 @@ const homeByLocale: Record<Locale, HomeData> = {
   id: idHome as HomeData,
 };
 
-const workSummariesByLocale: Record<Locale, Omit<WorkSummaryData, "href">[]> = {
+const workByLocale: Record<Locale, WorkContentData[]> = {
   en: [
-    {
-      slug: "portfolio-dashboard",
-      title: "Portfolio Dashboard",
-      year: "2026",
-      description:
-        "A focused dashboard concept for presenting projects, metrics, and portfolio content in a clear operational view.",
-      image: "/seo/og.png",
-      alt: "Portfolio dashboard placeholder interface",
-      category: "Dashboard, Frontend, Data UI",
-    },
-    {
-      slug: "maintenance-system",
-      title: "Maintenance Operations System",
-      year: "2026",
-      description:
-        "A workflow-oriented web application concept for maintenance reporting, review, and operational coordination.",
-      image: "/seo/og.png",
-      alt: "Maintenance operations system placeholder interface",
-      category: "Fullstack Web App, Dashboard, Workflow",
-    },
-    {
-      slug: "company-profile",
-      title: "Company Profile Website",
-      year: "2026",
-      description:
-        "A responsive website structure for presenting a business, its services, and key contact paths with strong clarity.",
-      image: "/seo/og.png",
-      alt: "Company profile website placeholder interface",
-      category: "Web Development, Frontend",
-    },
+    enPortfolioDashboard as WorkContentData,
+    enMaintenanceSystem as WorkContentData,
+    enCompanyProfile as WorkContentData,
+    enSupportTools as WorkContentData,
+    enApiIntegration as WorkContentData,
+    enFreelanceWebApp as WorkContentData,
   ],
   id: [
-    {
-      slug: "portfolio-dashboard",
-      title: "Dashboard Portofolio",
-      year: "2026",
-      description:
-        "Konsep dashboard untuk menampilkan proyek, metrik, dan konten portofolio dalam tampilan operasional yang jelas.",
-      image: "/seo/og.png",
-      alt: "Placeholder interface dashboard portofolio",
-      category: "Dashboard, Frontend, Data UI",
-    },
-    {
-      slug: "maintenance-system",
-      title: "Sistem Operasional Maintenance",
-      year: "2026",
-      description:
-        "Konsep aplikasi web berbasis workflow untuk pelaporan maintenance, review, dan koordinasi operasional.",
-      image: "/seo/og.png",
-      alt: "Placeholder interface sistem operasional maintenance",
-      category: "Fullstack Web App, Dashboard, Workflow",
-    },
-    {
-      slug: "company-profile",
-      title: "Website Company Profile",
-      year: "2026",
-      description:
-        "Struktur website responsif untuk menampilkan bisnis, layanan, dan jalur kontak utama dengan jelas.",
-      image: "/seo/og.png",
-      alt: "Placeholder interface website company profile",
-      category: "Web Development, Frontend",
-    },
+    idPortfolioDashboard as WorkContentData,
+    idMaintenanceSystem as WorkContentData,
+    idCompanyProfile as WorkContentData,
+    idSupportTools as WorkContentData,
+    idApiIntegration as WorkContentData,
+    idFreelanceWebApp as WorkContentData,
   ],
 };
 
@@ -162,10 +128,50 @@ export function getHomeData(locale: Locale) {
 }
 
 export function getWorkSummaries(locale: Locale): WorkSummaryData[] {
-  return workSummariesByLocale[locale].map((item) => ({
+  return workByLocale[locale].map((item) => ({
+    slug: item.slug,
+    title: item.title,
+    year: item.year,
+    description: item.description,
+    href: withLocale(`/work/${item.slug}`, locale),
+    image: item.image,
+    alt: item.alt,
+    category: item.category,
+  }));
+}
+
+export function getWorkDetail(
+  locale: Locale,
+  slug: string,
+): WorkDetailData | undefined {
+  const item = workByLocale[locale].find((work) => work.slug === slug);
+
+  if (!item) {
+    return undefined;
+  }
+
+  return {
     ...item,
     href: withLocale(`/work/${item.slug}`, locale),
-  }));
+  };
+}
+
+export function getMoreWorkSummaries(
+  locale: Locale,
+  slug: string,
+): WorkSummaryData[] {
+  const items = getWorkSummaries(locale);
+  const index = items.findIndex((item) => item.slug === slug);
+  const orderedItems =
+    index === -1
+      ? items
+      : [...items.slice(index + 1), ...items.slice(0, index)];
+
+  return orderedItems.filter((item) => item.slug !== slug).slice(0, 3);
+}
+
+export function getWorkSlugs() {
+  return workByLocale.en.map((item) => item.slug);
 }
 
 export function getArticleSummaries(locale: Locale): ArticleSummaryData[] {

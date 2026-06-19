@@ -1,0 +1,62 @@
+{
+  "slug": "portfolio-dashboard",
+  "title": "Dashboard Portofolio",
+  "year": "2026",
+  "description": "Konsep dashboard untuk menampilkan proyek, metrik, dan konten portofolio dalam tampilan operasional yang jelas.",
+  "image": "/images/akmal/placeholders/project-portfolio-dashboard.svg",
+  "alt": "Placeholder interface dashboard portofolio",
+  "category": "Dashboard, Frontend, Data UI",
+  "role": "Fullstack Developer",
+  "client": "Personal / Internal",
+  "summary": "Sistem portofolio bergaya dashboard untuk menampilkan proyek, konten, dan sinyal penting dalam satu interface yang terstruktur.",
+  "sections": [
+    {
+      "slot": "overview",
+      "heading": "Overview",
+      "body": [
+        "Project ini mengeksplorasi bagaimana portofolio bisa terasa seperti dashboard yang fokus, bukan hanya galeri statis. Tujuannya adalah menampilkan proyek, tulisan, skill, dan availability secara mudah dipindai.",
+        "Strukturnya dibuat untuk recruiter, HR reviewer, dan client freelance yang perlu memahami kemampuan saya dengan cepat."
+      ]
+    },
+    {
+      "slot": "challenge",
+      "heading": "Challenge",
+      "body": [
+        "Portofolio sering terlihat seperti showcase visual tanpa konteks operasional yang cukup. Untuk profil fullstack, tantangannya adalah menunjukkan kualitas interface sekaligus cara berpikir praktis di balik setiap project.",
+        "Layout harus tetap langsung, mudah dibaca, dan mudah dikembangkan saat work baru ditambahkan."
+      ]
+    },
+    {
+      "slot": "approach",
+      "heading": "Approach",
+      "body": [
+        "Saya menyusun experience dengan content block reusable, metadata konsisten, dan ringkasan project yang jelas. Setiap section mendukung konten bilingual dan case study nyata di masa depan.",
+        "Interface mempertahankan visual style saat ini sambil memindahkan sumber konten ke file data yang mudah diedit."
+      ]
+    },
+    {
+      "slot": "outcome",
+      "heading": "Outcome",
+      "body": [
+        "Hasilnya adalah fondasi portofolio fleksibel yang bisa berkembang dari placeholder menjadi case study nyata tanpa mengubah arsitektur halaman.",
+        "Update ke depan jadi jelas: edit file konten, ganti asset, dan pertahankan presentasi yang konsisten."
+      ]
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/images/akmal/placeholders/project-portfolio-dashboard.svg",
+      "alt": "Overview dashboard portofolio",
+      "aspect": "16/9",
+      "span": "full",
+      "slot": "overview"
+    },
+    {
+      "src": "/images/akmal/placeholders/project-portfolio-dashboard.svg",
+      "alt": "Kartu konten dashboard portofolio",
+      "aspect": "4/3",
+      "span": "half",
+      "slot": "approach"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "slug": "maintenance-system",
+  "title": "Sistem Operasional Maintenance",
+  "year": "2026",
+  "description": "Konsep aplikasi web berbasis workflow untuk pelaporan maintenance, review, dan koordinasi operasional.",
+  "image": "/images/akmal/placeholders/project-maintenance-system.svg",
+  "alt": "Placeholder interface sistem operasional maintenance",
+  "category": "Fullstack Web App, Dashboard, Workflow",
+  "role": "Fullstack Developer",
+  "client": "Internal / Operational",
+  "summary": "Konsep sistem operasional fullstack untuk tim maintenance yang membutuhkan report, status tracking, dan flow review yang lebih jelas.",
+  "sections": [
+    {
+      "slot": "overview",
+      "heading": "Overview",
+      "body": [
+        "Project ini berangkat dari workflow maintenance umum: laporan, update status, tahapan review, dokumentasi, dan tindak lanjut.",
+        "Konsepnya fokus mengubah aktivitas operasional yang tersebar menjadi aplikasi web terstruktur yang bisa dipakai berulang."
+      ]
+    },
+    {
+      "slot": "challenge",
+      "heading": "Challenge",
+      "body": [
+        "Workflow maintenance bisa sulit diikuti ketika data, bukti, approval, dan komunikasi terpisah di banyak tools.",
+        "Interface harus mendukung pekerjaan detail tanpa memperlambat user harian."
+      ]
+    },
+    {
+      "slot": "approach",
+      "heading": "Approach",
+      "body": [
+        "Saya menyusun konsep dengan status yang jelas, halaman detail report, ringkasan dashboard, dan area action yang mudah diprediksi.",
+        "Arah fullstack mencakup data model praktis, API route, permission, dan state frontend yang mendukung penggunaan operasional nyata."
+      ]
+    },
+    {
+      "slot": "outcome",
+      "heading": "Outcome",
+      "body": [
+        "Hasilnya adalah arah project yang bisa mendukung pelaporan, review, dan tracking pekerjaan maintenance dari satu tempat.",
+        "Project ini cocok dikembangkan menjadi case study nyata saat detail final dan screenshot sudah siap."
+      ]
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/images/akmal/placeholders/project-maintenance-system.svg",
+      "alt": "Dashboard sistem maintenance",
+      "aspect": "16/9",
+      "span": "full",
+      "slot": "overview"
+    },
+    {
+      "src": "/images/akmal/placeholders/project-maintenance-system.svg",
+      "alt": "Kartu workflow maintenance",
+      "aspect": "4/3",
+      "span": "half",
+      "slot": "challenge"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "slug": "freelance-web-app",
+  "title": "Freelance Web Application",
+  "year": "2026",
+  "description": "A fullstack web application concept for freelance clients who need product UI, backend logic, and deployment-ready delivery.",
+  "image": "/images/akmal/placeholders/project-freelance-web-app.svg",
+  "alt": "Freelance web application placeholder interface",
+  "category": "Fullstack, Product UI, Backend",
+  "role": "Fullstack Developer",
+  "client": "Freelance",
+  "summary": "A fullstack freelance web app direction that combines product interface, backend logic, and deployment planning.",
+  "sections": [
+    {
+      "slot": "overview",
+      "heading": "Overview",
+      "body": [
+        "This project represents freelance web application work where the client needs more than a static site.",
+        "The direction combines UI, data handling, backend routes, authentication-ready structure, and deployment concerns."
+      ]
+    },
+    {
+      "slot": "challenge",
+      "heading": "Challenge",
+      "body": [
+        "Freelance projects often begin with unclear requirements and a need to move quickly. The challenge is shaping a practical first version without locking the client into a fragile structure.",
+        "The system has to be simple enough to deliver and strong enough to grow."
+      ]
+    },
+    {
+      "slot": "approach",
+      "heading": "Approach",
+      "body": [
+        "I approach these projects by clarifying the core workflow first, then mapping the data, pages, and backend actions needed to support it.",
+        "The frontend is built around usable flows while backend implementation focuses on maintainability and clear boundaries."
+      ]
+    },
+    {
+      "slot": "outcome",
+      "heading": "Outcome",
+      "body": [
+        "The outcome is a reliable application foundation for a client-facing product or internal workflow.",
+        "It shows the kind of work I can support as a fullstack developer for freelance projects."
+      ]
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/images/akmal/placeholders/project-freelance-web-app.svg",
+      "alt": "Freelance web application overview",
+      "aspect": "16/9",
+      "span": "full",
+      "slot": "overview"
+    },
+    {
+      "src": "/images/akmal/placeholders/project-freelance-web-app.svg",
+      "alt": "Freelance web app workflow",
+      "aspect": "4/3",
+      "span": "half",
+      "slot": "challenge"
+    }
+  ]
+}
