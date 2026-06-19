@@ -94,6 +94,16 @@ export type ArticleSummaryData = {
   publishedAt: string;
 };
 
+export type ArticleDetailData = ArticleSummaryData & {
+  lead: string;
+  blocks: {
+    heading?: string;
+    paragraphs: string[];
+  }[];
+};
+
+export type ArticleContentData = Omit<ArticleDetailData, "href">;
+
 export type HomeData = {
   hero: {
     headline: string;

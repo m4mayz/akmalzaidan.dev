@@ -1,3 +1,6 @@
+import enDashboardsArticle from "../../data/en/articles/building-maintainable-dashboards.json";
+import enItSupportArticle from "../../data/en/articles/practical-it-support-for-small-teams.json";
+import enFullstackArticle from "../../data/en/articles/why-fullstack-context-matters.json";
 import enHome from "../../data/en/home.json";
 import enSite from "../../data/en/site.json";
 import enApiIntegration from "../../data/en/work/api-integration.json";
@@ -6,6 +9,9 @@ import enFreelanceWebApp from "../../data/en/work/freelance-web-app.json";
 import enMaintenanceSystem from "../../data/en/work/maintenance-system.json";
 import enPortfolioDashboard from "../../data/en/work/portfolio-dashboard.json";
 import enSupportTools from "../../data/en/work/support-tools.json";
+import idDashboardsArticle from "../../data/id/articles/building-maintainable-dashboards.json";
+import idItSupportArticle from "../../data/id/articles/practical-it-support-for-small-teams.json";
+import idFullstackArticle from "../../data/id/articles/why-fullstack-context-matters.json";
 import idHome from "../../data/id/home.json";
 import idSite from "../../data/id/site.json";
 import idApiIntegration from "../../data/id/work/api-integration.json";
@@ -17,6 +23,8 @@ import idSupportTools from "../../data/id/work/support-tools.json";
 
 import { withLocale } from "@/lib/i18n";
 import type {
+  ArticleContentData,
+  ArticleDetailData,
   ArticleSummaryData,
   HomeData,
   Locale,
@@ -55,67 +63,16 @@ const workByLocale: Record<Locale, WorkContentData[]> = {
   ],
 };
 
-const articleSummariesByLocale: Record<
-  Locale,
-  Omit<ArticleSummaryData, "href">[]
-> = {
+const articlesByLocale: Record<Locale, ArticleContentData[]> = {
   en: [
-    {
-      slug: "building-maintainable-dashboards",
-      title: "Building dashboards that stay maintainable",
-      description:
-        "Notes on structuring dashboard interfaces so data, filters, and repeated workflows stay understandable over time.",
-      image: "/seo/og.png",
-      alt: "Maintainable dashboard article placeholder",
-      publishedAt: "2026-06-20",
-    },
-    {
-      slug: "why-fullstack-context-matters",
-      title: "Why fullstack context matters when building products",
-      description:
-        "How understanding frontend, backend, and operations helps product decisions stay grounded and practical.",
-      image: "/seo/og.png",
-      alt: "Fullstack context article placeholder",
-      publishedAt: "2026-06-20",
-    },
-    {
-      slug: "practical-it-support-for-small-teams",
-      title: "Practical IT support for small teams",
-      description:
-        "A practical look at troubleshooting, setup, and technical support habits that keep small teams moving.",
-      image: "/seo/og.png",
-      alt: "Practical IT support article placeholder",
-      publishedAt: "2026-06-20",
-    },
+    enDashboardsArticle as ArticleContentData,
+    enFullstackArticle as ArticleContentData,
+    enItSupportArticle as ArticleContentData,
   ],
   id: [
-    {
-      slug: "building-maintainable-dashboards",
-      title: "Membangun dashboard yang tetap mudah dirawat",
-      description:
-        "Catatan tentang menyusun interface dashboard agar data, filter, dan workflow harian tetap mudah dipahami.",
-      image: "/seo/og.png",
-      alt: "Placeholder artikel dashboard yang mudah dirawat",
-      publishedAt: "2026-06-20",
-    },
-    {
-      slug: "why-fullstack-context-matters",
-      title: "Kenapa konteks fullstack penting saat membangun produk",
-      description:
-        "Bagaimana pemahaman frontend, backend, dan operasional membantu keputusan produk tetap praktis.",
-      image: "/seo/og.png",
-      alt: "Placeholder artikel konteks fullstack",
-      publishedAt: "2026-06-20",
-    },
-    {
-      slug: "practical-it-support-for-small-teams",
-      title: "Bantuan teknis IT yang praktis untuk tim kecil",
-      description:
-        "Pandangan praktis tentang troubleshooting, setup, dan kebiasaan support teknis untuk tim kecil.",
-      image: "/seo/og.png",
-      alt: "Placeholder artikel bantuan teknis IT",
-      publishedAt: "2026-06-20",
-    },
+    idDashboardsArticle as ArticleContentData,
+    idFullstackArticle as ArticleContentData,
+    idItSupportArticle as ArticleContentData,
   ],
 };
 
@@ -175,8 +132,42 @@ export function getWorkSlugs() {
 }
 
 export function getArticleSummaries(locale: Locale): ArticleSummaryData[] {
-  return articleSummariesByLocale[locale].map((item) => ({
+  return articlesByLocale[locale].map((item) => ({
+    slug: item.slug,
+    title: item.title,
+    description: item.description,
+    href: withLocale(`/articles/${item.slug}`, locale),
+    image: item.image,
+    alt: item.alt,
+    publishedAt: item.publishedAt,
+  }));
+}
+
+export function getArticleDetail(
+  locale: Locale,
+  slug: string,
+): ArticleDetailData | undefined {
+  const item = articlesByLocale[locale].find((article) => article.slug === slug);
+
+  if (!item) {
+    return undefined;
+  }
+
+  return {
     ...item,
     href: withLocale(`/articles/${item.slug}`, locale),
-  }));
+  };
+}
+
+export function getMoreArticleSummaries(
+  locale: Locale,
+  slug: string,
+): ArticleSummaryData[] {
+  return getArticleSummaries(locale)
+    .filter((item) => item.slug !== slug)
+    .slice(0, 3);
+}
+
+export function getArticleSlugs() {
+  return articlesByLocale.en.map((item) => item.slug);
 }

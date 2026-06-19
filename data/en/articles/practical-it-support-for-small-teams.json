@@ -1,0 +1,32 @@
+{
+  "slug": "practical-it-support-for-small-teams",
+  "title": "Practical IT support for small teams",
+  "description": "A practical look at troubleshooting, setup, and technical support habits that keep small teams moving.",
+  "image": "/images/akmal/placeholders/article-it-support.svg",
+  "alt": "Practical IT support article placeholder",
+  "publishedAt": "2026-06-20",
+  "lead": "Small teams often need technical help that is direct, practical, and easy to follow. Good support is not only fixing issues, but leaving the team with clearer steps for next time.",
+  "blocks": [
+    {
+      "heading": "Document repeated issues",
+      "paragraphs": [
+        "If the same issue appears more than once, it should become a note, checklist, or small tool. This reduces repeated explanation and makes support faster.",
+        "Documentation does not have to be heavy. A clear short note can be enough if it helps the next person solve the issue."
+      ]
+    },
+    {
+      "heading": "Separate symptoms from causes",
+      "paragraphs": [
+        "Troubleshooting becomes messy when every symptom is treated as the root cause. I prefer checking the simple layers first: device, connection, account, permission, configuration, and application behavior.",
+        "This keeps the process calm and avoids random changes that make the situation harder to understand."
+      ]
+    },
+    {
+      "heading": "Turn support into improvement",
+      "paragraphs": [
+        "Support work can reveal where tools, workflows, or onboarding are unclear. When those patterns are captured, they can become better setup flows, internal tools, or clearer instructions.",
+        "That is where IT support connects naturally with development: repeated problems can become better systems."
+      ]
+    }
+  ]
+}

@@ -12,5 +12,5 @@ export default async function Page({
 }) {
     const { slug } = await params;
 
-    return <ArticleDetailPage locale="en" slug={slug} />;
+    return <ArticleDetailPage locale="id" slug={slug} />;
 }

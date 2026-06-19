@@ -1,0 +1,32 @@
+{
+  "slug": "practical-it-support-for-small-teams",
+  "title": "Bantuan teknis IT yang praktis untuk tim kecil",
+  "description": "Pandangan praktis tentang troubleshooting, setup, dan kebiasaan support teknis untuk tim kecil.",
+  "image": "/images/akmal/placeholders/article-it-support.svg",
+  "alt": "Placeholder artikel bantuan teknis IT",
+  "publishedAt": "2026-06-20",
+  "lead": "Tim kecil sering membutuhkan bantuan teknis yang langsung, praktis, dan mudah diikuti. Support yang baik bukan hanya memperbaiki masalah, tetapi meninggalkan langkah yang lebih jelas untuk berikutnya.",
+  "blocks": [
+    {
+      "heading": "Dokumentasikan masalah berulang",
+      "paragraphs": [
+        "Jika masalah yang sama muncul lebih dari sekali, itu sebaiknya menjadi catatan, checklist, atau tool kecil. Ini mengurangi penjelasan berulang dan membuat support lebih cepat.",
+        "Dokumentasi tidak harus berat. Catatan pendek yang jelas sudah cukup jika membantu orang berikutnya menyelesaikan masalah."
+      ]
+    },
+    {
+      "heading": "Pisahkan gejala dan penyebab",
+      "paragraphs": [
+        "Troubleshooting jadi berantakan ketika setiap gejala dianggap sebagai akar masalah. Saya lebih suka mengecek layer sederhana dulu: device, koneksi, akun, permission, konfigurasi, dan perilaku aplikasi.",
+        "Cara ini menjaga proses tetap tenang dan menghindari perubahan acak yang membuat situasi makin sulit dipahami."
+      ]
+    },
+    {
+      "heading": "Ubah support menjadi improvement",
+      "paragraphs": [
+        "Pekerjaan support bisa menunjukkan bagian mana dari tools, workflow, atau onboarding yang belum jelas. Jika polanya dicatat, masalah itu bisa menjadi setup flow yang lebih baik, internal tools, atau instruksi yang lebih jelas.",
+        "Di sinilah IT support terhubung natural dengan development: masalah berulang bisa menjadi sistem yang lebih baik."
+      ]
+    }
+  ]
+}

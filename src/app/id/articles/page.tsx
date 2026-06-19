@@ -1,5 +1,5 @@
 import { ArticlesIndexPage } from "@/components/pages/articles-index-page";
 
 export default function Page() {
-    return <ArticlesIndexPage locale="en" />;
+    return <ArticlesIndexPage locale="id" />;
 }

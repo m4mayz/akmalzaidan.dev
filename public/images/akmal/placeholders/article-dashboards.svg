@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Maintainable Dashboards</title>
+  <desc id="desc">Abstract dark article image for dashboard systems.</desc>
+  <rect width="1600" height="1000" fill="#090b10"/>
+  <circle cx="1240" cy="260" r="390" fill="#fb923c" opacity=".14"/>
+  <circle cx="360" cy="720" r="330" fill="#38bdf8" opacity=".12"/>
+  <rect x="190" y="150" width="1220" height="700" rx="36" fill="#11151d" stroke="#fff" stroke-opacity=".12"/>
+  <rect x="270" y="250" width="320" height="500" rx="26" fill="#171c25" stroke="#fff" stroke-opacity=".08"/>
+  <rect x="650" y="250" width="680" height="170" rx="26" fill="#171c25" stroke="#fff" stroke-opacity=".08"/>
+  <rect x="650" y="480" width="300" height="270" rx="26" fill="#171c25" stroke="#fff" stroke-opacity=".08"/>
+  <rect x="1030" y="480" width="300" height="270" rx="26" fill="#171c25" stroke="#fff" stroke-opacity=".08"/>
+  <path d="M332 368h190M332 464h142M332 560h214M332 656h122M722 340h340M722 598c70-64 126-16 188-88 32-37 64-56 104-62" fill="none" stroke="#f97316" stroke-width="10" stroke-linecap="round"/>
+  <text x="700" y="370" fill="#f8fafc" font-family="Inter,Arial,sans-serif" font-size="42" font-weight="300">Maintainable Dashboards</text>
+</svg>
