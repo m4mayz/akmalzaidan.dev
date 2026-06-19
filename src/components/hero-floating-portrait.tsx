@@ -58,12 +58,12 @@ export function HeroFloatingPortrait() {
             ref={frameRef}
         >
             <Image
-                alt="Kristian Ulrych"
+                alt="Akmal Zaidan portfolio interface"
                 className="object-cover"
                 fill
                 preload
                 sizes="(min-width: 768px) 41vw, 100vw"
-                src="/images/ulrychkristian/hero_portrait.jpeg"
+                src="/images/akmal/placeholders/project-portfolio-dashboard.svg"
             />
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(140%_100%_at_50%_60%,rgba(255,99,34,0)_40%,rgba(255,99,34,0.35)_100%)]" />
         </div>
