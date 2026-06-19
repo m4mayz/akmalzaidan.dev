@@ -104,6 +104,72 @@ export type ArticleDetailData = ArticleSummaryData & {
 
 export type ArticleContentData = Omit<ArticleDetailData, "href">;
 
+export type TimelineItemData = {
+  title: string;
+  organization: string;
+  period: string;
+};
+
+export type AboutData = {
+  headline: string;
+  subhead: string;
+  intro: string[];
+  philosophyTitle: string;
+  philosophy: string[];
+  experienceTitle: string;
+  experiences: TimelineItemData[];
+  educationTitle: string;
+  education: TimelineItemData[];
+  skillsTitle: string;
+  skills: string[];
+  toolsTitle: string;
+  tools: string[];
+  beyondTitle: string;
+  beyond: string[];
+  images: {
+    src: string;
+    alt: string;
+  }[];
+};
+
+export type ContactData = {
+  headline: string;
+  body: string;
+  labels: {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+    company: string;
+  };
+  placeholders: {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+  };
+  submitLabel: string;
+  privacyPrefix: string;
+  privacyLinkLabel: string;
+  privacySuffix: string;
+};
+
+export type PrivacyData = {
+  eyebrow: string;
+  title: string;
+  lastUpdated: string;
+  intro: string;
+  sections: {
+    heading: string;
+    paragraphs?: string[];
+    groups?: {
+      subheading: string;
+      paragraphs: string[];
+    }[];
+    list?: string[];
+  }[];
+};
+
 export type HomeData = {
   hero: {
     headline: string;

@@ -1,0 +1,91 @@
+{
+  "headline": "Fullstack developer yang membangun produk web praktis dari Sukabumi.",
+  "subhead": "Saya membangun web app, dashboard, API, internal tools, dan sistem bantuan IT praktis untuk tim yang membutuhkan eksekusi jelas.",
+  "intro": [
+    "Saya bekerja di area frontend, backend, dan workflow operasional. Fokus saya adalah mengubah masalah teknis atau bisnis yang belum jelas menjadi tools yang mudah digunakan, dirawat, dan dikembangkan.",
+    "Saat ini saya tersedia untuk magang, proyek freelance, dan kolaborasi dengan tim yang membutuhkan developer yang memahami permukaan produk sekaligus fondasi teknisnya."
+  ],
+  "philosophyTitle": "Cara saya bekerja",
+  "philosophy": [
+    "Software yang baik harus membuat pekerjaan nyata lebih mudah. Saya peduli pada interface yang jelas, alur backend yang bisa diprediksi, dan detail kecil yang mengurangi kebingungan user.",
+    "Saya suka bekerja dekat dengan masalahnya: memahami kebutuhan tim, data apa yang penting, workflow apa yang berulang, dan support teknis apa yang dibutuhkan setelah versi awal dikirim.",
+    "Saya menghargai implementasi yang pragmatis. Solusi terbaik biasanya adalah solusi yang andal, mudah dipahami, dan siap dikembangkan tanpa membuat pekerjaan berikutnya lebih sulit."
+  ],
+  "experienceTitle": "Pengalaman kerja",
+  "experiences": [
+    {
+      "title": "Fullstack Developer",
+      "organization": "Project personal dan freelance",
+      "period": "2026 — Sekarang"
+    },
+    {
+      "title": "Frontend Developer",
+      "organization": "Portfolio dan website client-facing",
+      "period": "2026 — Sekarang"
+    },
+    {
+      "title": "Technical IT Support",
+      "organization": "Setup, troubleshooting, dan bantuan praktis",
+      "period": "2025 — Sekarang"
+    }
+  ],
+  "educationTitle": "Pendidikan",
+  "education": [
+    {
+      "title": "Software Development / Computer Science",
+      "organization": "Entry pendidikan yang bisa diedit",
+      "period": "Update di data/id/about.json"
+    },
+    {
+      "title": "Independent learning",
+      "organization": "Web development, backend, database, deployment",
+      "period": "Berjalan"
+    }
+  ],
+  "skillsTitle": "Skills",
+  "skills": [
+    "Frontend development",
+    "Backend development",
+    "API design",
+    "Dashboard UI",
+    "Database modeling",
+    "Deployment",
+    "Troubleshooting",
+    "IT support"
+  ],
+  "toolsTitle": "Tools",
+  "tools": [
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Prisma",
+    "PostgreSQL / MySQL",
+    "Tailwind CSS",
+    "Git",
+    "Vercel"
+  ],
+  "beyondTitle": "Di luar code",
+  "beyond": [
+    "Di luar implementasi, saya tertarik memahami cara tim bekerja secara nyata: bagian mana yang membuat data tertahan, pekerjaan apa yang berulang manual, dan tooling apa yang bisa membantu.",
+    "Karena itu portofolio saya mencakup web development, dashboard, backend, dan bantuan IT praktis, bukan memperlakukannya sebagai dunia yang terpisah."
+  ],
+  "images": [
+    {
+      "src": "/images/akmal/placeholders/project-portfolio-dashboard.svg",
+      "alt": "Placeholder dashboard abstrak yang mewakili pekerjaan Akmal"
+    },
+    {
+      "src": "/images/akmal/placeholders/project-api-integration.svg",
+      "alt": "Placeholder integrasi API abstrak yang mewakili pekerjaan backend"
+    },
+    {
+      "src": "/images/akmal/placeholders/project-support-tools.svg",
+      "alt": "Placeholder toolkit support abstrak yang mewakili IT support"
+    },
+    {
+      "src": "/images/akmal/placeholders/project-freelance-web-app.svg",
+      "alt": "Placeholder aplikasi web abstrak yang mewakili pekerjaan freelance"
+    }
+  ]
+}

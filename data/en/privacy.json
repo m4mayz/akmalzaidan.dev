@@ -1,0 +1,83 @@
+{
+  "eyebrow": "Legal",
+  "title": "Privacy Policy",
+  "lastUpdated": "Last updated: 20 June 2026",
+  "intro": "This page explains what personal data is processed when you use Akmal Zaidan's portfolio website, contact form, analytics, and related services. It is written for visitors from Indonesia and international visitors, including GDPR-style rights where relevant.",
+  "sections": [
+    {
+      "heading": "Data controller",
+      "paragraphs": [
+        "The controller for this portfolio website is Akmal Zaidan, based in Sukabumi, Indonesia. You can contact me through the email address listed on this website."
+      ]
+    },
+    {
+      "heading": "What data is processed and why",
+      "groups": [
+        {
+          "subheading": "Contact form",
+          "paragraphs": [
+            "When you submit the contact form, the site may process your name, email address, subject, message, and basic request metadata such as timestamp, IP address, user agent, and anti-abuse signals.",
+            "The purpose is to receive your message, reply to recruitment or freelance inquiries, discuss possible collaboration, and keep reasonable follow-up records."
+          ]
+        },
+        {
+          "subheading": "Email delivery",
+          "paragraphs": [
+            "Messages may be sent through the email tools configured for this website or through a mail client fallback. The resulting message is stored in my inbox so I can reply and follow up."
+          ]
+        },
+        {
+          "subheading": "Hosting and security",
+          "paragraphs": [
+            "The site is hosted on Vercel. Hosting providers process standard request data that is necessary to deliver pages, monitor reliability, and protect the service from abuse."
+          ]
+        },
+        {
+          "subheading": "Analytics and performance",
+          "paragraphs": [
+            "The site may use Vercel Web Analytics. Vercel states that Web Analytics stores anonymized data and does not use cookies.",
+            "If Vercel Speed Insights is enabled, it collects anonymous performance data such as route, device type, browser, country, and Web Vitals metrics. Vercel states that Speed Insights does not collect or store information that would allow a browsing session to be reconstructed or a user to be identified."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Legal basis and privacy framework",
+      "paragraphs": [
+        "For Indonesian visitors, this policy is framed with Law No. 27 of 2022 concerning Personal Data Protection in mind.",
+        "For international visitors, the same practical rights are respected where applicable, including access, correction, deletion, objection, and the ability to contact me about privacy concerns."
+      ]
+    },
+    {
+      "heading": "Retention",
+      "paragraphs": [
+        "Messages are kept only as long as needed for recruitment, freelance communication, collaboration follow-up, or reasonable record keeping. You can ask for deletion earlier unless I need to keep limited information for legal or security reasons."
+      ]
+    },
+    {
+      "heading": "Your rights",
+      "paragraphs": [
+        "You can contact me to ask what data I hold about you, correct inaccurate information, request deletion, object to processing, or ask how your data is handled."
+      ],
+      "list": [
+        "Access your personal data.",
+        "Correct inaccurate or incomplete information.",
+        "Request deletion where appropriate.",
+        "Object to or restrict certain processing.",
+        "Ask questions or raise a complaint through the contact email."
+      ]
+    },
+    {
+      "heading": "Cookies and advertising",
+      "paragraphs": [
+        "This site does not use advertising tracking cookies. If this changes later, the policy will be updated before those tools are intentionally added."
+      ]
+    },
+    {
+      "heading": "Changes",
+      "paragraphs": [
+        "This policy may be updated when the website, analytics setup, contact handling, or legal requirements change. The date above reflects the current version."
+      ]
+    }
+  ]
+}

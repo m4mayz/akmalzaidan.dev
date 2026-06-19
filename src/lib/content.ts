@@ -1,7 +1,10 @@
 import enDashboardsArticle from "../../data/en/articles/building-maintainable-dashboards.json";
 import enItSupportArticle from "../../data/en/articles/practical-it-support-for-small-teams.json";
 import enFullstackArticle from "../../data/en/articles/why-fullstack-context-matters.json";
+import enAbout from "../../data/en/about.json";
+import enContact from "../../data/en/contact.json";
 import enHome from "../../data/en/home.json";
+import enPrivacy from "../../data/en/privacy.json";
 import enSite from "../../data/en/site.json";
 import enApiIntegration from "../../data/en/work/api-integration.json";
 import enCompanyProfile from "../../data/en/work/company-profile.json";
@@ -12,7 +15,10 @@ import enSupportTools from "../../data/en/work/support-tools.json";
 import idDashboardsArticle from "../../data/id/articles/building-maintainable-dashboards.json";
 import idItSupportArticle from "../../data/id/articles/practical-it-support-for-small-teams.json";
 import idFullstackArticle from "../../data/id/articles/why-fullstack-context-matters.json";
+import idAbout from "../../data/id/about.json";
+import idContact from "../../data/id/contact.json";
 import idHome from "../../data/id/home.json";
+import idPrivacy from "../../data/id/privacy.json";
 import idSite from "../../data/id/site.json";
 import idApiIntegration from "../../data/id/work/api-integration.json";
 import idCompanyProfile from "../../data/id/work/company-profile.json";
@@ -23,11 +29,14 @@ import idSupportTools from "../../data/id/work/support-tools.json";
 
 import { withLocale } from "@/lib/i18n";
 import type {
+  AboutData,
   ArticleContentData,
   ArticleDetailData,
   ArticleSummaryData,
+  ContactData,
   HomeData,
   Locale,
+  PrivacyData,
   SiteData,
   WorkContentData,
   WorkDetailData,
@@ -42,6 +51,21 @@ const siteByLocale: Record<Locale, SiteData> = {
 const homeByLocale: Record<Locale, HomeData> = {
   en: enHome as HomeData,
   id: idHome as HomeData,
+};
+
+const aboutByLocale: Record<Locale, AboutData> = {
+  en: enAbout as AboutData,
+  id: idAbout as AboutData,
+};
+
+const contactByLocale: Record<Locale, ContactData> = {
+  en: enContact as ContactData,
+  id: idContact as ContactData,
+};
+
+const privacyByLocale: Record<Locale, PrivacyData> = {
+  en: enPrivacy as PrivacyData,
+  id: idPrivacy as PrivacyData,
 };
 
 const workByLocale: Record<Locale, WorkContentData[]> = {
@@ -82,6 +106,18 @@ export function getSiteData(locale: Locale) {
 
 export function getHomeData(locale: Locale) {
   return homeByLocale[locale];
+}
+
+export function getAboutData(locale: Locale) {
+  return aboutByLocale[locale];
+}
+
+export function getContactData(locale: Locale) {
+  return contactByLocale[locale];
+}
+
+export function getPrivacyData(locale: Locale) {
+  return privacyByLocale[locale];
 }
 
 export function getWorkSummaries(locale: Locale): WorkSummaryData[] {

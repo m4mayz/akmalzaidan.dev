@@ -1,0 +1,91 @@
+{
+  "headline": "Fullstack developer building practical web products from Sukabumi.",
+  "subhead": "I build web apps, dashboards, APIs, internal tools, and practical IT support systems for teams that need clear execution.",
+  "intro": [
+    "I work across frontend, backend, and operational workflows. My focus is turning unclear technical or business problems into tools that are easy to use, maintain, and improve.",
+    "I am currently available for internships, freelance projects, and collaboration with teams that need a developer who can understand both the product surface and the technical foundation."
+  ],
+  "philosophyTitle": "How I approach work",
+  "philosophy": [
+    "Good software should make real work easier. I care about interfaces that are clear, backend flows that are predictable, and small details that reduce confusion for users.",
+    "I like working close to the problem: understanding what the team needs, what data matters, what workflow is repeated, and what technical support is needed after the first version ships.",
+    "I value pragmatic implementation. The best solution is usually the one that is reliable, understandable, and ready to be improved without making future work harder."
+  ],
+  "experienceTitle": "Work experience",
+  "experiences": [
+    {
+      "title": "Fullstack Developer",
+      "organization": "Personal and freelance projects",
+      "period": "2026 — Present"
+    },
+    {
+      "title": "Frontend Developer",
+      "organization": "Portfolio and client-facing websites",
+      "period": "2026 — Present"
+    },
+    {
+      "title": "Technical IT Support",
+      "organization": "Setup, troubleshooting, and practical assistance",
+      "period": "2025 — Present"
+    }
+  ],
+  "educationTitle": "Education",
+  "education": [
+    {
+      "title": "Software Development / Computer Science",
+      "organization": "Editable education entry",
+      "period": "Update in data/en/about.json"
+    },
+    {
+      "title": "Independent learning",
+      "organization": "Web development, backend, databases, deployment",
+      "period": "Ongoing"
+    }
+  ],
+  "skillsTitle": "Skills",
+  "skills": [
+    "Frontend development",
+    "Backend development",
+    "API design",
+    "Dashboard UI",
+    "Database modeling",
+    "Deployment",
+    "Troubleshooting",
+    "IT support"
+  ],
+  "toolsTitle": "Tools",
+  "tools": [
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Prisma",
+    "PostgreSQL / MySQL",
+    "Tailwind CSS",
+    "Git",
+    "Vercel"
+  ],
+  "beyondTitle": "Beyond code",
+  "beyond": [
+    "Outside of implementation work, I enjoy learning how real teams operate: where data gets stuck, where people repeat manual steps, and where better tooling can help.",
+    "That interest is why my portfolio includes web development, dashboards, backend work, and practical IT support instead of treating them as separate worlds."
+  ],
+  "images": [
+    {
+      "src": "/images/akmal/placeholders/project-portfolio-dashboard.svg",
+      "alt": "Abstract dashboard placeholder representing Akmal's work"
+    },
+    {
+      "src": "/images/akmal/placeholders/project-api-integration.svg",
+      "alt": "Abstract API integration placeholder representing backend work"
+    },
+    {
+      "src": "/images/akmal/placeholders/project-support-tools.svg",
+      "alt": "Abstract support toolkit placeholder representing IT support"
+    },
+    {
+      "src": "/images/akmal/placeholders/project-freelance-web-app.svg",
+      "alt": "Abstract web application placeholder representing freelance work"
+    }
+  ]
+}

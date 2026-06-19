@@ -1,0 +1,83 @@
+{
+  "eyebrow": "Legal",
+  "title": "Kebijakan Privasi",
+  "lastUpdated": "Terakhir diperbarui: 20 Juni 2026",
+  "intro": "Halaman ini menjelaskan data pribadi yang diproses saat Anda menggunakan website portofolio Akmal Zaidan, contact form, analytics, dan layanan terkait. Kebijakan ini ditulis untuk pengunjung dari Indonesia dan pengunjung internasional, termasuk hak bergaya GDPR jika relevan.",
+  "sections": [
+    {
+      "heading": "Pengendali data",
+      "paragraphs": [
+        "Pengendali untuk website portofolio ini adalah Akmal Zaidan, berbasis di Sukabumi, Indonesia. Anda dapat menghubungi saya melalui alamat email yang tercantum di website ini."
+      ]
+    },
+    {
+      "heading": "Data yang diproses dan tujuannya",
+      "groups": [
+        {
+          "subheading": "Contact form",
+          "paragraphs": [
+            "Saat Anda mengirim contact form, website dapat memproses nama, alamat email, subjek, pesan, dan metadata request dasar seperti timestamp, alamat IP, user agent, dan sinyal anti-abuse.",
+            "Tujuannya adalah menerima pesan, membalas inquiry rekrutmen atau freelance, mendiskusikan kemungkinan kolaborasi, dan menyimpan follow-up yang wajar."
+          ]
+        },
+        {
+          "subheading": "Pengiriman email",
+          "paragraphs": [
+            "Pesan dapat dikirim melalui tools email yang dikonfigurasi untuk website ini atau melalui fallback mail client. Pesan yang dihasilkan tersimpan di inbox saya agar saya dapat membalas dan melakukan follow-up."
+          ]
+        },
+        {
+          "subheading": "Hosting dan keamanan",
+          "paragraphs": [
+            "Website ini di-host di Vercel. Penyedia hosting memproses data request standar yang diperlukan untuk mengirim halaman, memantau reliability, dan melindungi layanan dari penyalahgunaan."
+          ]
+        },
+        {
+          "subheading": "Analytics dan performa",
+          "paragraphs": [
+            "Website ini dapat menggunakan Vercel Web Analytics. Vercel menyatakan Web Analytics menyimpan data anonim dan tidak menggunakan cookie.",
+            "Jika Vercel Speed Insights diaktifkan, alat tersebut mengumpulkan data performa anonim seperti route, tipe perangkat, browser, negara, dan metrik Web Vitals. Vercel menyatakan Speed Insights tidak mengumpulkan atau menyimpan informasi yang memungkinkan sesi browsing direkonstruksi atau user diidentifikasi."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Dasar hukum dan kerangka privasi",
+      "paragraphs": [
+        "Untuk pengunjung Indonesia, kebijakan ini disusun dengan memperhatikan UU No. 27 Tahun 2022 tentang Pelindungan Data Pribadi.",
+        "Untuk pengunjung internasional, hak praktis yang sama dihormati jika berlaku, termasuk akses, koreksi, penghapusan, keberatan, dan kemampuan menghubungi saya terkait privasi."
+      ]
+    },
+    {
+      "heading": "Retensi",
+      "paragraphs": [
+        "Pesan disimpan hanya selama diperlukan untuk komunikasi rekrutmen, freelance, follow-up kolaborasi, atau pencatatan yang wajar. Anda dapat meminta penghapusan lebih awal kecuali saya perlu menyimpan informasi terbatas untuk alasan hukum atau keamanan."
+      ]
+    },
+    {
+      "heading": "Hak Anda",
+      "paragraphs": [
+        "Anda dapat menghubungi saya untuk menanyakan data apa yang saya simpan tentang Anda, memperbaiki informasi yang tidak akurat, meminta penghapusan, menolak pemrosesan, atau bertanya bagaimana data Anda ditangani."
+      ],
+      "list": [
+        "Mengakses data pribadi Anda.",
+        "Memperbaiki informasi yang tidak akurat atau tidak lengkap.",
+        "Meminta penghapusan jika sesuai.",
+        "Menolak atau membatasi pemrosesan tertentu.",
+        "Bertanya atau menyampaikan keluhan melalui email kontak."
+      ]
+    },
+    {
+      "heading": "Cookie dan iklan",
+      "paragraphs": [
+        "Website ini tidak menggunakan cookie tracking iklan. Jika hal ini berubah nanti, kebijakan akan diperbarui sebelum tools tersebut sengaja ditambahkan."
+      ]
+    },
+    {
+      "heading": "Perubahan",
+      "paragraphs": [
+        "Kebijakan ini dapat diperbarui ketika website, setup analytics, penanganan contact, atau kebutuhan hukum berubah. Tanggal di atas menunjukkan versi saat ini."
+      ]
+    }
+  ]
+}
