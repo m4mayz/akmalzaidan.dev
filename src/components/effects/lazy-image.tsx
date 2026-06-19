@@ -13,10 +13,13 @@ type LazyImageProps = Omit<ImageProps, "loading"> & {
 export function LazyImage({
     rootMargin = "260px 0px",
     placeholderClassName,
+    className,
+    onLoad,
     ...imageProps
 }: LazyImageProps) {
     const rootRef = useRef<HTMLDivElement>(null);
     const [shouldLoad, setShouldLoad] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         const root = rootRef.current;
@@ -47,16 +50,28 @@ export function LazyImage({
 
     return (
         <div className="absolute inset-0" ref={rootRef}>
+            <div
+                className={cn(
+                    "absolute inset-0 bg-white/5 transition-opacity duration-700 ease-out",
+                    isLoaded ? "opacity-0" : "opacity-100",
+                    placeholderClassName,
+                )}
+            />
             {shouldLoad ? (
-                <Image {...imageProps} loading="lazy" />
-            ) : (
-                <div
+                <Image
+                    {...imageProps}
                     className={cn(
-                        "absolute inset-0 bg-white/5",
-                        placeholderClassName,
+                        "opacity-0 transition-opacity duration-700 ease-out",
+                        isLoaded && "opacity-100",
+                        className,
                     )}
+                    loading="lazy"
+                    onLoad={(event) => {
+                        setIsLoaded(true);
+                        onLoad?.(event);
+                    }}
                 />
-            )}
+            ) : null}
         </div>
     );
 }
