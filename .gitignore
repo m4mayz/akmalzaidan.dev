@@ -47,3 +47,6 @@ next-env.d.ts
 
 # Local temp files
 temp/
+.playwright-mcp/
+.codex/config.toml
+ulrych-reference-pointer-aurora.png
