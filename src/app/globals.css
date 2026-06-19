@@ -224,6 +224,45 @@ html.lenis body {
     animation-delay: calc(var(--strip-index) * 55ms);
 }
 
+@keyframes mobile-menu-strip-open {
+    0% {
+        transform: translate3d(0, -101%, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes mobile-menu-strip-close {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(0, -101%, 0);
+    }
+}
+
+.mobile-menu-strip {
+    transform: translate3d(0, -101%, 0);
+    will-change: transform;
+}
+
+.mobile-menu-strip-idle {
+    transform: translate3d(0, -101%, 0);
+}
+
+.mobile-menu-strip-open {
+    animation: mobile-menu-strip-open 720ms cubic-bezier(0.76, 0, 0.24, 1)
+        both;
+    animation-delay: var(--mobile-menu-delay, 0ms);
+}
+
+.mobile-menu-strip-closed {
+    animation: mobile-menu-strip-close 520ms cubic-bezier(0.76, 0, 0.24, 1)
+        both;
+    animation-delay: var(--mobile-menu-delay, 0ms);
+}
+
 [data-reveal] {
     opacity: 1;
     transform: translate3d(0, 0, 0);

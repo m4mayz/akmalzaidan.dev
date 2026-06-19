@@ -10,6 +10,7 @@ import type {
 
 export const navItems: NavItem[] = [
   { label: "Work", href: "/work" },
+  { label: "Articles", href: "/articles" },
   { label: "About", href: "/about" },
 ];
 

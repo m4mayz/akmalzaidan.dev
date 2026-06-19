@@ -2,12 +2,15 @@
 
 import { Pause, Play } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import type { CSSProperties } from "react";
 import { useEffect, useState } from "react";
 
 type ShowcaseSlide = {
     src: string;
     alt: string;
+    href: string;
+    title: string;
 };
 
 type ShowcaseSlideshowProps = {
@@ -42,24 +45,33 @@ export function ShowcaseSlideshow({ images }: ShowcaseSlideshowProps) {
     };
 
     return (
-        <div className="relative min-h-screen overflow-hidden bg-white/5">
+        <div className="relative h-[52svh] min-h-[360px] overflow-hidden bg-white/5 md:h-screen md:min-h-screen">
             {images.map((image, index) => (
-                <Image
-                    alt={image.alt}
-                    className={`object-cover transition-opacity duration-1000 ease-out ${
-                        index === activeIndex ? "opacity-100" : "opacity-0"
+                <Link
+                    aria-label={`View ${image.title}`}
+                    className={`absolute inset-0 block transition-opacity duration-1000 ease-out ${
+                        index === activeIndex
+                            ? "pointer-events-auto opacity-100"
+                            : "pointer-events-none opacity-0"
                     }`}
-                    fill
+                    data-cursor="link"
+                    href={image.href}
                     key={image.src}
-                    loading="lazy"
-                    sizes="100vw"
-                    src={image.src}
-                />
+                >
+                    <Image
+                        alt={image.alt}
+                        className="object-cover"
+                        fill
+                        loading="lazy"
+                        sizes="100vw"
+                        src={image.src}
+                    />
+                </Link>
             ))}
 
             <button
                 aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
-                className="absolute bottom-6 right-6 grid h-12 w-12 place-items-center rounded-full text-white transition-opacity hover:opacity-80"
+                className="absolute bottom-6 right-6 z-10 grid h-12 w-12 place-items-center rounded-full text-white transition-opacity hover:opacity-80"
                 data-cursor="pointer"
                 onClick={togglePlayback}
                 type="button"

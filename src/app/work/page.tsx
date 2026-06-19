@@ -64,7 +64,7 @@ export default function WorkPage() {
             <main className="relative z-10 px-5 pt-32 md:px-10 md:pt-[8.75rem]">
                 <div className="mx-auto max-w-[89.5rem]">
                     <section data-reveal>
-                        <h1 className="max-w-[980px] font-heading text-[54px] font-light leading-[1.02] tracking-normal text-foreground md:text-[92px]">
+                        <h1 className="max-w-[980px] font-heading text-4xl font-light leading-[1.02] tracking-tighter text-foreground md:text-[92px]">
                             A closer look at the work I&apos;ve helped shape
                         </h1>
                         <p className="mt-8 max-w-[640px] text-[16px] leading-[1.6] text-muted-foreground md:text-[17px]">
@@ -99,7 +99,11 @@ export default function WorkPage() {
                                 data-reveal
                                 href={project.href}
                                 key={project.href}
-                                style={{ "--reveal-delay": `${Math.min(index, 3) * 90}ms` } as CSSProperties}
+                                style={
+                                    {
+                                        "--reveal-delay": `${Math.min(index, 3) * 90}ms`,
+                                    } as CSSProperties
+                                }
                             >
                                 <div className="relative h-[438px] overflow-hidden bg-white/5 md:h-[620px]">
                                     <LazyImage
@@ -114,16 +118,19 @@ export default function WorkPage() {
                                 </div>
                                 <div className="mt-6 grid gap-2 md:grid-cols-[1fr_auto] md:gap-6">
                                     <div>
-                                        <h2 className="text-[20px] leading-[1.25] md:text-[22px]">
-                                            {project.title}
-                                        </h2>
+                                        <div className="flex items-center justify-between">
+                                            <h2 className="text-[20px] leading-[1.25] md:text-[22px]">
+                                                {project.title}
+                                            </h2>
+                                            <p className="text-[15px] leading-[1.45] text-muted-foreground md:text-right">
+                                                {project.year}
+                                            </p>
+                                        </div>
+
                                         <p className="mt-2 text-[14px] leading-[1.5] text-muted-foreground">
                                             {project.discipline}
                                         </p>
                                     </div>
-                                    <p className="text-[15px] leading-[1.45] text-muted-foreground md:text-right">
-                                        {project.year}
-                                    </p>
                                 </div>
                             </Link>
                         ))}

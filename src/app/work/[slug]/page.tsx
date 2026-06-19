@@ -636,9 +636,11 @@ function getProject(slug: string) {
     return projects.find((project) => project.slug === slug);
 }
 
-function getNextProject(project: WorkProject) {
+function getMoreProjects(project: WorkProject) {
     const index = projects.findIndex((item) => item.slug === project.slug);
-    return projects[(index + 1) % projects.length];
+    return [...projects.slice(index + 1), ...projects.slice(0, index)]
+        .filter((item) => item.slug !== project.slug)
+        .slice(0, 3);
 }
 
 function getSpanClass(item: GalleryItem) {
@@ -742,7 +744,7 @@ export default async function WorkDetailPage({
         notFound();
     }
 
-    const nextProject = getNextProject(project);
+    const moreProjects = getMoreProjects(project);
 
     return (
         <>
@@ -780,9 +782,17 @@ export default async function WorkDetailPage({
                             ].map(([label, value], index) => (
                                 <div
                                     className={`flex flex-col py-4 md:px-8 md:py-7 ${
-                                        index === 0
-                                            ? ""
-                                            : "border-l border-border pl-5 md:pl-8"
+                                        index % 2 === 1
+                                            ? "border-l border-border pl-5"
+                                            : ""
+                                    } ${
+                                        index > 1
+                                            ? "border-t border-border md:border-t-0"
+                                            : ""
+                                    } ${
+                                        index > 0
+                                            ? "md:border-l md:border-border md:pl-8"
+                                            : ""
                                     }`}
                                     key={label}
                                 >
@@ -871,35 +881,50 @@ export default async function WorkDetailPage({
                 </div>
 
                 <section className="px-5 py-16 md:px-10 md:py-28">
-                    <Link
-                        className="group mx-auto block max-w-[89.5rem]"
-                        data-cursor="link"
-                        data-reveal
-                        href={`/work/${nextProject.slug}`}
-                    >
+                    <div className="mx-auto max-w-[89.5rem]">
                         <p className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground">
-                            Next project
+                            More projects
                         </p>
-                        <div className="mt-6 grid gap-8 md:grid-cols-[1fr_38%] md:items-end">
-                            <div>
-                                <h2 className="font-heading text-[42px] font-light leading-[1.05] tracking-normal text-foreground md:text-[92px]">
-                                    {nextProject.title}
-                                </h2>
-                                <p className="mt-5 max-w-[680px] text-[16px] leading-[1.55] text-muted-foreground md:text-[18px]">
-                                    {nextProject.summary}
-                                </p>
-                            </div>
-                            <div className="relative aspect-[16/10] overflow-hidden bg-white/5">
-                                <LazyImage
-                                    alt={nextProject.imageAlt}
-                                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                                    fill
-                                    sizes="(min-width: 768px) 38vw, 100vw"
-                                    src={nextProject.image}
-                                />
-                            </div>
+                        <div className="mt-8 grid gap-8 md:grid-cols-3">
+                            {moreProjects.map((item, index) => (
+                                <Link
+                                    className="group block"
+                                    data-cursor="link"
+                                    data-reveal
+                                    href={`/work/${item.slug}`}
+                                    key={item.slug}
+                                    style={
+                                        {
+                                            "--reveal-delay": `${index * 80}ms`,
+                                        } as CSSProperties
+                                    }
+                                >
+                                    <div className="relative aspect-[4/5] overflow-hidden bg-white/5">
+                                        <LazyImage
+                                            alt={item.imageAlt}
+                                            className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                                            fill
+                                            sizes="(min-width: 768px) 31vw, 100vw"
+                                            src={item.image}
+                                        />
+                                    </div>
+                                    <div className="mt-5 flex items-start justify-between gap-4">
+                                        <div>
+                                            <h2 className="text-[20px] leading-[1.25] text-foreground md:text-[22px]">
+                                                {item.title}
+                                            </h2>
+                                            <p className="mt-2 text-[14px] leading-[1.5] text-muted-foreground">
+                                                {item.category}
+                                            </p>
+                                        </div>
+                                        <p className="text-[15px] leading-[1.45] text-muted-foreground">
+                                            {item.year}
+                                        </p>
+                                    </div>
+                                </Link>
+                            ))}
                         </div>
-                    </Link>
+                    </div>
                 </section>
 
                 <ContactSection />

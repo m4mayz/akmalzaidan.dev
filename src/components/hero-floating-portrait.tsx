@@ -24,6 +24,11 @@ export function HeroFloatingPortrait() {
         let animationFrame = 0;
 
         const update = () => {
+            if (window.innerWidth < 768) {
+                frame.style.transform = "none";
+                return;
+            }
+
             const scrollProgress = Math.min(window.scrollY / 1400, 1);
             const y = scrollProgress * -400;
             const x = scrollProgress * 0;
@@ -49,7 +54,7 @@ export function HeroFloatingPortrait() {
 
     return (
         <div
-            className="relative aspect-[583/637] overflow-hidden will-change-transform"
+            className="relative aspect-[583/637] overflow-hidden md:will-change-transform"
             ref={frameRef}
         >
             <Image

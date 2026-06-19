@@ -1,15 +1,12 @@
 import { ShowcaseSlideshow } from "@/components/showcase-slideshow";
+import { workItems } from "@/lib/ulrych-data";
 
-const showcaseImages = [
-    {
-        src: "/images/ulrychkristian/Hanging-Vertical-Banner-Mockup.png",
-        alt: "Veevoy hanging vertical banner mockup",
-    },
-    {
-        src: "/images/ulrychkristian/eqvista_1.jpg",
-        alt: "Eqvista mobile interface presentation",
-    },
-];
+const showcaseImages = workItems.map((work) => ({
+    src: work.image,
+    alt: work.alt,
+    href: work.href,
+    title: work.title,
+}));
 
 export function ShowcaseStrip() {
     return (

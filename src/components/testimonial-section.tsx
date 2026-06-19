@@ -18,7 +18,7 @@ export function TestimonialSection() {
                     deadlines. I can wholeheartedly recommend working with
                     him.&rdquo;
                 </blockquote>
-                <div className="text-[14px] leading-[1.5] md:col-span-4 md:text-right">
+                <div className="text-[14px] leading-normal md:col-span-4 md:text-right">
                     <p>Tomáš Šmaha</p>
                     <p className="mt-1 text-muted-foreground">
                         IT Specialist, Škoda Auto a.s.

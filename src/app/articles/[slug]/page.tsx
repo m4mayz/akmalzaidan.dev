@@ -243,7 +243,9 @@ function ArticleContent({ block }: { block: ArticleBlock }) {
                     </h2>
                 ) : null}
             </div>
-            <div className={`${block.heading ? "mt-8" : ""} space-y-5 text-[17px] leading-[1.55] text-foreground/85 md:text-[19px]`}>
+            <div
+                className={`${block.heading ? "mt-8" : ""} space-y-5 text-[17px] leading-[1.55] text-foreground/85 md:text-[19px]`}
+            >
                 {block.paragraphs.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                 ))}
@@ -271,7 +273,7 @@ export default async function ArticleDetailPage({
             <SiteHeader />
             <main className="relative z-10">
                 <section className="relative px-5 pt-32 md:px-10 md:pt-[8.75rem]">
-                    <div className="mx-auto max-w-[52rem]" data-reveal>
+                    <div className="mx-auto max-w-90 md:max-w-208" data-reveal>
                         <h1 className="font-heading text-[30px] font-light leading-[1.1] tracking-[-0.02em] md:text-[52px]">
                             {article.title}
                         </h1>
