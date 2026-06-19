@@ -3,6 +3,12 @@
 import Lenis from "lenis";
 import { useEffect } from "react";
 
+declare global {
+  interface Window {
+    __siteLenis?: Lenis;
+  }
+}
+
 export function LenisProvider() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -21,6 +27,7 @@ export function LenisProvider() {
       touchMultiplier: 1.15,
     });
 
+    window.__siteLenis = lenis;
     document.documentElement.classList.add("lenis", "lenis-smooth");
 
     let frame = 0;
@@ -34,6 +41,9 @@ export function LenisProvider() {
     return () => {
       cancelAnimationFrame(frame);
       lenis.destroy();
+      if (window.__siteLenis === lenis) {
+        delete window.__siteLenis;
+      }
       document.documentElement.classList.remove("lenis", "lenis-smooth");
     };
   }, []);

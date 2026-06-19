@@ -38,3 +38,30 @@ export type SocialLink = {
   label: string;
   href: string;
 };
+
+export type ExperienceItem = {
+  role: string;
+  company: string;
+  period: string;
+};
+
+export type EducationItem = {
+  degree: string;
+  institution: string;
+  period: string;
+};
+
+export type AboutData = {
+  email: string;
+  location: string;
+  headline: string;
+  subhead: string;
+  designPhilosophy: string[];
+  experiences: ExperienceItem[];
+  education: EducationItem[];
+  skills: string[];
+  tools: string[];
+  beyondScreens: string[];
+  beyondScreensImages: { src: string; alt: string }[];
+  albums: { src: string; alt: string }[];
+};

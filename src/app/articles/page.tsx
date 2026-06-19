@@ -1,11 +1,19 @@
-import { PlaceholderPage } from "@/components/placeholder-page";
+import { ArticlesSection } from "@/components/articles-section";
+import { ContactSection } from "@/components/contact-section";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 
 export default function ArticlesPage() {
     return (
-        <PlaceholderPage
-            description="A writing archive for process notes, 3D work, and design observations is being prepared."
-            eyebrow="Articles"
-            title="Things worth sharing"
-        />
+        <>
+            <SiteHeader />
+            <main className="relative z-10 pt-16 md:pt-8">
+                <ArticlesSection />
+                <ContactSection />
+            </main>
+            <div className="relative z-10">
+                <SiteFooter />
+            </div>
+        </>
     );
 }

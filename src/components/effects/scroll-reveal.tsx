@@ -7,11 +7,27 @@ export function ScrollReveal() {
     const pathname = usePathname();
 
     useEffect(() => {
-        document.documentElement.classList.add("scroll-reveal-ready");
-
         const revealTarget = (target: Element) => {
             target.setAttribute("data-revealed", "true");
         };
+
+        const isVisibleInViewport = (target: Element) => {
+            const rect = target.getBoundingClientRect();
+            return rect.top < window.innerHeight * 0.96 && rect.bottom > 0;
+        };
+
+        const initialTargets = document.querySelectorAll<HTMLElement>("[data-reveal]");
+
+        for (const target of initialTargets) {
+            target.removeAttribute("data-reveal-initial");
+
+            if (isVisibleInViewport(target)) {
+                target.setAttribute("data-reveal-initial", "true");
+                revealTarget(target);
+            }
+        }
+
+        document.documentElement.classList.add("scroll-reveal-ready");
 
         const targets = new Set<HTMLElement>();
 
@@ -21,9 +37,7 @@ export function ScrollReveal() {
                     continue;
                 }
 
-                const rect = target.getBoundingClientRect();
-
-                if (rect.top < window.innerHeight * 0.96 && rect.bottom > 0) {
+                if (isVisibleInViewport(target)) {
                     revealTarget(target);
                 }
             }

@@ -1,7 +1,10 @@
 "use client";
 
+import { Suspense } from "react";
+
 import { CustomCursor } from "@/components/effects/custom-cursor";
 import { LenisProvider } from "@/components/effects/lenis-provider";
+import { RouteTransition } from "@/components/effects/route-transition";
 import { ScrollReveal } from "@/components/effects/scroll-reveal";
 import Galaxy from "@/components/galaxy";
 
@@ -11,6 +14,9 @@ export function SiteEffects() {
             <LenisProvider />
             <ScrollReveal />
             <CustomCursor />
+            <Suspense fallback={null}>
+                <RouteTransition />
+            </Suspense>
             <div
                 aria-hidden="true"
                 className="pointer-events-none fixed inset-0 z-0 bg-background"

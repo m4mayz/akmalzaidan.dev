@@ -1,4 +1,5 @@
 import type {
+  AboutData,
   ArticleItem,
   NavItem,
   ServiceItem,
@@ -140,3 +141,83 @@ export const socialLinks: SocialLink[] = [
   { label: "Behance", href: "https://www.behance.net/kristianulrych" },
   { label: "Dribbble", href: "https://dribbble.com/TwenntyOnee" },
 ];
+
+export const aboutData: AboutData = {
+  email: "kristian.ulrych@gmail.com",
+  location: "Prague, Czechia",
+  headline:
+    "I design digital products with clarity, character, and real-world usability in mind.",
+  subhead:
+    "I am a UX/UI designer based in Prague. I design websites, applications, design systems, and digital identities for products that need to work not only visually, but also practically.",
+  designPhilosophy: [
+    "Good design is not just a polished layout. To me, it is a way to simplify complex things, give information a clear structure, and create an environment where people can quickly understand what matters.",
+    "A lot of my work involves products that are not simple by nature — healthcare portals, B2B SaaS tools, financial applications, or internal systems. In these projects, clarity, calmness, and practical decision-making matter more than visual noise.",
+    "Design does not happen in a vacuum. There is often an existing backend, a tight timeline, incomplete information, or a brand direction that is still evolving. I see these constraints as part of the work. My goal is to find solutions that move the product forward even when the conditions are not perfect.",
+  ],
+  experiences: [
+    { role: "UX/UI Designer", company: "Veevoy", period: "2025 — Present" },
+    { role: "UX/UI Designer", company: "Sportelo", period: "2025 — Present" },
+    {
+      role: "Freelance Graphic Designer",
+      company: "Self-employed",
+      period: "2025 — Present",
+    },
+    { role: "Graphic Designer", company: "Greendot", period: "2023 — 2025" },
+  ],
+  education: [
+    {
+      degree: "Bachelor (Bc.), Intermedia / Multimedia",
+      institution: "VŠE — Faculty of Informatics and Statistics",
+      period: "2023 — 2027",
+    },
+    {
+      degree: "Computer and Information Sciences",
+      institution: "SPŠ Radlická",
+      period: "2019 — 2023",
+    },
+  ],
+  skills: [
+    "UX Design",
+    "UI Design",
+    "Design Systems",
+    "Web Design",
+    "Visual Identity",
+    "Visual Direction",
+    "Prototyping",
+    "Motion Design",
+    "3D Design",
+    "3D Printing",
+    "Vibecoding",
+    "Photography",
+  ],
+  tools: [
+    "Figma",
+    "Blender",
+    "Spline",
+    "Adobe Photoshop",
+    "Adobe Illustrator",
+    "After Effects",
+    "Unicorn Studio",
+    "ChatGPT",
+    "Claude",
+  ],
+  beyondScreens: [
+    "Design does not end with websites and apps for me. I am also interested in 3D, motorsport, visual experiments, and personal projects where I can explore ideas without a client brief.",
+    "One of these projects was a fan-made 3D printed Formula 1 model inspired by Red Bull Racing, created as my final school project. It took over 200 hours to build and reached more than 30,000 views after I shared it online.",
+    "Projects like this remind me why I enjoy design in the first place: the mix of detail, patience, technical problem-solving, and the satisfaction of turning an idea into something real.",
+  ],
+  beyondScreensImages: [
+    { src: "/images/ulrychkristian/about_personal_1.jpg", alt: "Kristian Ulrych personal photo" },
+    { src: "/images/ulrychkristian/about_personal_2.jpg", alt: "Kristian Ulrych personal photo" },
+    { src: "/images/ulrychkristian/about_event_2fresh.jpg", alt: "At a 2Fresh event" },
+    { src: "/images/ulrychkristian/about_tennis.jpg", alt: "Playing tennis" },
+  ],
+  albums: [
+    { src: "/images/ulrychkristian/album-1.jpg", alt: "Album cover 1" },
+    { src: "/images/ulrychkristian/album-2.webp", alt: "Album cover 2" },
+    { src: "/images/ulrychkristian/album-3.jpeg", alt: "Album cover 3" },
+    { src: "/images/ulrychkristian/album-4.jpeg", alt: "Album cover 4" },
+    { src: "/images/ulrychkristian/album-5.jpeg", alt: "Album cover 5" },
+    { src: "/images/ulrychkristian/album-6.jpg", alt: "Album cover 6" },
+  ],
+};
