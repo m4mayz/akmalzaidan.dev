@@ -2,13 +2,25 @@
 
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import type { CSSProperties } from "react";
 import { useEffect, useState } from "react";
 
-import { aboutData, navItems } from "@/lib/ulrych-data";
+import { getSiteData } from "@/lib/content";
+import { getAlternateLocalePath, withLocale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
+import type { Locale, SiteData } from "@/types/content";
 
-export function SiteHeader() {
+type SiteHeaderProps = {
+    locale?: Locale;
+    site?: SiteData;
+};
+
+export function SiteHeader({ locale = "en", site }: SiteHeaderProps) {
+    const siteData = site ?? getSiteData(locale);
+    const pathname = usePathname();
+    const targetLocale: Locale = locale === "en" ? "id" : "en";
+    const switchHref = getAlternateLocalePath(pathname, targetLocale);
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [hasMenuInteracted, setHasMenuInteracted] = useState(false);
@@ -52,22 +64,22 @@ export function SiteHeader() {
                         <Link
                             className="shrink-0 text-foreground transition-opacity hover:opacity-80"
                             data-cursor="pointer"
-                            href="/"
+                            href={withLocale("/", locale)}
                             onClick={closeMenu}
                         >
-                            Kristian Ulrych
+                            {siteData.name}
                         </Link>
                         <span className="hidden text-muted-foreground md:inline">
-                            Digital Product Designer
+                            {siteData.role}
                         </span>
                     </div>
 
                     <div className="hidden items-center gap-8 md:flex">
-                        {navItems.map((item) => (
+                        {siteData.nav.map((item) => (
                             <Link
                                 className="group relative inline-block py-1 text-muted-foreground transition-colors hover:text-foreground"
                                 data-cursor="pointer"
-                                href={item.href}
+                                href={withLocale(item.href, locale)}
                                 key={item.href}
                             >
                                 {item.label}
@@ -75,22 +87,22 @@ export function SiteHeader() {
                             </Link>
                         ))}
                         <div className="flex gap-2">
-                            <button
+                            <Link
                                 className="inline-flex h-9 items-center justify-between rounded-full border border-white/55 px-3.5 text-xs text-foreground transition-colors hover:border-white"
                                 data-cursor="pointer"
-                                type="button"
+                                href={switchHref}
                             >
-                                EN{" "}
+                                {siteData.language.current}{" "}
                                 <ChevronDown
                                     aria-hidden="true"
                                     size={14}
                                     strokeWidth={1.8}
                                 />
-                            </button>
+                            </Link>
                             <Link
                                 className="inline-flex h-9 items-center rounded-full border border-white bg-white px-4 text-black transition-colors hover:bg-transparent hover:text-white"
                                 data-cursor="pointer"
-                                href="/contact"
+                                href={withLocale("/contact", locale)}
                             >
                                 Get in touch
                             </Link>
@@ -176,11 +188,11 @@ export function SiteHeader() {
                     )}
                 >
                     <nav className="flex flex-col gap-2">
-                        {navItems.map((item, index) => (
+                        {siteData.nav.map((item, index) => (
                             <Link
                                 className="block py-2"
                                 data-cursor="pointer"
-                                href={item.href}
+                                href={withLocale(item.href, locale)}
                                 key={item.href}
                                 onClick={closeMenu}
                             >
@@ -219,23 +231,24 @@ export function SiteHeader() {
                             <Link
                                 className="inline-flex h-14 items-center rounded-full border border-white bg-white px-7 text-[16px] leading-none text-black transition-colors hover:bg-transparent hover:text-white active:scale-[0.96]"
                                 data-cursor="pointer"
-                                href="/contact"
+                                href={withLocale("/contact", locale)}
                                 onClick={closeMenu}
                             >
                                 Get in touch
                             </Link>
-                            <button
+                            <Link
                                 className="inline-flex h-14 items-center gap-2 rounded-full border border-white/60 px-5 text-[14px] uppercase tracking-[0.08em] text-foreground transition-colors hover:border-white active:scale-[0.96]"
                                 data-cursor="pointer"
-                                type="button"
+                                href={switchHref}
+                                onClick={closeMenu}
                             >
-                                EN
+                                {siteData.language.current}
                                 <ChevronDown
                                     aria-hidden="true"
                                     size={14}
                                     strokeWidth={1.8}
                                 />
-                            </button>
+                            </Link>
                         </div>
                     </nav>
 
@@ -248,12 +261,12 @@ export function SiteHeader() {
                         <Link
                             className="gradient-text self-start font-heading text-[clamp(20px,5.5vw,28px)] font-light leading-[1.1] tracking-normal"
                             data-cursor="link"
-                            href={`mailto:${aboutData.email}`}
+                            href={`mailto:${siteData.email}`}
                         >
-                            {aboutData.email}
+                            {siteData.email}
                         </Link>
                         <span className="text-[14px] text-muted-foreground">
-                            {aboutData.location}
+                            {siteData.location}
                         </span>
                     </div>
                 </div>
