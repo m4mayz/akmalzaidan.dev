@@ -1,57 +1,65 @@
 {
-  "hero": {
-    "headline": "Fullstack developer based in Sukabumi. I build web apps, dashboards, tools and backend systems with practical execution.",
-    "highlightedWord": "Sukabumi.",
-    "body": "I work across frontend, backend, dashboards, APIs, and practical IT support. My focus is turning unclear operational problems into reliable tools that are easy to use, maintain, and improve."
-  },
-  "stats": [
-    { "label": "Based", "value": "Sukabumi, Indonesia" },
-    { "label": "Focus", "value": "Fullstack Web, Dashboards, APIs" },
-    { "label": "Availability", "value": "Internships and freelance projects" },
-    { "label": "Support", "value": "Technical IT help and IT support" }
-  ],
-  "services": [
-    {
-      "number": "01",
-      "title": "Web development",
-      "description": "Building responsive websites and web applications with clean structure, maintainable code, and practical user flows."
+    "hero": {
+        "headline": "Fullstackdev based in Sukabumi. Building web apps, dashboards and backend systems.",
+        "highlightedWord": "Sukabumi.",
+        "body": "I work across frontend, backend, dashboards, APIs, and practical IT support. My focus is turning unclear operational problems into reliable tools that are easy to use, maintain, and improve."
     },
-    {
-      "number": "02",
-      "title": "Frontend implementation",
-      "description": "Turning interfaces into polished, responsive, production-ready frontend experiences with attention to detail and usability."
-    },
-    {
-      "number": "03",
-      "title": "Dashboards",
-      "description": "Designing and developing dashboards for operational data, monitoring, reporting, and repeated daily workflows."
-    },
-    {
-      "number": "04",
-      "title": "Internal tools",
-      "description": "Creating focused tools that reduce manual work, organize information, and help teams move faster."
-    },
-    {
-      "number": "05",
-      "title": "API and backend",
-      "description": "Building backend features, API integrations, data flows, and server-side logic that support reliable applications."
-    },
-    {
-      "number": "06",
-      "title": "Technical IT help",
-      "description": "Providing practical IT support, troubleshooting, setup assistance, and technical guidance for teams and individuals."
-    }
-  ],
-  "testimonials": [
-    {
-      "quote": "I care about building systems that are useful in real work, not just polished in screenshots.",
-      "author": "Akmal Zaidan",
-      "role": "Fullstack Developer"
-    },
-    {
-      "quote": "The best tools are clear, reliable, and easy for people to keep using after handoff.",
-      "author": "Akmal Zaidan",
-      "role": "Developer and technical support"
-    }
-  ]
+    "stats": [
+        { "label": "Based", "value": "Sukabumi, Indonesia" },
+        { "label": "Focus", "value": "Fullstack Web, Dashboards, APIs" },
+        {
+            "label": "Availability",
+            "value": "Internships and freelance projects"
+        },
+        { "label": "Support", "value": "Technical IT help and IT support" }
+    ],
+    "services": [
+        {
+            "number": "01",
+            "title": "Web development",
+            "description": "Building responsive websites and web applications with clean structure, maintainable code, and practical user flows."
+        },
+        {
+            "number": "02",
+            "title": "Frontend implementation",
+            "description": "Turning interfaces into polished, responsive, production-ready frontend experiences with attention to detail and usability."
+        },
+        {
+            "number": "03",
+            "title": "Dashboards",
+            "description": "Designing and developing dashboards for operational data, monitoring, reporting, and repeated daily workflows."
+        },
+        {
+            "number": "04",
+            "title": "Internal tools",
+            "description": "Creating focused tools that reduce manual work, organize information, and help teams move faster."
+        },
+        {
+            "number": "05",
+            "title": "API and backend",
+            "description": "Building backend features, API integrations, data flows, and server-side logic that support reliable applications."
+        },
+        {
+            "number": "06",
+            "title": "Technical IT help",
+            "description": "Providing practical IT support, troubleshooting, setup assistance, and technical guidance for teams and individuals."
+        }
+    ],
+    "testimonials": [
+        {
+            "quote": "Akmal communicates clearly, breaks down technical problems into practical steps, and keeps the work focused on what users actually need.",
+            "author": "Seed testimonial",
+            "role": "Recruiter / HR review placeholder"
+        },
+        {
+            "quote": "The project direction was easy to follow, from interface decisions to backend considerations and deployment details.",
+            "author": "Seed testimonial",
+            "role": "Freelance client placeholder"
+        },
+        {
+            "quote": "He pays attention to clarity, maintainability, and support after delivery, which makes the result easier for a small team to keep using.",
+            "author": "Seed testimonial",
+            "role": "Team collaboration placeholder"
+        }
+    ]
 }

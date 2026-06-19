@@ -20,7 +20,7 @@ export function ContactSection({ locale = "en", site }: ContactSectionProps) {
                 LET&apos;S WORK TOGETHER
             </p>
             <Link
-                className="gradient-text group relative inline-block max-w-full wrap-break-word font-heading text-2xl font-light leading-[1.05] tracking-normal md:text-[92px] xl:text-[122px]"
+                className="gradient-text group relative inline-block max-w-[60vw] wrap-break-word font-heading text-[min(40px,calc(50vw/11.5))] font-light leading-[1.05] tracking-normal md:max-w-[80vw] md:text-[min(112px,calc(70vw/11.5))]"
                 data-cursor="link"
                 href={`mailto:${siteData.email}`}
             >

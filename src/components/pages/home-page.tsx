@@ -46,7 +46,7 @@ export function HomePage({ locale }: { locale: Locale }) {
                 />
                 <TestimonialSection
                     items={home.testimonials}
-                    title={isIndonesian ? "Prinsip kerja" : "Working notes"}
+                    title={isIndonesian ? "Kata Mereka" : "Kind Words"}
                 />
                 <ArticlesSection
                     items={articles}
