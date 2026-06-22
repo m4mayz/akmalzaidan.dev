@@ -139,7 +139,6 @@ export function ContentCms() {
     const [items, setItems] = useState<CmsItem[]>([]);
     const [current, setCurrent] = useState<CmsItem>(cloneWork("en"));
     const [message, setMessage] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
 
     const currentTitle = current.title || "Untitled";
     const galleryText = useMemo(
@@ -151,18 +150,27 @@ export function ContentCms() {
     );
 
     const loadItems = async () => {
-        setIsLoading(true);
         const response = await fetch(
             `/api/cms/content?type=${type}&locale=${locale}`,
         );
         const data = (await response.json()) as { items: CmsItem[] };
         setItems(data.items);
-        setIsLoading(false);
     };
 
     useEffect(() => {
-        void loadItems();
-        setCurrent(type === "work" ? cloneWork(locale) : cloneArticle(locale));
+        let ignore = false;
+
+        fetch(`/api/cms/content?type=${type}&locale=${locale}`)
+            .then((response) => response.json())
+            .then((data: { items: CmsItem[] }) => {
+                if (!ignore) {
+                    setItems(data.items);
+                }
+            });
+
+        return () => {
+            ignore = true;
+        };
     }, [locale, type]);
 
     const update = (patch: Partial<CmsItem>) => {
@@ -245,7 +253,14 @@ export function ContentCms() {
                                         : "border-border text-muted-foreground"
                                 }`}
                                 key={item}
-                                onClick={() => setType(item)}
+                                onClick={() => {
+                                    setType(item);
+                                    setCurrent(
+                                        item === "work"
+                                            ? cloneWork(locale)
+                                            : cloneArticle(locale),
+                                    );
+                                }}
                                 type="button"
                             >
                                 {item}
@@ -262,7 +277,14 @@ export function ContentCms() {
                                         : "border-border text-muted-foreground"
                                 }`}
                                 key={item}
-                                onClick={() => setLocale(item)}
+                                onClick={() => {
+                                    setLocale(item);
+                                    setCurrent(
+                                        type === "work"
+                                            ? cloneWork(item)
+                                            : cloneArticle(item),
+                                    );
+                                }}
                                 type="button"
                             >
                                 {item}
@@ -285,11 +307,6 @@ export function ContentCms() {
                     </button>
 
                     <div className="space-y-2">
-                        {isLoading ? (
-                            <p className="text-sm text-muted-foreground">
-                                Loading...
-                            </p>
-                        ) : null}
                         {items.map((item) => (
                             <button
                                 className="block w-full border border-border p-3 text-left transition-colors hover:border-white"
