@@ -6,18 +6,16 @@ import { usePathname } from "next/navigation";
 import type { CSSProperties } from "react";
 import { useEffect, useState } from "react";
 
-import { getSiteData } from "@/lib/content";
 import { getAlternateLocalePath, withLocale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import type { Locale, SiteData } from "@/types/content";
 
 type SiteHeaderProps = {
-    locale?: Locale;
-    site?: SiteData;
+    locale: Locale;
+    site: SiteData;
 };
 
-export function SiteHeader({ locale = "en", site }: SiteHeaderProps) {
-    const siteData = site ?? getSiteData(locale);
+export function SiteHeader({ locale, site: siteData }: SiteHeaderProps) {
     const pathname = usePathname();
     const targetLocale: Locale = locale === "en" ? "id" : "en";
     const switchHref = getAlternateLocalePath(pathname, targetLocale);

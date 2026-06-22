@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { getSiteData } from "@/lib/content";
 
 type PlaceholderPageProps = {
     title: string;
@@ -14,9 +15,11 @@ export function PlaceholderPage({
     description,
     eyebrow = "In progress",
 }: PlaceholderPageProps) {
+    const site = getSiteData("en");
+
     return (
         <>
-            <SiteHeader />
+            <SiteHeader locale="en" site={site} />
             <main className="relative z-10 min-h-screen px-5 pb-20 pt-36 md:px-10 md:pt-44">
                 <section className="max-w-[980px]" data-reveal>
                     <p className="mb-8 text-[11px] uppercase leading-none text-muted-foreground">
@@ -38,7 +41,7 @@ export function PlaceholderPage({
                 </section>
             </main>
             <div className="relative z-10">
-                <SiteFooter />
+                <SiteFooter site={site} />
             </div>
         </>
     );
