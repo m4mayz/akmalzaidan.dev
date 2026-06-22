@@ -9,10 +9,16 @@ import idHome from "../../data/id/home.json";
 import idPrivacy from "../../data/id/privacy.json";
 import idSite from "../../data/id/site.json";
 
-import { withLocale } from "@/lib/i18n";
+import {
+  getArticleBySlug,
+  getArticleSlugsFromDb,
+  getWorkBySlug,
+  getWorkSlugsFromDb,
+  listArticleSummaries,
+  listWorkSummaries,
+} from "@/lib/sqlite-content";
 import type {
   AboutData,
-  ArticleContentData,
   ArticleDetailData,
   ArticleSummaryData,
   ContactData,
@@ -20,7 +26,6 @@ import type {
   Locale,
   PrivacyData,
   SiteData,
-  WorkContentData,
   WorkDetailData,
   WorkSummaryData,
 } from "@/types/content";
@@ -50,16 +55,6 @@ const privacyByLocale: Record<Locale, PrivacyData> = {
   id: idPrivacy as PrivacyData,
 };
 
-const workByLocale: Record<Locale, WorkContentData[]> = {
-  en: [],
-  id: [],
-};
-
-const articlesByLocale: Record<Locale, ArticleContentData[]> = {
-  en: [],
-  id: [],
-};
-
 export function getSiteData(locale: Locale) {
   return siteByLocale[locale];
 }
@@ -81,32 +76,14 @@ export function getPrivacyData(locale: Locale) {
 }
 
 export function getWorkSummaries(locale: Locale): WorkSummaryData[] {
-  return workByLocale[locale].map((item) => ({
-    slug: item.slug,
-    title: item.title,
-    year: item.year,
-    description: item.description,
-    href: withLocale(`/work/${item.slug}`, locale),
-    image: item.image,
-    alt: item.alt,
-    category: item.category,
-  }));
+  return listWorkSummaries(locale);
 }
 
 export function getWorkDetail(
   locale: Locale,
   slug: string,
 ): WorkDetailData | undefined {
-  const item = workByLocale[locale].find((work) => work.slug === slug);
-
-  if (!item) {
-    return undefined;
-  }
-
-  return {
-    ...item,
-    href: withLocale(`/work/${item.slug}`, locale),
-  };
+  return getWorkBySlug(locale, slug);
 }
 
 export function getMoreWorkSummaries(
@@ -124,35 +101,18 @@ export function getMoreWorkSummaries(
 }
 
 export function getWorkSlugs() {
-  return workByLocale.en.map((item) => item.slug);
+  return getWorkSlugsFromDb();
 }
 
 export function getArticleSummaries(locale: Locale): ArticleSummaryData[] {
-  return articlesByLocale[locale].map((item) => ({
-    slug: item.slug,
-    title: item.title,
-    description: item.description,
-    href: withLocale(`/articles/${item.slug}`, locale),
-    image: item.image,
-    alt: item.alt,
-    publishedAt: item.publishedAt,
-  }));
+  return listArticleSummaries(locale);
 }
 
 export function getArticleDetail(
   locale: Locale,
   slug: string,
 ): ArticleDetailData | undefined {
-  const item = articlesByLocale[locale].find((article) => article.slug === slug);
-
-  if (!item) {
-    return undefined;
-  }
-
-  return {
-    ...item,
-    href: withLocale(`/articles/${item.slug}`, locale),
-  };
+  return getArticleBySlug(locale, slug);
 }
 
 export function getMoreArticleSummaries(
@@ -165,5 +125,5 @@ export function getMoreArticleSummaries(
 }
 
 export function getArticleSlugs() {
-  return articlesByLocale.en.map((item) => item.slug);
+  return getArticleSlugsFromDb();
 }
