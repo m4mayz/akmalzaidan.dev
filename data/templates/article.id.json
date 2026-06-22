@@ -1,0 +1,25 @@
+{
+  "slug": "article-slug",
+  "title": "Judul Artikel",
+  "description": "Ringkasan pendek artikel untuk card dan halaman index.",
+  "image": "/images/articles/article-slug/cover.webp",
+  "alt": "Deskripsi cover artikel",
+  "publishedAt": "2026-06-22",
+  "lead": "Paragraf pembuka yang tampil di bawah judul artikel.",
+  "blocks": [
+    {
+      "heading": "Bagian pertama",
+      "paragraphs": [
+        "Tulis paragraf pertama di sini.",
+        "Tulis paragraf kedua di sini."
+      ]
+    },
+    {
+      "heading": "Bagian kedua",
+      "paragraphs": [
+        "Lanjutkan artikel dengan poin yang fokus.",
+        "Jaga tulisannya tetap natural dan spesifik."
+      ]
+    }
+  ]
+}

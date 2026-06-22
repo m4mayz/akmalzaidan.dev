@@ -1,0 +1,62 @@
+{
+  "slug": "project-slug",
+  "title": "Project Title",
+  "year": "2026",
+  "description": "Short summary for cards and index pages.",
+  "image": "/images/work/project-slug/cover.webp",
+  "alt": "Project cover description",
+  "category": "Frontend, Backend, Dashboard",
+  "role": "Fullstack Developer",
+  "client": "Personal / Client Name",
+  "summary": "One sentence summary used as the project detail headline.",
+  "sections": [
+    {
+      "slot": "overview",
+      "heading": "Overview",
+      "body": [
+        "Explain what the project is and who it is for.",
+        "Add the practical context behind the work."
+      ]
+    },
+    {
+      "slot": "challenge",
+      "heading": "Challenge",
+      "body": [
+        "Explain the main problem.",
+        "Mention constraints, technical issues, or user needs."
+      ]
+    },
+    {
+      "slot": "approach",
+      "heading": "Approach",
+      "body": [
+        "Explain how the project was planned and built.",
+        "Mention the stack, decisions, or workflows that mattered."
+      ]
+    },
+    {
+      "slot": "outcome",
+      "heading": "Outcome",
+      "body": [
+        "Explain what changed after the work.",
+        "Add measurable results if available."
+      ]
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/images/work/project-slug/overview.webp",
+      "alt": "Project overview screen",
+      "aspect": "16/9",
+      "span": "full",
+      "slot": "overview"
+    },
+    {
+      "src": "/images/work/project-slug/detail.webp",
+      "alt": "Project detail screen",
+      "aspect": "4/3",
+      "span": "half",
+      "slot": "approach"
+    }
+  ]
+}

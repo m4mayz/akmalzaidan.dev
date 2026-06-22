@@ -6,6 +6,10 @@ type ShowcaseStripProps = {
 };
 
 export function ShowcaseStrip({ items }: ShowcaseStripProps) {
+    if (items.length === 0) {
+        return null;
+    }
+
     const showcaseImages = items.map((work) => ({
         src: work.image,
         alt: work.alt,

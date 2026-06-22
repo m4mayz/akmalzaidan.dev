@@ -11,8 +11,12 @@ type ArticlesSectionProps = {
 
 export function ArticlesSection({
     items = getArticleSummaries("en"),
-    title = "Things worth sharing",
+    title = "Articles",
 }: ArticlesSectionProps) {
+    if (items.length === 0) {
+        return null;
+    }
+
     return (
         <section className="px-5 py-16 md:px-10 md:py-32">
             <h2 className="font-heading text-3xl font-light leading-[1.05] tracking-normal md:text-[64px]">

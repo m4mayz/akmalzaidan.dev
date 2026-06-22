@@ -1,45 +1,29 @@
 {
-    "headline": "Fullstack developer yang membangun produk web praktis dari Sukabumi.",
-    "subhead": "Saya membangun web app, dashboard, API, internal tools, dan sistem bantuan IT praktis untuk tim yang membutuhkan eksekusi jelas.",
+    "headline": "Saya membangun software web, sistem fullstack, dan support IT praktis.",
+    "subhead": "Saya adalah developer dan IT support yang bekerja di website, dashboard, backend system, dan troubleshooting teknis untuk project yang harus berjalan di situasi nyata, bukan hanya terlihat rapi di demo.",
     "intro": [
-        "Saya bekerja di bagian frontend, backend, dan workflow operasional. Fokus saya adalah mengubah masalah teknis atau bisnis yang belum jelas menjadi tools yang mudah digunakan, dirawat, dan dikembangkan.",
-        "Saat ini saya tersedia untuk magang, proyek freelance, dan kolaborasi dengan tim yang membutuhkan developer yang memahami permukaan produk sekaligus fondasi teknisnya."
+        "Saya suka mencari titik tengah antara interface yang sederhana, backend yang bisa diandalkan, dan masalah teknis sehari-hari yang sering muncul. Buat saya, hasil yang baik bukan hanya terlihat selesai, tapi juga berguna, mudah dipahami, dan mudah dijaga tetap berjalan."
     ],
-    "philosophyTitle": "Cara saya bekerja",
+    "philosophyTitle": "Cara saya berpikir tentang development",
     "philosophy": [
-        "Software yang baik harus membuat pekerjaan nyata lebih mudah. Saya peduli pada interface yang jelas, alur backend yang bisa diprediksi, dan detail kecil yang mengurangi kebingungan user.",
-        "Saya suka bekerja dekat dengan masalahnya: memahami kebutuhan tim, data apa yang penting, workflow apa yang berulang, dan support teknis apa yang dibutuhkan setelah versi awal dikirim.",
-        "Saya menghargai implementasi yang pragmatis. Solusi terbaik biasanya adalah solusi yang andal, mudah dipahami, dan siap dikembangkan tanpa membuat pekerjaan berikutnya lebih sulit."
+        "Development yang baik bukan hanya soal code yang rapi. Buat saya, ini adalah cara memahami masalah, merapikan bagian-bagian yang bergerak, dan membuat sesuatu yang bisa dipakai tanpa membuat orang melawan sistemnya sendiri.",
+        "Banyak pekerjaan saya berada di antara software dan support — dashboard, alur backend, bug maintenance, project personal, dan masalah teknis kecil yang bisa menghambat orang. Di situ, problem solving yang tenang lebih penting daripada sekadar menambah fitur.",
+        "Development jarang berjalan dalam kondisi sempurna. Kadang requirement belum jelas, setup bermasalah, waktu terbatas, atau tools harus disambungkan dulu. Saya melihat batasan itu sebagai bagian dari pekerjaan. Tujuan saya adalah membuat progress tanpa membuat langkah berikutnya jadi lebih sulit."
     ],
     "experienceTitle": "Pengalaman kerja",
     "experiences": [
         {
-            "title": "Fullstack Developer",
-            "organization": "Project personal dan freelance",
-            "period": "2026 — Sekarang"
-        },
-        {
-            "title": "Frontend Developer",
-            "organization": "Portfolio dan website client-facing",
-            "period": "2026 — Sekarang"
-        },
-        {
-            "title": "Technical IT Support",
-            "organization": "Setup, troubleshooting, dan bantuan praktis",
-            "period": "2025 — Sekarang"
+            "title": "Developer and IT Support",
+            "organization": "Kuliah, magang, client dan project personal",
+            "period": "Sedang berjalan"
         }
     ],
     "educationTitle": "Pendidikan",
     "education": [
         {
-            "title": "Software Development / Computer Science",
-            "organization": "Entry pendidikan yang bisa diedit",
-            "period": "Update di data/id/about.json"
-        },
-        {
-            "title": "Independent learning",
-            "organization": "Web development, backend, database, deployment",
-            "period": "Berjalan"
+            "title": "Pendidikan formal",
+            "organization": "Detail akan ditambahkan",
+            "period": "Sedang berjalan"
         }
     ],
     "skillsTitle": "Skills",
@@ -63,29 +47,18 @@
         "PostgreSQL / MySQL",
         "Tailwind CSS",
         "Git",
-        "Vercel"
+        "Vercel",
+        "Codex",
+        "Claude Code",
+        "GitHub Copilot",
+        "Gemini",
+        "Hermes"
     ],
     "beyondTitle": "Di luar code",
     "beyond": [
-        "Di luar implementasi, saya tertarik memahami cara tim bekerja secara nyata: bagian mana yang membuat data tertahan, pekerjaan apa yang berulang manual, dan tooling apa yang bisa membantu.",
-        "Karena itu portofolio saya mencakup web development, dashboard, backend, dan bantuan IT praktis, bukan memperlakukannya sebagai dunia yang terpisah."
+        "Buat saya, teknologi tidak berhenti di code. Saya juga tertarik pada game, musik, hardware, PC, dan AI — hal-hal yang membuat saya terus belajar bagaimana orang memakai sistem, tools, dan interface dengan cara mereka sendiri.",
+        "Banyak rasa penasaran itu kembali lagi ke cara saya bekerja. Merakit PC, memperbaiki setup, mencoba workflow AI, atau belajar dari game melatih kebiasaan yang sama: sabar, detail, dan terbiasa mencari sumber masalah.",
+        "Project seperti portofolio ini mengingatkan saya kenapa saya menikmati development dari awal: perpaduan antara belajar, menyelesaikan masalah teknis, dan kepuasan saat ide yang masih kasar berubah menjadi sesuatu yang nyata."
     ],
-    "images": [
-        {
-            "src": "/images/akmal/placeholders/project-portfolio-dashboard.svg",
-            "alt": "Placeholder dashboard abstrak yang mewakili pekerjaan Akmal"
-        },
-        {
-            "src": "/images/akmal/placeholders/project-api-integration.svg",
-            "alt": "Placeholder integrasi API abstrak yang mewakili pekerjaan backend"
-        },
-        {
-            "src": "/images/akmal/placeholders/project-support-tools.svg",
-            "alt": "Placeholder toolkit support abstrak yang mewakili IT support"
-        },
-        {
-            "src": "/images/akmal/placeholders/project-freelance-web-app.svg",
-            "alt": "Placeholder aplikasi web abstrak yang mewakili pekerjaan freelance"
-        }
-    ]
+    "images": []
 }

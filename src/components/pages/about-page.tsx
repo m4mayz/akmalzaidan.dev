@@ -70,6 +70,8 @@ function TagList({ items }: { items: string[] }) {
 export function AboutPage({ locale }: { locale: Locale }) {
     const site = getSiteData(locale);
     const about = getAboutData(locale);
+    const heroImage = about.images[0];
+    const sideImage = about.images[1];
 
     return (
         <>
@@ -89,21 +91,23 @@ export function AboutPage({ locale }: { locale: Locale }) {
                             </div>
                         </div>
 
-                        <div
-                            className="relative mt-16 aspect-[16/9] w-full overflow-hidden bg-white/5 md:mt-20"
-                            data-reveal
-                            style={
-                                { "--reveal-delay": "120ms" } as CSSProperties
-                            }
-                        >
-                            <LazyImage
-                                alt={about.images[0].alt}
-                                className="object-cover"
-                                fill
-                                sizes="(min-width: 768px) 94vw, 100vw"
-                                src={about.images[0].src}
-                            />
-                        </div>
+                        {heroImage ? (
+                            <div
+                                className="relative mt-16 aspect-[16/9] w-full overflow-hidden bg-white/5 md:mt-20"
+                                data-reveal
+                                style={
+                                    { "--reveal-delay": "120ms" } as CSSProperties
+                                }
+                            >
+                                <LazyImage
+                                    alt={heroImage.alt}
+                                    className="object-cover"
+                                    fill
+                                    sizes="(min-width: 768px) 94vw, 100vw"
+                                    src={heroImage.src}
+                                />
+                            </div>
+                        ) : null}
                     </div>
                 </section>
 
@@ -118,21 +122,23 @@ export function AboutPage({ locale }: { locale: Locale }) {
                             </div>
                         </div>
 
-                        <div
-                            className="relative min-h-[439px] overflow-hidden bg-white/5 md:min-h-0"
-                            data-reveal
-                            style={
-                                { "--reveal-delay": "120ms" } as CSSProperties
-                            }
-                        >
-                            <LazyImage
-                                alt={about.images[1].alt}
-                                className="object-cover"
-                                fill
-                                sizes="(min-width: 768px) 40vw, 100vw"
-                                src={about.images[1].src}
-                            />
-                        </div>
+                        {sideImage ? (
+                            <div
+                                className="relative min-h-[439px] overflow-hidden bg-white/5 md:min-h-0"
+                                data-reveal
+                                style={
+                                    { "--reveal-delay": "120ms" } as CSSProperties
+                                }
+                            >
+                                <LazyImage
+                                    alt={sideImage.alt}
+                                    className="object-cover"
+                                    fill
+                                    sizes="(min-width: 768px) 40vw, 100vw"
+                                    src={sideImage.src}
+                                />
+                            </div>
+                        ) : null}
                     </div>
                 </section>
 
@@ -198,28 +204,30 @@ export function AboutPage({ locale }: { locale: Locale }) {
                             </div>
                         </div>
 
-                        <div className="mt-14 grid grid-cols-2 gap-3 md:mt-20 md:grid-cols-4 md:gap-6">
-                            {about.images.map((image, index) => (
-                                <div
-                                    className="relative aspect-[4/5] w-full overflow-hidden bg-white/5"
-                                    data-reveal
-                                    key={image.src}
-                                    style={
-                                        {
-                                            "--reveal-delay": `${Math.min(index, 3) * 70}ms`,
-                                        } as CSSProperties
-                                    }
-                                >
-                                    <LazyImage
-                                        alt={image.alt}
-                                        className="object-cover"
-                                        fill
-                                        sizes="(min-width: 768px) 22vw, 50vw"
-                                        src={image.src}
-                                    />
-                                </div>
-                            ))}
-                        </div>
+                        {about.images.length > 0 ? (
+                            <div className="mt-14 grid grid-cols-2 gap-3 md:mt-20 md:grid-cols-4 md:gap-6">
+                                {about.images.map((image, index) => (
+                                    <div
+                                        className="relative aspect-[4/5] w-full overflow-hidden bg-white/5"
+                                        data-reveal
+                                        key={image.src}
+                                        style={
+                                            {
+                                                "--reveal-delay": `${Math.min(index, 3) * 70}ms`,
+                                            } as CSSProperties
+                                        }
+                                    >
+                                        <LazyImage
+                                            alt={image.alt}
+                                            className="object-cover"
+                                            fill
+                                            sizes="(min-width: 768px) 22vw, 50vw"
+                                            src={image.src}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        ) : null}
                     </div>
                 </section>
 

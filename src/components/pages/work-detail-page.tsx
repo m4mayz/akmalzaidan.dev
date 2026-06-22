@@ -70,10 +70,10 @@ export function WorkDetailPage({
 
     const moreProjects = getMoreWorkSummaries(locale, project.slug);
     const details = [
-        ["Scope", project.category],
-        ["Role", project.role],
-        ["Client", project.client],
-        ["Year", project.year],
+        [isIndonesian ? "Lingkup" : "Scope", project.category],
+        [isIndonesian ? "Peran" : "Role", project.role],
+        [isIndonesian ? "Konteks" : "Client", project.client],
+        [isIndonesian ? "Tahun" : "Year", project.year],
     ];
 
     return (

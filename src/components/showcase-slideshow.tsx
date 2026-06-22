@@ -65,6 +65,7 @@ export function ShowcaseSlideshow({ images }: ShowcaseSlideshowProps) {
                         loading="lazy"
                         sizes="100vw"
                         src={image.src}
+                        unoptimized
                     />
                 </Link>
             ))}

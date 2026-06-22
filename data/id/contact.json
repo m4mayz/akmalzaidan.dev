@@ -1,6 +1,6 @@
 {
-  "headline": "Mari bangun sesuatu yang berguna, andal, dan siap dikirim.",
-  "body": "Untuk review recruiter, kesempatan magang, proyek freelance, dashboard, backend, atau bantuan IT praktis, kirim catatan singkat dan saya akan membalas secepat yang saya bisa.",
+  "headline": "Butuh bantuan membangun atau memperbaiki sesuatu yang teknis?",
+  "body": "Kesempatan magang, kerja freelance, website, dashboard, backend system, IT support, atau pertanyaan teknis singkat — kirim catatan pendek dan saya akan membalas secepat yang saya bisa.",
   "labels": {
     "name": "Nama",
     "email": "Email",
@@ -15,7 +15,7 @@
     "message": "Ceritakan role, project, timeline, stack, atau hal penting lainnya."
   },
   "submitLabel": "Kirim pesan",
-  "privacyPrefix": "Dengan mengirim pesan ini, Anda menyetujui",
+  "privacyPrefix": "Dengan mengirimkan pesan ini, Anda menyetujui",
   "privacyLinkLabel": "Kebijakan Privasi",
   "privacySuffix": " saya."
 }

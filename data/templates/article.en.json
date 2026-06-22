@@ -1,0 +1,25 @@
+{
+  "slug": "article-slug",
+  "title": "Article Title",
+  "description": "Short article summary for cards and index pages.",
+  "image": "/images/articles/article-slug/cover.webp",
+  "alt": "Article cover description",
+  "publishedAt": "2026-06-22",
+  "lead": "Opening paragraph shown below the article title.",
+  "blocks": [
+    {
+      "heading": "First section",
+      "paragraphs": [
+        "Write the first paragraph here.",
+        "Write the second paragraph here."
+      ]
+    },
+    {
+      "heading": "Second section",
+      "paragraphs": [
+        "Continue the article with a focused point.",
+        "Keep the writing natural and specific."
+      ]
+    }
+  ]
+}

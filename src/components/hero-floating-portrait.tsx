@@ -54,7 +54,7 @@ export function HeroFloatingPortrait() {
 
     return (
         <div
-            className="relative aspect-[583/637] overflow-hidden md:will-change-transform"
+            className="relative aspect-583/637 overflow-hidden md:will-change-transform"
             ref={frameRef}
         >
             <Image
@@ -63,7 +63,8 @@ export function HeroFloatingPortrait() {
                 fill
                 preload
                 sizes="(min-width: 768px) 41vw, 100vw"
-                src="/images/akmal/placeholders/project-portfolio-dashboard.svg"
+                src="/images/akmal/me.png"
+                unoptimized
             />
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(140%_100%_at_50%_60%,rgba(255,99,34,0)_40%,rgba(255,99,34,0.35)_100%)]" />
         </div>

@@ -12,7 +12,7 @@ type PlaceholderPageProps = {
 export function PlaceholderPage({
     title,
     description,
-    eyebrow = "Coming soon",
+    eyebrow = "In progress",
 }: PlaceholderPageProps) {
     return (
         <>
@@ -33,7 +33,7 @@ export function PlaceholderPage({
                         data-cursor="pointer"
                         href="/"
                     >
-                        Back home
+                        Back to home
                     </Link>
                 </section>
             </main>

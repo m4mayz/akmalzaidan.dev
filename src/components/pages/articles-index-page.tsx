@@ -17,13 +17,13 @@ export function ArticlesIndexPage({ locale }: { locale: Locale }) {
                 <section className="mx-auto max-w-[89.5rem]" data-reveal>
                     <h1 className="max-w-[980px] font-heading text-4xl font-light leading-[1.02] tracking-tighter text-foreground md:text-[92px]">
                         {isIndonesian
-                            ? "Catatan tentang web, produk, dan support teknis"
-                            : "Notes on web development, products, and technical support"}
+                            ? "Catatan tentang membangun, memperbaiki, dan belajar lewat kerja teknis"
+                            : "Notes on building, fixing, and learning through technical work"}
                     </h1>
                     <p className="mt-8 max-w-[640px] text-[16px] leading-[1.6] text-muted-foreground md:text-[17px]">
                         {isIndonesian
-                            ? "Tulisan starter tentang cara saya memikirkan dashboard, konteks fullstack, dan bantuan teknis untuk tim kecil."
-                            : "Starter writing about how I think through dashboards, fullstack context, and practical support for small teams."}
+                            ? "Tulisan tentang software web, dashboard, fullstack context, AI-assisted development, dan masalah IT yang sering muncul di pekerjaan nyata."
+                            : "Writing about web software, dashboards, fullstack context, AI-assisted development, and the IT problems that show up in real work."}
                     </p>
                 </section>
 

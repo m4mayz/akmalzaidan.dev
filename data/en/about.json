@@ -1,91 +1,64 @@
 {
-  "headline": "Fullstack developer building practical web products from Sukabumi.",
-  "subhead": "I build web apps, dashboards, APIs, internal tools, and practical IT support systems for teams that need clear execution.",
-  "intro": [
-    "I work across frontend, backend, and operational workflows. My focus is turning unclear technical or business problems into tools that are easy to use, maintain, and improve.",
-    "I am currently available for internships, freelance projects, and collaboration with teams that need a developer who can understand both the product surface and the technical foundation."
-  ],
-  "philosophyTitle": "How I approach work",
-  "philosophy": [
-    "Good software should make real work easier. I care about interfaces that are clear, backend flows that are predictable, and small details that reduce confusion for users.",
-    "I like working close to the problem: understanding what the team needs, what data matters, what workflow is repeated, and what technical support is needed after the first version ships.",
-    "I value pragmatic implementation. The best solution is usually the one that is reliable, understandable, and ready to be improved without making future work harder."
-  ],
-  "experienceTitle": "Work experience",
-  "experiences": [
-    {
-      "title": "Fullstack Developer",
-      "organization": "Personal and freelance projects",
-      "period": "2026 — Present"
-    },
-    {
-      "title": "Frontend Developer",
-      "organization": "Portfolio and client-facing websites",
-      "period": "2026 — Present"
-    },
-    {
-      "title": "Technical IT Support",
-      "organization": "Setup, troubleshooting, and practical assistance",
-      "period": "2025 — Present"
-    }
-  ],
-  "educationTitle": "Education",
-  "education": [
-    {
-      "title": "Software Development / Computer Science",
-      "organization": "Editable education entry",
-      "period": "Update in data/en/about.json"
-    },
-    {
-      "title": "Independent learning",
-      "organization": "Web development, backend, databases, deployment",
-      "period": "Ongoing"
-    }
-  ],
-  "skillsTitle": "Skills",
-  "skills": [
-    "Frontend development",
-    "Backend development",
-    "API design",
-    "Dashboard UI",
-    "Database modeling",
-    "Deployment",
-    "Troubleshooting",
-    "IT support"
-  ],
-  "toolsTitle": "Tools",
-  "tools": [
-    "TypeScript",
-    "React",
-    "Next.js",
-    "Node.js",
-    "Prisma",
-    "PostgreSQL / MySQL",
-    "Tailwind CSS",
-    "Git",
-    "Vercel"
-  ],
-  "beyondTitle": "Beyond code",
-  "beyond": [
-    "Outside of implementation work, I enjoy learning how real teams operate: where data gets stuck, where people repeat manual steps, and where better tooling can help.",
-    "That interest is why my portfolio includes web development, dashboards, backend work, and practical IT support instead of treating them as separate worlds."
-  ],
-  "images": [
-    {
-      "src": "/images/akmal/placeholders/project-portfolio-dashboard.svg",
-      "alt": "Abstract dashboard placeholder representing Akmal's work"
-    },
-    {
-      "src": "/images/akmal/placeholders/project-api-integration.svg",
-      "alt": "Abstract API integration placeholder representing backend work"
-    },
-    {
-      "src": "/images/akmal/placeholders/project-support-tools.svg",
-      "alt": "Abstract support toolkit placeholder representing IT support"
-    },
-    {
-      "src": "/images/akmal/placeholders/project-freelance-web-app.svg",
-      "alt": "Abstract web application placeholder representing freelance work"
-    }
-  ]
+    "headline": "I build web software, fullstack systems, and practical IT support.",
+    "subhead": "I am a developer and IT support person working across websites, dashboards, backend systems, and technical troubleshooting for projects that need to work in real situations, not only in a clean demo.",
+    "intro": [
+        "I enjoy finding the line between a simple interface, a reliable backend, and the technical issues people run into every day. I care not only about whether something looks finished, but also whether it is useful, understandable, and easy to keep running."
+    ],
+    "philosophyTitle": "How I think about development",
+    "philosophy": [
+        "Good development is not just a clean codebase. To me, it is a way to understand a problem, organize the moving parts, and create something people can use without having to fight the system.",
+        "A lot of my work sits between software and support — dashboards, backend flows, maintenance bugs, personal projects, and the small technical issues that can slow people down. In these situations, calm problem-solving matters more than adding more features.",
+        "Development does not happen in perfect conditions. There may be unclear requirements, broken setups, limited time, or tools that need to be connected first. I see those constraints as part of the work. My goal is to move things forward without making the next step harder."
+    ],
+    "experienceTitle": "Work experience",
+    "experiences": [
+        {
+            "title": "Developer and IT Support",
+            "organization": "College, internship, client and personal projects",
+            "period": "In progress"
+        }
+    ],
+    "educationTitle": "Education",
+    "education": [
+        {
+            "title": "Formal education",
+            "organization": "Details to be added",
+            "period": "In progress"
+        }
+    ],
+    "skillsTitle": "Skills",
+    "skills": [
+        "Frontend development",
+        "Backend development",
+        "API design",
+        "Dashboard UI",
+        "Database modeling",
+        "Deployment",
+        "Troubleshooting",
+        "IT support"
+    ],
+    "toolsTitle": "Tools",
+    "tools": [
+        "TypeScript",
+        "React",
+        "Next.js",
+        "Node.js",
+        "Prisma",
+        "PostgreSQL / MySQL",
+        "Tailwind CSS",
+        "Git",
+        "Vercel",
+        "Codex",
+        "Claude Code",
+        "GitHub Copilot",
+        "Gemini",
+        "Hermes"
+    ],
+    "beyondTitle": "Beyond code",
+    "beyond": [
+        "Technology does not end with code for me. I am also interested in games, music, hardware, PCs, and AI — areas where I can learn how people use systems, tools, and interfaces in their own way.",
+        "A lot of that curiosity feeds back into how I work. Building a PC, fixing a setup, testing an AI workflow, or learning from games all sharpen the same habits: patience, detail, and practical troubleshooting.",
+        "Projects like this portfolio remind me why I enjoy development in the first place: the mix of learning, technical problem-solving, and the satisfaction of turning a rough idea into something real."
+    ],
+    "images": []
 }

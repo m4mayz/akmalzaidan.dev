@@ -1,55 +1,64 @@
 {
     "hero": {
-        "headline": "Fullstackdev based in Sukabumi. Building web apps, dashboards and backend systems.",
-        "highlightedWord": "Sukabumi.",
-        "body": "I work across frontend, backend, dashboards, APIs, and practical IT support. My focus is turning unclear operational problems into reliable tools that are easy to use, maintain, and improve."
+        "headline": "Developer and IT support. Building web software, fullstack systems, and practical IT help.",
+        "highlightedWord": "software,",
+        "body": ""
     },
     "stats": [
-        { "label": "Based", "value": "Sukabumi, Indonesia" },
-        { "label": "Focus", "value": "Fullstack Web, Dashboards, APIs" },
         {
-            "label": "Availability",
-            "value": "Internships and freelance projects"
+            "label": "Based",
+            "value": "Indonesia, ready to work anywhere"
         },
-        { "label": "Support", "value": "Technical IT help and IT support" }
+        {
+            "label": "Focus",
+            "value": "Web, software, fullstack, IT support"
+        },
+        {
+            "label": "Languages",
+            "value": "Indonesian, English"
+        },
+        {
+            "label": "Open for",
+            "value": "Remote work, internships, and freelance projects"
+        }
     ],
     "services": [
         {
             "number": "01",
-            "title": "Web development",
-            "description": "Building responsive websites and web applications with clean structure, maintainable code, and practical user flows."
+            "title": "Web software",
+            "description": "I build websites and web applications that are clear to use and easy to keep improving. The goal is not only a clean screen, but a product that works in real situations."
         },
         {
             "number": "02",
-            "title": "Frontend implementation",
-            "description": "Turning interfaces into polished, responsive, production-ready frontend experiences with attention to detail and usability."
+            "title": "Fullstack systems",
+            "description": "I work across frontend, backend, and the logic that connects both sides. This helps me understand how a feature should look, behave, store data, and stay maintainable."
         },
         {
             "number": "03",
             "title": "Dashboards",
-            "description": "Designing and developing dashboards for operational data, monitoring, reporting, and repeated daily workflows."
+            "description": "I build dashboards for information that needs to be checked, compared, and acted on repeatedly. I care about clear structure, readable data, and workflows that do not slow people down."
         },
         {
             "number": "04",
-            "title": "Internal tools",
-            "description": "Creating focused tools that reduce manual work, organize information, and help teams move faster."
+            "title": "Backend and APIs",
+            "description": "I create backend flows, API integrations, and data structures that support practical applications. The work is focused on reliability, clarity, and making the frontend easier to build."
         },
         {
             "number": "05",
-            "title": "API and backend",
-            "description": "Building backend features, API integrations, data flows, and server-side logic that support reliable applications."
+            "title": "Technical IT support",
+            "description": "I help with troubleshooting, setup, maintenance bugs, and everyday technical issues. Sometimes the best solution is not a new feature, but finding what is broken and making it understandable."
         },
         {
             "number": "06",
-            "title": "Technical IT help",
-            "description": "Providing practical IT support, troubleshooting, setup assistance, and technical guidance for teams and individuals."
+            "title": "AI-assisted development",
+            "description": "I use AI tools as part of my development workflow to explore ideas, debug faster, and reduce repetitive work. The important part is still knowing what to check, what to keep, and what to control."
         }
     ],
     "testimonials": [
         {
-            "quote": "Akmal communicates clearly, breaks down technical problems into practical steps, and keeps the work focused on what users actually need.",
-            "author": "Seed testimonial",
-            "role": "Recruiter / HR review placeholder"
+            "quote": "Akmal is still early in his career, but he works with a calm technical mindset. He asks the right questions, breaks problems down clearly, and keeps looking until the issue makes sense.",
+            "author": "Internship / HR placeholder",
+            "role": "Seed testimonial"
         },
         {
             "quote": "The project direction was easy to follow, from interface decisions to backend considerations and deployment details.",

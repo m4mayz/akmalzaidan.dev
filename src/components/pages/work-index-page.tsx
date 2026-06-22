@@ -22,8 +22,8 @@ export function WorkIndexPage({ locale }: { locale: Locale }) {
     const work = getWorkSummaries(locale);
     const isIndonesian = locale === "id";
     const filters = isIndonesian
-        ? ["Semua", "Frontend", "Backend", "Dashboard"]
-        : ["All", "Frontend", "Backend", "Dashboard"];
+        ? ["Semua", "Web", "Backend", "Dashboard"]
+        : ["All", "Web", "Backend", "Dashboard"];
 
     return (
         <>
@@ -33,75 +33,79 @@ export function WorkIndexPage({ locale }: { locale: Locale }) {
                     <section data-reveal>
                         <h1 className="max-w-[980px] font-heading text-4xl font-light leading-[1.02] tracking-tighter text-foreground md:text-[92px]">
                             {isIndonesian
-                                ? "Project fullstack, dashboard, dan tools yang saya bangun"
-                                : "A closer look at the web apps, dashboards, and tools I build"}
+                                ? "Project software web, sistem fullstack, dan IT support"
+                                : "Web software, fullstack systems, and technical support work"}
                         </h1>
                         <p className="mt-8 max-w-[640px] text-[16px] leading-[1.6] text-muted-foreground md:text-[17px]">
                             {isIndonesian
-                                ? "Kumpulan project awal untuk menunjukkan cara saya membangun frontend, backend, workflow, dan solusi teknis praktis."
-                                : "A starter collection of projects showing how I approach frontend, backend, workflows, and practical technical solutions."}
+                                ? "Kumpulan project dan konsep yang menunjukkan cara saya membangun, menghubungkan, dan merawat pekerjaan teknis praktis."
+                                : "A focused selection of projects and concepts that show how I build, connect, and maintain practical technical work."}
                         </p>
                     </section>
 
-                    <div className="mt-14 flex flex-wrap gap-2" data-reveal>
-                        {filters.map((filter, index) => (
-                            <button
-                                className={`h-9 rounded-full border px-4 text-[14px] transition-colors ${
-                                    index === 0
-                                        ? "border-white bg-white text-black"
-                                        : "border-border text-muted-foreground hover:border-white hover:text-foreground"
-                                }`}
-                                data-cursor="pointer"
-                                key={filter}
-                                type="button"
-                            >
-                                {filter}
-                            </button>
-                        ))}
-                    </div>
+                    {work.length > 0 ? (
+                        <>
+                            <div className="mt-14 flex flex-wrap gap-2" data-reveal>
+                                {filters.map((filter, index) => (
+                                    <button
+                                        className={`h-9 rounded-full border px-4 text-[14px] transition-colors ${
+                                            index === 0
+                                                ? "border-white bg-white text-black"
+                                                : "border-border text-muted-foreground hover:border-white hover:text-foreground"
+                                        }`}
+                                        data-cursor="pointer"
+                                        key={filter}
+                                        type="button"
+                                    >
+                                        {filter}
+                                    </button>
+                                ))}
+                            </div>
 
-                    <section className="mt-10 grid gap-x-8 gap-y-12 md:grid-cols-12 md:gap-y-24">
-                        {work.map((project, index) => (
-                            <Link
-                                className={`group block ${spanClasses[index]}`}
-                                data-cursor="link"
-                                data-reveal
-                                href={project.href}
-                                key={project.href}
-                                style={
-                                    {
-                                        "--reveal-delay": `${Math.min(index, 3) * 90}ms`,
-                                    } as CSSProperties
-                                }
-                            >
-                                <div className="relative h-[438px] overflow-hidden bg-white/5 md:h-[620px]">
-                                    <LazyImage
-                                        alt={project.alt}
-                                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                                        fill
-                                        sizes="(min-width: 768px) 66vw, 100vw"
-                                        src={project.image}
-                                    />
-                                </div>
-                                <div className="mt-6 grid gap-2 md:grid-cols-[1fr_auto] md:gap-6">
-                                    <div>
-                                        <div className="flex items-center justify-between">
-                                            <h2 className="text-[20px] leading-[1.25] md:text-[22px]">
-                                                {project.title}
-                                            </h2>
-                                            <p className="text-[15px] leading-[1.45] text-muted-foreground md:text-right">
-                                                {project.year}
-                                            </p>
+                            <section className="mt-10 grid gap-x-8 gap-y-12 md:grid-cols-12 md:gap-y-24">
+                                {work.map((project, index) => (
+                                    <Link
+                                        className={`group block ${spanClasses[index]}`}
+                                        data-cursor="link"
+                                        data-reveal
+                                        href={project.href}
+                                        key={project.href}
+                                        style={
+                                            {
+                                                "--reveal-delay": `${Math.min(index, 3) * 90}ms`,
+                                            } as CSSProperties
+                                        }
+                                    >
+                                        <div className="relative h-[438px] overflow-hidden bg-white/5 md:h-[620px]">
+                                            <LazyImage
+                                                alt={project.alt}
+                                                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                                                fill
+                                                sizes="(min-width: 768px) 66vw, 100vw"
+                                                src={project.image}
+                                            />
                                         </div>
+                                        <div className="mt-6 grid gap-2 md:grid-cols-[1fr_auto] md:gap-6">
+                                            <div>
+                                                <div className="flex items-center justify-between">
+                                                    <h2 className="text-[20px] leading-[1.25] md:text-[22px]">
+                                                        {project.title}
+                                                    </h2>
+                                                    <p className="text-[15px] leading-[1.45] text-muted-foreground md:text-right">
+                                                        {project.year}
+                                                    </p>
+                                                </div>
 
-                                        <p className="mt-2 text-[14px] leading-[1.5] text-muted-foreground">
-                                            {project.category}
-                                        </p>
-                                    </div>
-                                </div>
-                            </Link>
-                        ))}
-                    </section>
+                                                <p className="mt-2 text-[14px] leading-[1.5] text-muted-foreground">
+                                                    {project.category}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </section>
+                        </>
+                    ) : null}
                 </div>
                 <ContactSection locale={locale} site={site} />
             </main>

@@ -1,33 +1,33 @@
 {
     "name": "Akmal Zaidan",
-    "role": "Fullstack Developer",
+    "role": "Fullstack Developer dan IT Support",
     "email": "akmalzaidan960@gmail.com",
     "location": "Sukabumi, Indonesia",
-    "availability": "Tersedia untuk magang dan proyek freelance",
+    "availability": "Terbuka untuk magang, kerja freelance, dan peluang remote",
     "metadata": {
-        "title": "Akmal Zaidan - Fullstack Developer",
-        "description": "Fullstack developer berbasis di Sukabumi yang membangun web app, dashboard, tools, API, dan solusi IT praktis.",
-        "ogAlt": "Akmal Zaidan - Fullstack Developer"
+        "title": "Akmal Zaidan - Fullstack Developer dan IT Support",
+        "description": "Software web, sistem fullstack, dashboard, dan IT support praktis oleh Akmal Zaidan.",
+        "ogAlt": "Akmal Zaidan - Fullstack Developer dan IT Support"
     },
     "nav": [
-        { "label": "Work", "href": "/work" },
+        { "label": "Project", "href": "/work" },
         { "label": "Artikel", "href": "/articles" },
         { "label": "Tentang", "href": "/about" }
     ],
     "socials": [
-        { "label": "GitHub", "href": "https://github.com/akmalzaidan" },
+        { "label": "GitHub", "href": "https://github.com/m4mayz" },
         {
             "label": "LinkedIn",
-            "href": "https://www.linkedin.com/in/akmalzaidan"
+            "href": "https://www.linkedin.com/in/m4mayz"
         },
         {
             "label": "Instagram",
-            "href": "https://www.instagram.com/akmalzaidan"
+            "href": "https://www.instagram.com/m4mayz"
         }
     ],
     "footer": {
-        "credit": "Didesain dan dibuat oleh Akmal Zaidan",
-        "privacyLabel": "Privasi"
+        "credit": "Desain terinspirasi dari Kristian Ulrych. Dibuat oleh Akmal Zaidan",
+        "privacyLabel": "Kebijakan Privasi"
     },
     "language": {
         "current": "ID",

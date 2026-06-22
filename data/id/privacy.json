@@ -2,12 +2,12 @@
   "eyebrow": "Legal",
   "title": "Kebijakan Privasi",
   "lastUpdated": "Terakhir diperbarui: 20 Juni 2026",
-  "intro": "Halaman ini menjelaskan data pribadi yang diproses saat Anda menggunakan website portofolio Akmal Zaidan, contact form, analytics, dan layanan terkait. Kebijakan ini ditulis untuk pengunjung dari Indonesia dan pengunjung internasional, termasuk hak bergaya GDPR jika relevan.",
+  "intro": "Halaman ini menjelaskan data pribadi yang dikumpulkan saat Anda menggunakan website portofolio Akmal Zaidan, kenapa data tersebut diproses, dan hak apa saja yang mungkin Anda miliki berdasarkan aturan pelindungan data pribadi di Indonesia serta kerangka privasi internasional seperti GDPR jika berlaku.",
   "sections": [
     {
       "heading": "Pengendali data",
       "paragraphs": [
-        "Pengendali untuk website portofolio ini adalah Akmal Zaidan, berbasis di Sukabumi, Indonesia. Anda dapat menghubungi saya melalui alamat email yang tercantum di website ini."
+        "Akmal Zaidan, developer dan IT support yang berbasis di Sukabumi, Indonesia. Cara paling mudah untuk menghubungi saya adalah melalui email di akmalzaidan960@gmail.com."
       ]
     },
     {
@@ -16,27 +16,32 @@
         {
           "subheading": "Contact form",
           "paragraphs": [
-            "Saat Anda mengirim contact form, website dapat memproses nama, alamat email, subjek, pesan, dan metadata request dasar seperti timestamp, alamat IP, user agent, dan sinyal anti-abuse.",
-            "Tujuannya adalah menerima pesan, membalas inquiry rekrutmen atau freelance, mendiskusikan kemungkinan kolaborasi, dan menyimpan follow-up yang wajar."
+            "Saat Anda menggunakan contact form, form tersebut akan membuka email client dan mengirim pesan ke inbox saya. Data yang diproses dapat mencakup nama, alamat email, subjek, pesan, dan waktu pengiriman.",
+            "Tujuannya adalah menerima pesan, membalas inquiry magang, freelance, support, atau kolaborasi, serta menyimpan catatan follow-up yang wajar."
           ]
         },
         {
-          "subheading": "Pengiriman email",
+          "subheading": "Hosting",
           "paragraphs": [
-            "Pesan dapat dikirim melalui tools email yang dikonfigurasi untuk website ini atau melalui fallback mail client. Pesan yang dihasilkan tersimpan di inbox saya agar saya dapat membalas dan melakukan follow-up."
+            "Website ini di-host di Vercel. Vercel dapat memproses data teknis standar yang dibutuhkan untuk menampilkan website, menjaga reliability, dan melindungi layanan dari penyalahgunaan."
           ]
         },
         {
-          "subheading": "Hosting dan keamanan",
+          "subheading": "Email",
           "paragraphs": [
-            "Website ini di-host di Vercel. Penyedia hosting memproses data request standar yang diperlukan untuk mengirim halaman, memantau reliability, dan melindungi layanan dari penyalahgunaan."
+            "Pesan dikirim ke inbox Gmail saya. Pesan Anda dapat tersimpan di sana agar saya bisa membalas dan melakukan follow-up."
           ]
         },
         {
-          "subheading": "Analytics dan performa",
+          "subheading": "Analytics",
           "paragraphs": [
-            "Website ini dapat menggunakan Vercel Web Analytics. Vercel menyatakan Web Analytics menyimpan data anonim dan tidak menggunakan cookie.",
-            "Jika Vercel Speed Insights diaktifkan, alat tersebut mengumpulkan data performa anonim seperti route, tipe perangkat, browser, negara, dan metrik Web Vitals. Vercel menyatakan Speed Insights tidak mengumpulkan atau menyimpan informasi yang memungkinkan sesi browsing direkonstruksi atau user diidentifikasi."
+            "Website ini dapat menggunakan Vercel Web Analytics. Analytics digunakan untuk memahami traffic website secara umum dan membantu memperbaiki website tanpa menggunakan cookie tracking iklan."
+          ]
+        },
+        {
+          "subheading": "Aset pihak ketiga",
+          "paragraphs": [
+            "Beberapa aset, script, library, atau layanan yang digunakan website ini dapat disediakan oleh pihak ketiga. Penyedia tersebut dapat menerima data request teknis standar sebagai bagian dari proses normal pengiriman website."
           ]
         }
       ]
@@ -44,39 +49,46 @@
     {
       "heading": "Dasar hukum dan kerangka privasi",
       "paragraphs": [
-        "Untuk pengunjung Indonesia, kebijakan ini disusun dengan memperhatikan UU No. 27 Tahun 2022 tentang Pelindungan Data Pribadi.",
-        "Untuk pengunjung internasional, hak praktis yang sama dihormati jika berlaku, termasuk akses, koreksi, penghapusan, keberatan, dan kemampuan menghubungi saya terkait privasi."
+        "Untuk pengunjung di Indonesia, kebijakan ini ditulis dengan memperhatikan UU No. 27 Tahun 2022 tentang Pelindungan Data Pribadi.",
+        "Untuk pengunjung internasional, hak praktis yang serupa dihormati jika berlaku, termasuk akses, koreksi, penghapusan, keberatan, pembatasan, portabilitas, dan hak untuk menyampaikan keluhan kepada otoritas yang relevan."
+      ]
+    },
+    {
+      "heading": "Transfer internasional",
+      "paragraphs": [
+        "Beberapa layanan yang digunakan website ini atau komunikasi, seperti Vercel, Gmail, dan penyedia analytics, dapat memproses data di luar Indonesia atau di luar negara Anda. Jika hal ini terjadi, pemrosesan bergantung pada perlindungan dan ketentuan privasi dari layanan tersebut."
       ]
     },
     {
       "heading": "Retensi",
       "paragraphs": [
-        "Pesan disimpan hanya selama diperlukan untuk komunikasi rekrutmen, freelance, follow-up kolaborasi, atau pencatatan yang wajar. Anda dapat meminta penghapusan lebih awal kecuali saya perlu menyimpan informasi terbatas untuk alasan hukum atau keamanan."
+        "Pesan disimpan hanya selama diperlukan untuk menangani percakapan dan follow-up yang wajar, dan tidak lebih dari 24 bulan sejak interaksi terakhir kecuali ada alasan hukum, keamanan, atau kontraktual yang membutuhkan penyimpanan lebih lama. Anda dapat meminta penghapusan lebih awal kapan saja."
       ]
     },
     {
       "heading": "Hak Anda",
       "paragraphs": [
-        "Anda dapat menghubungi saya untuk menanyakan data apa yang saya simpan tentang Anda, memperbaiki informasi yang tidak akurat, meminta penghapusan, menolak pemrosesan, atau bertanya bagaimana data Anda ditangani."
+        "Berdasarkan aturan privasi yang berlaku, Anda dapat memiliki hak untuk:"
       ],
       "list": [
-        "Mengakses data pribadi Anda.",
-        "Memperbaiki informasi yang tidak akurat atau tidak lengkap.",
-        "Meminta penghapusan jika sesuai.",
-        "Menolak atau membatasi pemrosesan tertentu.",
-        "Bertanya atau menyampaikan keluhan melalui email kontak."
+        "Mengakses data yang saya simpan tentang Anda.",
+        "Memperbaiki data yang tidak akurat.",
+        "Meminta penghapusan.",
+        "Membatasi atau menolak pemrosesan.",
+        "Menerima data dalam format yang portabel.",
+        "Menyampaikan keluhan kepada otoritas Indonesia yang relevan atau, jika berlaku, otoritas pengawas di Uni Eropa."
       ]
     },
     {
-      "heading": "Cookie dan iklan",
+      "heading": "Menggunakan hak Anda",
       "paragraphs": [
-        "Website ini tidak menggunakan cookie tracking iklan. Jika hal ini berubah nanti, kebijakan akan diperbarui sebelum tools tersebut sengaja ditambahkan."
+        "Untuk menggunakan hak tersebut, kirim email ke akmalzaidan960@gmail.com."
       ]
     },
     {
       "heading": "Perubahan",
       "paragraphs": [
-        "Kebijakan ini dapat diperbarui ketika website, setup analytics, penanganan contact, atau kebutuhan hukum berubah. Tanggal di atas menunjukkan versi saat ini."
+        "Kebijakan ini dapat diperbarui dari waktu ke waktu. Tanggal \"Terakhir diperbarui\" di bagian atas menunjukkan versi saat ini."
       ]
     }
   ]

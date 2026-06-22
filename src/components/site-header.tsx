@@ -24,6 +24,7 @@ export function SiteHeader({ locale = "en", site }: SiteHeaderProps) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [hasMenuInteracted, setHasMenuInteracted] = useState(false);
+    const contactLabel = locale === "id" ? "Hubungi saya" : "Get in touch";
 
     useEffect(() => {
         const updateHeaderState = () => {
@@ -104,7 +105,7 @@ export function SiteHeader({ locale = "en", site }: SiteHeaderProps) {
                                 data-cursor="pointer"
                                 href={withLocale("/contact", locale)}
                             >
-                                Get in touch
+                                {contactLabel}
                             </Link>
                         </div>
                     </div>
@@ -234,7 +235,7 @@ export function SiteHeader({ locale = "en", site }: SiteHeaderProps) {
                                 href={withLocale("/contact", locale)}
                                 onClick={closeMenu}
                             >
-                                Get in touch
+                                {contactLabel}
                             </Link>
                             <Link
                                 className="inline-flex h-14 items-center gap-2 rounded-full border border-white/60 px-5 text-[14px] uppercase tracking-[0.08em] text-foreground transition-colors hover:border-white active:scale-[0.96]"

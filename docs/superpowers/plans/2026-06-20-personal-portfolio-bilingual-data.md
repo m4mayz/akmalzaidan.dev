@@ -16,8 +16,8 @@
 - Role/positioning: Fullstack Developer.
 - Audience: recruiters, freelance clients, and HR reviewers.
 - Language strategy:
-  - English is the default route with normal URLs: `/`, `/work`, `/articles`, `/about`, `/contact`, `/privacy`.
-  - Indonesian is available under `/id`: `/id`, `/id/work`, `/id/articles`, `/id/about`, `/id/contact`, `/id/privacy`, including detail routes.
+    - English is the default route with normal URLs: `/`, `/work`, `/articles`, `/about`, `/contact`, `/privacy`.
+    - Indonesian is available under `/id`: `/id`, `/id/work`, `/id/articles`, `/id/about`, `/id/contact`, `/id/privacy`, including detail routes.
 - Hero tone: personal, not overly corporate.
 - Location and availability: Sukabumi, available for internship or freelance.
 - Services: web development, frontend, dashboards, tools, API/backend, technical IT help, IT support.
@@ -84,135 +84,135 @@ Use the same slug filenames in both locales. This lets `/work/portfolio-dashboar
 ## File Structure
 
 - Create: `data/en/site.json`
-  - English global identity, navigation labels, social links, metadata, footer, email, location.
+    - English global identity, navigation labels, social links, metadata, footer, email, location.
 - Create: `data/id/site.json`
-  - Indonesian translation of global identity and labels.
+    - Indonesian translation of global identity and labels.
 - Create: `data/en/home.json`
-  - English homepage hero, stats, services, testimonials/availability copy.
+    - English homepage hero, stats, services, testimonials/availability copy.
 - Create: `data/id/home.json`
-  - Indonesian homepage content.
+    - Indonesian homepage content.
 - Create: `data/en/about.json`
-  - English about page profile, experience, education, skills/tools.
+    - English about page profile, experience, education, skills/tools.
 - Create: `data/id/about.json`
-  - Indonesian about page content.
+    - Indonesian about page content.
 - Create: `data/en/contact.json`
-  - English contact page copy and form labels.
+    - English contact page copy and form labels.
 - Create: `data/id/contact.json`
-  - Indonesian contact copy and form labels.
+    - Indonesian contact copy and form labels.
 - Create: `data/en/privacy.json`
-  - English privacy policy, including Vercel Analytics and Indonesia PDP law framing.
+    - English privacy policy, including Vercel Analytics and Indonesia PDP law framing.
 - Create: `data/id/privacy.json`
-  - Indonesian privacy policy.
+    - Indonesian privacy policy.
 - Create: `data/en/work/*.json`
-  - Six English project files.
+    - Six English project files.
 - Create: `data/id/work/*.json`
-  - Six Indonesian project files.
+    - Six Indonesian project files.
 - Create: `data/en/articles/*.json`
-  - Three English article seed files.
+    - Three English article seed files.
 - Create: `data/id/articles/*.json`
-  - Three Indonesian article seed files.
+    - Three Indonesian article seed files.
 - Create: `public/images/akmal/placeholders/*.svg`
-  - Six project placeholder visuals and three article placeholder visuals.
+    - Six project placeholder visuals and three article placeholder visuals.
 - Create: `src/types/content.ts`
-  - TypeScript types for locale, site data, home data, work detail, articles, privacy sections.
+    - TypeScript types for locale, site data, home data, work detail, articles, privacy sections.
 - Create: `src/lib/content.ts`
-  - Typed loader/helper functions for reading JSON imports by locale.
+    - Typed loader/helper functions for reading JSON imports by locale.
 - Create: `src/lib/i18n.ts`
-  - Locale helpers, localized path helpers, slug validation, and language-switch utilities.
+    - Locale helpers, localized path helpers, slug validation, and language-switch utilities.
 - Create: `src/components/pages/home-page.tsx`
-  - Shared locale-aware homepage renderer.
+    - Shared locale-aware homepage renderer.
 - Create: `src/components/pages/work-index-page.tsx`
-  - Shared locale-aware work listing renderer.
+    - Shared locale-aware work listing renderer.
 - Create: `src/components/pages/work-detail-page.tsx`
-  - Shared locale-aware work detail renderer.
+    - Shared locale-aware work detail renderer.
 - Create: `src/components/pages/articles-index-page.tsx`
-  - Shared locale-aware articles listing renderer.
+    - Shared locale-aware articles listing renderer.
 - Create: `src/components/pages/article-detail-page.tsx`
-  - Shared locale-aware article detail renderer.
+    - Shared locale-aware article detail renderer.
 - Create: `src/components/pages/about-page.tsx`
-  - Shared locale-aware about renderer.
+    - Shared locale-aware about renderer.
 - Create: `src/components/pages/contact-page.tsx`
-  - Shared locale-aware contact renderer.
+    - Shared locale-aware contact renderer.
 - Create: `src/components/pages/privacy-page.tsx`
-  - Shared locale-aware privacy renderer.
+    - Shared locale-aware privacy renderer.
 - Modify: `src/app/page.tsx`
-  - Render `<HomePage locale="en" />`.
+    - Render `<HomePage locale="en" />`.
 - Create: `src/app/id/page.tsx`
-  - Render `<HomePage locale="id" />`.
+    - Render `<HomePage locale="id" />`.
 - Modify: `src/app/work/page.tsx`
-  - Render English work index from file data.
+    - Render English work index from file data.
 - Create: `src/app/id/work/page.tsx`
-  - Render Indonesian work index.
+    - Render Indonesian work index.
 - Modify: `src/app/work/[slug]/page.tsx`
-  - Render English work detail from file data.
+    - Render English work detail from file data.
 - Create: `src/app/id/work/[slug]/page.tsx`
-  - Render Indonesian work detail.
+    - Render Indonesian work detail.
 - Modify: `src/app/articles/page.tsx`
-  - Render English article index from file data.
+    - Render English article index from file data.
 - Create: `src/app/id/articles/page.tsx`
-  - Render Indonesian article index.
+    - Render Indonesian article index.
 - Modify: `src/app/articles/[slug]/page.tsx`
-  - Render English article detail from file data.
+    - Render English article detail from file data.
 - Create: `src/app/id/articles/[slug]/page.tsx`
-  - Render Indonesian article detail.
+    - Render Indonesian article detail.
 - Modify: `src/app/about/page.tsx`
-  - Render English about page from file data.
+    - Render English about page from file data.
 - Create: `src/app/id/about/page.tsx`
-  - Render Indonesian about page.
+    - Render Indonesian about page.
 - Modify: `src/app/contact/page.tsx`
-  - Render English contact page from file data.
+    - Render English contact page from file data.
 - Create: `src/app/id/contact/page.tsx`
-  - Render Indonesian contact page.
+    - Render Indonesian contact page.
 - Modify: `src/app/privacy/page.tsx`
-  - Render English privacy page from file data.
+    - Render English privacy page from file data.
 - Create: `src/app/id/privacy/page.tsx`
-  - Render Indonesian privacy page.
+    - Render Indonesian privacy page.
 - Modify: `src/app/layout.tsx`
-  - Replace Kristian metadata with Akmal default metadata.
+    - Replace Kristian metadata with Akmal default metadata.
 - Modify: `src/components/site-header.tsx`
-  - Consume localized nav labels and language switch routes.
+    - Consume localized nav labels and language switch routes.
 - Modify: `src/components/site-footer.tsx`
-  - Consume localized footer/social data.
+    - Consume localized footer/social data.
 - Modify: `src/components/contact-section.tsx`
-  - Consume localized email CTA.
+    - Consume localized email CTA.
 - Modify: `src/components/selected-work.tsx`
-  - Accept work items as props instead of importing clone data.
+    - Accept work items as props instead of importing clone data.
 - Modify: `src/components/showcase-strip.tsx`
-  - Accept localized work items as props.
+    - Accept localized work items as props.
 - Modify: `src/components/services-section.tsx`
-  - Accept localized services as props.
+    - Accept localized services as props.
 - Modify: `src/components/articles-section.tsx`
-  - Accept localized article items as props.
+    - Accept localized article items as props.
 - Modify or delete: `src/lib/ulrych-data.ts`
-  - Replace with compatibility exports temporarily, then delete once all imports move to `src/lib/content.ts`.
+    - Replace with compatibility exports temporarily, then delete once all imports move to `src/lib/content.ts`.
 
 ---
 
 ## Bilingual Routing Rules
 
 - Default English:
-  - `/`
-  - `/work`
-  - `/work/[slug]`
-  - `/articles`
-  - `/articles/[slug]`
-  - `/about`
-  - `/contact`
-  - `/privacy`
+    - `/`
+    - `/work`
+    - `/work/[slug]`
+    - `/articles`
+    - `/articles/[slug]`
+    - `/about`
+    - `/contact`
+    - `/privacy`
 - Indonesian:
-  - `/id`
-  - `/id/work`
-  - `/id/work/[slug]`
-  - `/id/articles`
-  - `/id/articles/[slug]`
-  - `/id/about`
-  - `/id/contact`
-  - `/id/privacy`
+    - `/id`
+    - `/id/work`
+    - `/id/work/[slug]`
+    - `/id/articles`
+    - `/id/articles/[slug]`
+    - `/id/about`
+    - `/id/contact`
+    - `/id/privacy`
 - Language switcher behavior:
-  - From `/work/portfolio-dashboard`, EN active and ID points to `/id/work/portfolio-dashboard`.
-  - From `/id/work/portfolio-dashboard`, ID active and EN points to `/work/portfolio-dashboard`.
-  - From `/id`, EN points to `/`.
-  - From `/`, ID points to `/id`.
+    - From `/work/portfolio-dashboard`, EN active and ID points to `/id/work/portfolio-dashboard`.
+    - From `/id/work/portfolio-dashboard`, ID active and EN points to `/work/portfolio-dashboard`.
+    - From `/id`, EN points to `/`.
+    - From `/`, ID points to `/id`.
 
 ---
 
@@ -261,47 +261,47 @@ Tersedia untuk magang dan proyek freelance.
 Use these six seed projects until real case studies are ready:
 
 1. `portfolio-dashboard`
-   - Title EN: Portfolio Dashboard
-   - Title ID: Dashboard Portofolio
-   - Scope: Dashboard, Frontend, Data UI
-   - Role: Fullstack Developer
-   - Client: Personal / Internal
-   - Year: 2026
+    - Title EN: Portfolio Dashboard
+    - Title ID: Dashboard Portofolio
+    - Scope: Dashboard, Frontend, Data UI
+    - Role: Fullstack Developer
+    - Client: Personal / Internal
+    - Year: 2026
 2. `maintenance-system`
-   - Title EN: Maintenance Operations System
-   - Title ID: Sistem Operasional Maintenance
-   - Scope: Fullstack Web App, Dashboard, Workflow
-   - Role: Fullstack Developer
-   - Client: Internal / Operational
-   - Year: 2026
+    - Title EN: Maintenance Operations System
+    - Title ID: Sistem Operasional Maintenance
+    - Scope: Fullstack Web App, Dashboard, Workflow
+    - Role: Fullstack Developer
+    - Client: Internal / Operational
+    - Year: 2026
 3. `company-profile`
-   - Title EN: Company Profile Website
-   - Title ID: Website Company Profile
-   - Scope: Web Development, Frontend
-   - Role: Frontend Developer
-   - Client: Freelance
-   - Year: 2026
+    - Title EN: Company Profile Website
+    - Title ID: Website Company Profile
+    - Scope: Web Development, Frontend
+    - Role: Frontend Developer
+    - Client: Freelance
+    - Year: 2026
 4. `support-tools`
-   - Title EN: IT Support Toolkit
-   - Title ID: Toolkit IT Support
-   - Scope: Tools, Automation, Technical Support
-   - Role: Developer / IT Support
-   - Client: Internal Support
-   - Year: 2026
+    - Title EN: IT Support Toolkit
+    - Title ID: Toolkit IT Support
+    - Scope: Tools, Automation, Technical Support
+    - Role: Developer / IT Support
+    - Client: Internal Support
+    - Year: 2026
 5. `api-integration`
-   - Title EN: API Integration Layer
-   - Title ID: Lapisan Integrasi API
-   - Scope: API, Backend, Integration
-   - Role: Backend Developer
-   - Client: Product / Internal
-   - Year: 2026
+    - Title EN: API Integration Layer
+    - Title ID: Lapisan Integrasi API
+    - Scope: API, Backend, Integration
+    - Role: Backend Developer
+    - Client: Product / Internal
+    - Year: 2026
 6. `freelance-web-app`
-   - Title EN: Freelance Web Application
-   - Title ID: Aplikasi Web Freelance
-   - Scope: Fullstack, Product UI, Backend
-   - Role: Fullstack Developer
-   - Client: Freelance
-   - Year: 2026
+    - Title EN: Freelance Web Application
+    - Title ID: Aplikasi Web Freelance
+    - Scope: Fullstack, Product UI, Backend
+    - Role: Fullstack Developer
+    - Client: Freelance
+    - Year: 2026
 
 ---
 
@@ -310,14 +310,14 @@ Use these six seed projects until real case studies are ready:
 Use these three starter articles:
 
 1. `building-maintainable-dashboards`
-   - EN title: Building dashboards that stay maintainable
-   - ID title: Membangun dashboard yang tetap mudah dirawat
+    - EN title: Building dashboards that stay maintainable
+    - ID title: Membangun dashboard yang tetap mudah dirawat
 2. `why-fullstack-context-matters`
-   - EN title: Why fullstack context matters when building products
-   - ID title: Kenapa konteks fullstack penting saat membangun produk
+    - EN title: Why fullstack context matters when building products
+    - ID title: Kenapa konteks fullstack penting saat membangun produk
 3. `practical-it-support-for-small-teams`
-   - EN title: Practical IT support for small teams
-   - ID title: Bantuan teknis IT yang praktis untuk tim kecil
+    - EN title: Practical IT support for small teams
+    - ID title: Bantuan teknis IT yang praktis untuk tim kecil
 
 ---
 
@@ -333,8 +333,8 @@ Include:
 - Analytics: Vercel Web Analytics, cookie-free anonymized analytics.
 - Performance analytics if enabled: Vercel Speed Insights.
 - Legal framing:
-  - Indonesia: UU No. 27 Tahun 2022 tentang Pelindungan Data Pribadi.
-  - International visitors: GDPR-style rights language for access, correction, deletion, objection, and complaint/contact process.
+    - Indonesia: UU No. 27 Tahun 2022 tentang Pelindungan Data Pribadi.
+    - International visitors: GDPR-style rights language for access, correction, deletion, objection, and complaint/contact process.
 - Retention: keep messages only as long as needed for recruitment/freelance communication and reasonable follow-up.
 - No ad tracking cookies unless added later.
 
@@ -349,6 +349,7 @@ Reference sources to check during implementation:
 ## Task 1: Create File-Based Content Foundation
 
 **Files:**
+
 - Create: `data/en/site.json`
 - Create: `data/id/site.json`
 - Create: `data/en/home.json`
@@ -365,67 +366,67 @@ Create `src/types/content.ts` with:
 export type Locale = "en" | "id";
 
 export type LocalizedPath = {
-  en: string;
-  id: string;
+    en: string;
+    id: string;
 };
 
 export type NavItemData = {
-  label: string;
-  href: string;
+    label: string;
+    href: string;
 };
 
 export type SocialLinkData = {
-  label: "GitHub" | "LinkedIn" | "Instagram";
-  href: string;
+    label: "GitHub" | "LinkedIn" | "Instagram";
+    href: string;
 };
 
 export type SiteData = {
-  name: string;
-  role: string;
-  email: string;
-  location: string;
-  availability: string;
-  metadata: {
-    title: string;
-    description: string;
-    ogAlt: string;
-  };
-  nav: NavItemData[];
-  socials: SocialLinkData[];
-  footer: {
-    credit: string;
-    privacyLabel: string;
-  };
-  language: {
-    current: string;
-    switchTo: string;
-  };
+    name: string;
+    role: string;
+    email: string;
+    location: string;
+    availability: string;
+    metadata: {
+        title: string;
+        description: string;
+        ogAlt: string;
+    };
+    nav: NavItemData[];
+    socials: SocialLinkData[];
+    footer: {
+        credit: string;
+        privacyLabel: string;
+    };
+    language: {
+        current: string;
+        switchTo: string;
+    };
 };
 
 export type StatItemData = {
-  label: string;
-  value: string;
+    label: string;
+    value: string;
 };
 
 export type ServiceItemData = {
-  number: string;
-  title: string;
-  description: string;
+    number: string;
+    title: string;
+    description: string;
 };
 
 export type HomeData = {
-  hero: {
-    headline: string;
-    highlightedWord: string;
-    body: string;
-  };
-  stats: StatItemData[];
-  services: ServiceItemData[];
-  testimonials: {
-    quote: string;
-    author: string;
-    role: string;
-  }[];
+    hero: {
+        headline: string;
+        highlightedWord: string;
+        body: string;
+    };
+    stats: StatItemData[];
+    services: ServiceItemData[];
+    testimonials: {
+        quote: string;
+        author: string;
+        role: string;
+    }[];
 };
 ```
 
@@ -440,35 +441,35 @@ export const defaultLocale: Locale = "en";
 export const locales = ["en", "id"] as const;
 
 export function isLocale(value: string): value is Locale {
-  return locales.includes(value as Locale);
+    return locales.includes(value as Locale);
 }
 
 export function withLocale(path: string, locale: Locale) {
-  if (locale === defaultLocale) {
-    return path;
-  }
+    if (locale === defaultLocale) {
+        return path;
+    }
 
-  if (path === "/") {
-    return "/id";
-  }
+    if (path === "/") {
+        return "/id";
+    }
 
-  return `/id${path}`;
+    return `/id${path}`;
 }
 
 export function withoutLocale(path: string) {
-  if (path === "/id") {
-    return "/";
-  }
+    if (path === "/id") {
+        return "/";
+    }
 
-  if (path.startsWith("/id/")) {
-    return path.slice(3) || "/";
-  }
+    if (path.startsWith("/id/")) {
+        return path.slice(3) || "/";
+    }
 
-  return path;
+    return path;
 }
 
 export function getAlternateLocalePath(path: string, targetLocale: Locale) {
-  return withLocale(withoutLocale(path), targetLocale);
+    return withLocale(withoutLocale(path), targetLocale);
 }
 ```
 
@@ -478,34 +479,40 @@ Create `data/en/site.json` with:
 
 ```json
 {
-  "name": "Akmal Zaidan",
-  "role": "Fullstack Developer",
-  "email": "hello@akmalzaidan.dev",
-  "location": "Sukabumi, Indonesia",
-  "availability": "Available for internships and freelance projects",
-  "metadata": {
-    "title": "Akmal Zaidan - Fullstack Developer",
-    "description": "Fullstack developer based in Sukabumi, building web apps, dashboards, tools, APIs, and practical IT solutions.",
-    "ogAlt": "Akmal Zaidan - Fullstack Developer"
-  },
-  "nav": [
-    { "label": "Work", "href": "/work" },
-    { "label": "Articles", "href": "/articles" },
-    { "label": "About", "href": "/about" }
-  ],
-  "socials": [
-    { "label": "GitHub", "href": "https://github.com/akmalzaidan" },
-    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/akmalzaidan" },
-    { "label": "Instagram", "href": "https://www.instagram.com/akmalzaidan" }
-  ],
-  "footer": {
-    "credit": "Designed and built by Akmal Zaidan",
-    "privacyLabel": "Privacy"
-  },
-  "language": {
-    "current": "EN",
-    "switchTo": "ID"
-  }
+    "name": "Akmal Zaidan",
+    "role": "Fullstack Developer",
+    "email": "hello@akmalzaidan.dev",
+    "location": "Sukabumi, Indonesia",
+    "availability": "Available for internships and freelance projects",
+    "metadata": {
+        "title": "Akmal Zaidan - Fullstack Developer",
+        "description": "Fullstack developer based in Sukabumi, building web apps, dashboards, tools, APIs, and practical IT solutions.",
+        "ogAlt": "Akmal Zaidan - Fullstack Developer"
+    },
+    "nav": [
+        { "label": "Work", "href": "/work" },
+        { "label": "Articles", "href": "/articles" },
+        { "label": "About", "href": "/about" }
+    ],
+    "socials": [
+        { "label": "GitHub", "href": "https://github.com/akmalzaidan" },
+        {
+            "label": "LinkedIn",
+            "href": "https://www.linkedin.com/in/akmalzaidan"
+        },
+        {
+            "label": "Instagram",
+            "href": "https://www.instagram.com/akmalzaidan"
+        }
+    ],
+    "footer": {
+        "credit": "Designed and built by Akmal Zaidan",
+        "privacyLabel": "Privacy"
+    },
+    "language": {
+        "current": "EN",
+        "switchTo": "ID"
+    }
 }
 ```
 
@@ -515,34 +522,40 @@ Create `data/id/site.json` with:
 
 ```json
 {
-  "name": "Akmal Zaidan",
-  "role": "Fullstack Developer",
-  "email": "hello@akmalzaidan.dev",
-  "location": "Sukabumi, Indonesia",
-  "availability": "Tersedia untuk magang dan proyek freelance",
-  "metadata": {
-    "title": "Akmal Zaidan - Fullstack Developer",
-    "description": "Fullstack developer berbasis di Sukabumi yang membangun web app, dashboard, tools, API, dan solusi IT praktis.",
-    "ogAlt": "Akmal Zaidan - Fullstack Developer"
-  },
-  "nav": [
-    { "label": "Work", "href": "/work" },
-    { "label": "Artikel", "href": "/articles" },
-    { "label": "Tentang", "href": "/about" }
-  ],
-  "socials": [
-    { "label": "GitHub", "href": "https://github.com/akmalzaidan" },
-    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/akmalzaidan" },
-    { "label": "Instagram", "href": "https://www.instagram.com/akmalzaidan" }
-  ],
-  "footer": {
-    "credit": "Didesain dan dibuat oleh Akmal Zaidan",
-    "privacyLabel": "Privasi"
-  },
-  "language": {
-    "current": "ID",
-    "switchTo": "EN"
-  }
+    "name": "Akmal Zaidan",
+    "role": "Fullstack Developer",
+    "email": "hello@akmalzaidan.dev",
+    "location": "Sukabumi, Indonesia",
+    "availability": "Tersedia untuk magang dan proyek freelance",
+    "metadata": {
+        "title": "Akmal Zaidan - Fullstack Developer",
+        "description": "Fullstack developer berbasis di Sukabumi yang membangun web app, dashboard, tools, API, dan solusi IT praktis.",
+        "ogAlt": "Akmal Zaidan - Fullstack Developer"
+    },
+    "nav": [
+        { "label": "Work", "href": "/work" },
+        { "label": "Artikel", "href": "/articles" },
+        { "label": "Tentang", "href": "/about" }
+    ],
+    "socials": [
+        { "label": "GitHub", "href": "https://github.com/akmalzaidan" },
+        {
+            "label": "LinkedIn",
+            "href": "https://www.linkedin.com/in/akmalzaidan"
+        },
+        {
+            "label": "Instagram",
+            "href": "https://www.instagram.com/akmalzaidan"
+        }
+    ],
+    "footer": {
+        "credit": "Didesain dan dibuat oleh Akmal Zaidan",
+        "privacyLabel": "Privasi"
+    },
+    "language": {
+        "current": "ID",
+        "switchTo": "EN"
+    }
 }
 ```
 
@@ -563,21 +576,21 @@ import idSite from "../../data/id/site.json";
 import type { HomeData, Locale, SiteData } from "@/types/content";
 
 const siteByLocale: Record<Locale, SiteData> = {
-  en: enSite,
-  id: idSite
+    en: enSite,
+    id: idSite,
 };
 
 const homeByLocale: Record<Locale, HomeData> = {
-  en: enHome,
-  id: idHome
+    en: enHome,
+    id: idHome,
 };
 
 export function getSiteData(locale: Locale) {
-  return siteByLocale[locale];
+    return siteByLocale[locale];
 }
 
 export function getHomeData(locale: Locale) {
-  return homeByLocale[locale];
+    return homeByLocale[locale];
 }
 ```
 
@@ -607,6 +620,7 @@ Expected: a focused commit containing the new data layer.
 ## Task 2: Localize Shell, Header, Footer, and Root Metadata
 
 **Files:**
+
 - Modify: `src/app/layout.tsx`
 - Modify: `src/components/site-header.tsx`
 - Modify: `src/components/site-footer.tsx`
@@ -620,36 +634,36 @@ Update `src/app/layout.tsx` to use Akmal's metadata:
 
 ```ts
 export const metadata: Metadata = {
-  metadataBase: new URL("https://akmalzaidan.dev"),
-  title: "Akmal Zaidan - Fullstack Developer",
-  description:
-    "Fullstack developer based in Sukabumi, building web apps, dashboards, tools, APIs, and practical IT solutions.",
-  authors: [{ name: "Akmal Zaidan" }],
-  creator: "Akmal Zaidan",
-  openGraph: {
+    metadataBase: new URL("https://akmalzaidan.dev"),
     title: "Akmal Zaidan - Fullstack Developer",
     description:
-      "Fullstack developer based in Sukabumi, building web apps, dashboards, tools, APIs, and practical IT solutions.",
-    images: [
-      {
-        url: "/seo/og.png",
-        width: 1200,
-        height: 630,
-        alt: "Akmal Zaidan - Fullstack Developer"
-      }
-    ]
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Akmal Zaidan - Fullstack Developer",
-    description:
-      "Fullstack developer based in Sukabumi, building web apps, dashboards, tools, APIs, and practical IT solutions.",
-    images: ["/seo/og.png"]
-  },
-  icons: {
-    icon: "/seo/icon.png",
-    apple: "/seo/apple-icon.png"
-  }
+        "Fullstack developer based in Sukabumi, building web apps, dashboards, tools, APIs, and practical IT solutions.",
+    authors: [{ name: "Akmal Zaidan" }],
+    creator: "Akmal Zaidan",
+    openGraph: {
+        title: "Akmal Zaidan - Fullstack Developer",
+        description:
+            "Fullstack developer based in Sukabumi, building web apps, dashboards, tools, APIs, and practical IT solutions.",
+        images: [
+            {
+                url: "/seo/og.png",
+                width: 1200,
+                height: 630,
+                alt: "Akmal Zaidan - Fullstack Developer",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Akmal Zaidan - Fullstack Developer",
+        description:
+            "Fullstack developer based in Sukabumi, building web apps, dashboards, tools, APIs, and practical IT solutions.",
+        images: ["/seo/og.png"],
+    },
+    icons: {
+        icon: "/seo/icon.png",
+        apple: "/seo/apple-icon.png",
+    },
 };
 ```
 
@@ -661,7 +675,7 @@ Update `SiteHeader`, `SiteFooter`, and `ContactSection` to accept:
 import type { Locale } from "@/types/content";
 
 type LocalizedComponentProps = {
-  locale: Locale;
+    locale: Locale;
 };
 ```
 
@@ -707,6 +721,7 @@ git commit -m "Localize site shell and metadata"
 ## Task 3: Convert Homepage to Akmal Data
 
 **Files:**
+
 - Create: `src/components/pages/home-page.tsx`
 - Modify: `src/app/page.tsx`
 - Create: `src/app/id/page.tsx`
@@ -734,31 +749,42 @@ import { ShowcaseStrip } from "@/components/showcase-strip";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { TestimonialSection } from "@/components/testimonial-section";
-import { getArticleSummaries, getHomeData, getSiteData, getWorkSummaries } from "@/lib/content";
+import {
+    getArticleSummaries,
+    getHomeData,
+    getSiteData,
+    getWorkSummaries,
+} from "@/lib/content";
 
 export function HomePage({ locale }: { locale: Locale }) {
-  const site = getSiteData(locale);
-  const home = getHomeData(locale);
-  const work = getWorkSummaries(locale);
-  const articles = getArticleSummaries(locale);
+    const site = getSiteData(locale);
+    const home = getHomeData(locale);
+    const work = getWorkSummaries(locale);
+    const articles = getArticleSummaries(locale);
 
-  return (
-    <>
-      <SiteHeader locale={locale} site={site} />
-      <main className="relative z-10">
-        <HeroSection data={home.hero} stats={home.stats} />
-        <ShowcaseStrip items={work} />
-        <SelectedWork items={work} title={locale === "id" ? "Work pilihan" : "Selected work"} />
-        <ServicesSection items={home.services} />
-        <TestimonialSection items={home.testimonials} />
-        <ArticlesSection items={articles} title={locale === "id" ? "Artikel" : "Articles"} />
-        <ContactSection locale={locale} site={site} />
-      </main>
-      <div className="relative z-10">
-        <SiteFooter locale={locale} site={site} />
-      </div>
-    </>
-  );
+    return (
+        <>
+            <SiteHeader locale={locale} site={site} />
+            <main className="relative z-10">
+                <HeroSection data={home.hero} stats={home.stats} />
+                <ShowcaseStrip items={work} />
+                <SelectedWork
+                    items={work}
+                    title={locale === "id" ? "Work pilihan" : "Selected work"}
+                />
+                <ServicesSection items={home.services} />
+                <TestimonialSection items={home.testimonials} />
+                <ArticlesSection
+                    items={articles}
+                    title={locale === "id" ? "Artikel" : "Articles"}
+                />
+                <ContactSection locale={locale} site={site} />
+            </main>
+            <div className="relative z-10">
+                <SiteFooter locale={locale} site={site} />
+            </div>
+        </>
+    );
 }
 ```
 
@@ -770,7 +796,7 @@ Update `src/app/page.tsx`:
 import { HomePage } from "@/components/pages/home-page";
 
 export default function Page() {
-  return <HomePage locale="en" />;
+    return <HomePage locale="en" />;
 }
 ```
 
@@ -782,7 +808,7 @@ Create `src/app/id/page.tsx`:
 import { HomePage } from "@/components/pages/home-page";
 
 export default function Page() {
-  return <HomePage locale="id" />;
+    return <HomePage locale="id" />;
 }
 ```
 
@@ -818,6 +844,7 @@ git commit -m "Replace homepage with Akmal bilingual content"
 ## Task 4: Build File-Based Work Pages
 
 **Files:**
+
 - Create: `data/en/work/*.json`
 - Create: `data/id/work/*.json`
 - Create: `public/images/akmal/placeholders/project-*.svg`
@@ -836,32 +863,32 @@ Add to `src/types/content.ts`:
 
 ```ts
 export type WorkSummaryData = {
-  slug: string;
-  title: string;
-  year: string;
-  description: string;
-  href: string;
-  image: string;
-  alt: string;
-  category: string;
+    slug: string;
+    title: string;
+    year: string;
+    description: string;
+    href: string;
+    image: string;
+    alt: string;
+    category: string;
 };
 
 export type WorkDetailData = WorkSummaryData & {
-  role: string;
-  client: string;
-  summary: string;
-  sections: {
-    slot: "overview" | "challenge" | "approach" | "outcome";
-    heading: string;
-    body: string[];
-  }[];
-  gallery: {
-    src: string;
-    alt: string;
-    aspect: "16/9" | "4/3";
-    span?: "half" | "full";
-    slot: "overview" | "challenge" | "approach" | "outcome";
-  }[];
+    role: string;
+    client: string;
+    summary: string;
+    sections: {
+        slot: "overview" | "challenge" | "approach" | "outcome";
+        heading: string;
+        body: string[];
+    }[];
+    gallery: {
+        src: string;
+        alt: string;
+        aspect: "16/9" | "4/3";
+        span?: "half" | "full";
+        slot: "overview" | "challenge" | "approach" | "outcome";
+    }[];
 };
 ```
 
@@ -870,7 +897,7 @@ export type WorkDetailData = WorkSummaryData & {
 Create six files in `public/images/akmal/placeholders/`, named:
 
 ```text
-project-portfolio-dashboard.svg
+presensi.webp
 project-maintenance-system.svg
 project-company-profile.svg
 project-support-tools.svg
@@ -890,24 +917,24 @@ Extend `src/lib/content.ts` with:
 
 ```ts
 export function getWorkSummaries(locale: Locale): WorkSummaryData[] {
-  return workByLocale[locale].map((item) => ({
-    slug: item.slug,
-    title: item.title,
-    year: item.year,
-    description: item.description,
-    href: withLocale(`/work/${item.slug}`, locale),
-    image: item.image,
-    alt: item.alt,
-    category: item.category
-  }));
+    return workByLocale[locale].map((item) => ({
+        slug: item.slug,
+        title: item.title,
+        year: item.year,
+        description: item.description,
+        href: withLocale(`/work/${item.slug}`, locale),
+        image: item.image,
+        alt: item.alt,
+        category: item.category,
+    }));
 }
 
 export function getWorkDetail(locale: Locale, slug: string) {
-  return workByLocale[locale].find((item) => item.slug === slug);
+    return workByLocale[locale].find((item) => item.slug === slug);
 }
 
 export function getWorkSlugs() {
-  return workByLocale.en.map((item) => item.slug);
+    return workByLocale.en.map((item) => item.slug);
 }
 ```
 
@@ -943,6 +970,7 @@ git commit -m "Add bilingual file-based work pages"
 ## Task 5: Build File-Based Articles
 
 **Files:**
+
 - Create: `data/en/articles/*.json`
 - Create: `data/id/articles/*.json`
 - Create: `public/images/akmal/placeholders/article-*.svg`
@@ -961,21 +989,21 @@ Add to `src/types/content.ts`:
 
 ```ts
 export type ArticleSummaryData = {
-  slug: string;
-  title: string;
-  description: string;
-  href: string;
-  image: string;
-  alt: string;
-  publishedAt: string;
+    slug: string;
+    title: string;
+    description: string;
+    href: string;
+    image: string;
+    alt: string;
+    publishedAt: string;
 };
 
 export type ArticleDetailData = ArticleSummaryData & {
-  lead: string;
-  blocks: {
-    heading?: string;
-    paragraphs: string[];
-  }[];
+    lead: string;
+    blocks: {
+        heading?: string;
+        paragraphs: string[];
+    }[];
 };
 ```
 
@@ -1025,6 +1053,7 @@ git commit -m "Add bilingual file-based articles"
 ## Task 6: Replace About, Contact, and Privacy
 
 **Files:**
+
 - Create: `data/en/about.json`
 - Create: `data/id/about.json`
 - Create: `data/en/contact.json`
@@ -1090,6 +1119,7 @@ git commit -m "Replace about contact and privacy content"
 ## Task 7: Remove Clone Residue
 
 **Files:**
+
 - Modify or delete: `src/lib/ulrych-data.ts`
 - Search all `src`, `data`, `public`, `docs` references.
 - Modify: `src/app/layout.tsx`
@@ -1143,6 +1173,7 @@ git commit -m "Remove cloned portfolio identity"
 ## Task 8: Verification and Polish
 
 **Files:**
+
 - Modify only files found by verification.
 
 - [ ] **Step 1: Typecheck**
@@ -1248,24 +1279,24 @@ Because the user previously requested gated execution in this project:
 ## Self-Review
 
 - Requirement coverage:
-  - Akmal Zaidan identity: Tasks 1, 2, 3, 6, 7.
-  - Fullstack developer positioning: Tasks 1, 3, 6.
-  - Recruiter/client/HR audience: Tasks 1, 3, 6.
-  - English default + Indonesian `/id`: Tasks 1, 2, 3, 4, 5, 6.
-  - File-based `data/` content: Tasks 1, 4, 5, 6.
-  - Six work items with placeholders: Task 4.
-  - Three real seed articles: Task 5.
-  - Keep visual style/Galaxy/route transition: Tasks 3 and 8.
-  - Contact form still sends email: Task 6 and Task 8.
-  - GitHub/LinkedIn/Instagram: Task 1 and Task 2.
-  - Privacy with Vercel Analytics and Indonesia/international framing: Task 6.
-  - Remove cloned identity: Task 7.
+    - Akmal Zaidan identity: Tasks 1, 2, 3, 6, 7.
+    - Fullstack developer positioning: Tasks 1, 3, 6.
+    - Recruiter/client/HR audience: Tasks 1, 3, 6.
+    - English default + Indonesian `/id`: Tasks 1, 2, 3, 4, 5, 6.
+    - File-based `data/` content: Tasks 1, 4, 5, 6.
+    - Six work items with placeholders: Task 4.
+    - Three real seed articles: Task 5.
+    - Keep visual style/Galaxy/route transition: Tasks 3 and 8.
+    - Contact form still sends email: Task 6 and Task 8.
+    - GitHub/LinkedIn/Instagram: Task 1 and Task 2.
+    - Privacy with Vercel Analytics and Indonesia/international framing: Task 6.
+    - Remove cloned identity: Task 7.
 - Placeholder scan:
-  - The word placeholder appears only for intentional temporary visual assets requested by the user.
-  - No task says "TBD" or "implement later".
+    - The word placeholder appears only for intentional temporary visual assets requested by the user.
+    - No task says "TBD" or "implement later".
 - Type consistency:
-  - `Locale`, `SiteData`, `HomeData`, `WorkDetailData`, and `ArticleDetailData` are introduced before use.
-  - Route helper names are consistent: `withLocale`, `withoutLocale`, `getAlternateLocalePath`.
+    - `Locale`, `SiteData`, `HomeData`, `WorkDetailData`, and `ArticleDetailData` are introduced before use.
+    - Route helper names are consistent: `withLocale`, `withoutLocale`, `getAlternateLocalePath`.
 
 ---
 

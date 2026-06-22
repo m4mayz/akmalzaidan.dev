@@ -31,26 +31,26 @@ export function HomePage({ locale }: { locale: Locale }) {
                 <ShowcaseStrip items={work} />
                 <SelectedWork
                     items={work}
-                    title={isIndonesian ? "Work pilihan" : "Selected work"}
+                    title={isIndonesian ? "Project pilihan" : "Selected work"}
                 />
                 <ServicesSection
                     ctaHref={withLocale("/contact", locale)}
                     ctaLabel={isIndonesian ? "Hubungi saya" : "Get in touch"}
                     ctaText={
                         isIndonesian
-                            ? "Punya proyek atau kebutuhan teknis? Mari bicara."
-                            : "Have a project or technical need in mind? Let's talk."
+                            ? "Punya project, peluang kerja, atau masalah teknis yang perlu dibahas?"
+                            : "Have a project, role, or technical problem to talk about?"
                     }
                     items={home.services}
-                    title={isIndonesian ? "Yang saya kerjakan" : "What I do"}
+                    title={isIndonesian ? "Yang bisa saya bantu" : "What I can help with"}
                 />
                 <TestimonialSection
                     items={home.testimonials}
-                    title={isIndonesian ? "Kata Mereka" : "Kind Words"}
+                    title={isIndonesian ? "Testimoni" : "Testimonials"}
                 />
                 <ArticlesSection
                     items={articles}
-                    title={isIndonesian ? "Artikel" : "Things worth sharing"}
+                    title={isIndonesian ? "Artikel" : "Articles"}
                 />
                 <ContactSection locale={locale} site={site} />
             </main>

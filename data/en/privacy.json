@@ -2,12 +2,12 @@
   "eyebrow": "Legal",
   "title": "Privacy Policy",
   "lastUpdated": "Last updated: 20 June 2026",
-  "intro": "This page explains what personal data is processed when you use Akmal Zaidan's portfolio website, contact form, analytics, and related services. It is written for visitors from Indonesia and international visitors, including GDPR-style rights where relevant.",
+  "intro": "This page explains what personal data is collected when you use Akmal Zaidan's portfolio website, why it is processed, and what rights you may have under Indonesian personal data protection rules and international privacy frameworks such as the GDPR where they apply.",
   "sections": [
     {
       "heading": "Data controller",
       "paragraphs": [
-        "The controller for this portfolio website is Akmal Zaidan, based in Sukabumi, Indonesia. You can contact me through the email address listed on this website."
+        "Akmal Zaidan, a developer and IT support person based in Sukabumi, Indonesia. The simplest way to reach me is by email at akmalzaidan960@gmail.com."
       ]
     },
     {
@@ -16,27 +16,32 @@
         {
           "subheading": "Contact form",
           "paragraphs": [
-            "When you submit the contact form, the site may process your name, email address, subject, message, and basic request metadata such as timestamp, IP address, user agent, and anti-abuse signals.",
-            "The purpose is to receive your message, reply to recruitment or freelance inquiries, discuss possible collaboration, and keep reasonable follow-up records."
+            "When you use the contact form, it opens your email client and sends your message to my inbox. The data may include your name, email address, subject, message, and the time the message was sent.",
+            "The purpose is to receive your message, reply to internship, freelance, support, or collaboration inquiries, and keep reasonable follow-up records."
           ]
         },
         {
-          "subheading": "Email delivery",
+          "subheading": "Hosting",
           "paragraphs": [
-            "Messages may be sent through the email tools configured for this website or through a mail client fallback. The resulting message is stored in my inbox so I can reply and follow up."
+            "This site is hosted on Vercel. Vercel may process standard technical data needed to deliver the website, keep it reliable, and protect it from abuse."
           ]
         },
         {
-          "subheading": "Hosting and security",
+          "subheading": "Email",
           "paragraphs": [
-            "The site is hosted on Vercel. Hosting providers process standard request data that is necessary to deliver pages, monitor reliability, and protect the service from abuse."
+            "Messages are delivered to my Gmail inbox. Your message may be stored there so I can reply and follow up on the conversation."
           ]
         },
         {
-          "subheading": "Analytics and performance",
+          "subheading": "Analytics",
           "paragraphs": [
-            "The site may use Vercel Web Analytics. Vercel states that Web Analytics stores anonymized data and does not use cookies.",
-            "If Vercel Speed Insights is enabled, it collects anonymous performance data such as route, device type, browser, country, and Web Vitals metrics. Vercel states that Speed Insights does not collect or store information that would allow a browsing session to be reconstructed or a user to be identified."
+            "This site may use Vercel Web Analytics. It is used to understand general website traffic and improve the site without relying on advertising tracking cookies."
+          ]
+        },
+        {
+          "subheading": "Third-party assets",
+          "paragraphs": [
+            "Some assets, scripts, libraries, or services used by this website may be provided by third parties. Those providers may receive standard technical request data as part of normal website delivery."
           ]
         }
       ]
@@ -44,39 +49,46 @@
     {
       "heading": "Legal basis and privacy framework",
       "paragraphs": [
-        "For Indonesian visitors, this policy is framed with Law No. 27 of 2022 concerning Personal Data Protection in mind.",
-        "For international visitors, the same practical rights are respected where applicable, including access, correction, deletion, objection, and the ability to contact me about privacy concerns."
+        "For visitors in Indonesia, this policy is written with Law No. 27 of 2022 concerning Personal Data Protection in mind.",
+        "For international visitors, similar practical rights are respected where applicable, including access, correction, deletion, objection, restriction, portability, and the right to raise a complaint with a relevant authority."
+      ]
+    },
+    {
+      "heading": "International transfers",
+      "paragraphs": [
+        "Some services used by this website or for communication, such as Vercel, Gmail, and analytics providers, may process data outside Indonesia or outside your country. Where this happens, the processing depends on the safeguards and privacy terms provided by those services."
       ]
     },
     {
       "heading": "Retention",
       "paragraphs": [
-        "Messages are kept only as long as needed for recruitment, freelance communication, collaboration follow-up, or reasonable record keeping. You can ask for deletion earlier unless I need to keep limited information for legal or security reasons."
+        "Messages are kept only as long as needed to handle the conversation and reasonable follow-up, and no longer than 24 months from the last interaction unless a legal, security, or contractual reason requires longer retention. You can ask for earlier deletion at any time."
       ]
     },
     {
       "heading": "Your rights",
       "paragraphs": [
-        "You can contact me to ask what data I hold about you, correct inaccurate information, request deletion, object to processing, or ask how your data is handled."
+        "Under applicable privacy rules, you may have the right to:"
       ],
       "list": [
-        "Access your personal data.",
-        "Correct inaccurate or incomplete information.",
-        "Request deletion where appropriate.",
-        "Object to or restrict certain processing.",
-        "Ask questions or raise a complaint through the contact email."
+        "Access the data I hold about you.",
+        "Have inaccurate data corrected.",
+        "Request deletion.",
+        "Restrict or object to processing.",
+        "Receive your data in a portable format.",
+        "Raise a complaint with a relevant Indonesian authority or, where applicable, an EU supervisory authority."
       ]
     },
     {
-      "heading": "Cookies and advertising",
+      "heading": "Exercising your rights",
       "paragraphs": [
-        "This site does not use advertising tracking cookies. If this changes later, the policy will be updated before those tools are intentionally added."
+        "To exercise these rights, email akmalzaidan960@gmail.com."
       ]
     },
     {
       "heading": "Changes",
       "paragraphs": [
-        "This policy may be updated when the website, analytics setup, contact handling, or legal requirements change. The date above reflects the current version."
+        "This policy may be updated from time to time. The \"Last updated\" date at the top reflects the current version."
       ]
     }
   ]

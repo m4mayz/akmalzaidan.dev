@@ -1,31 +1,13 @@
-import enDashboardsArticle from "../../data/en/articles/building-maintainable-dashboards.json";
-import enItSupportArticle from "../../data/en/articles/practical-it-support-for-small-teams.json";
-import enFullstackArticle from "../../data/en/articles/why-fullstack-context-matters.json";
 import enAbout from "../../data/en/about.json";
 import enContact from "../../data/en/contact.json";
 import enHome from "../../data/en/home.json";
 import enPrivacy from "../../data/en/privacy.json";
 import enSite from "../../data/en/site.json";
-import enApiIntegration from "../../data/en/work/api-integration.json";
-import enCompanyProfile from "../../data/en/work/company-profile.json";
-import enFreelanceWebApp from "../../data/en/work/freelance-web-app.json";
-import enMaintenanceSystem from "../../data/en/work/maintenance-system.json";
-import enPortfolioDashboard from "../../data/en/work/portfolio-dashboard.json";
-import enSupportTools from "../../data/en/work/support-tools.json";
-import idDashboardsArticle from "../../data/id/articles/building-maintainable-dashboards.json";
-import idItSupportArticle from "../../data/id/articles/practical-it-support-for-small-teams.json";
-import idFullstackArticle from "../../data/id/articles/why-fullstack-context-matters.json";
 import idAbout from "../../data/id/about.json";
 import idContact from "../../data/id/contact.json";
 import idHome from "../../data/id/home.json";
 import idPrivacy from "../../data/id/privacy.json";
 import idSite from "../../data/id/site.json";
-import idApiIntegration from "../../data/id/work/api-integration.json";
-import idCompanyProfile from "../../data/id/work/company-profile.json";
-import idFreelanceWebApp from "../../data/id/work/freelance-web-app.json";
-import idMaintenanceSystem from "../../data/id/work/maintenance-system.json";
-import idPortfolioDashboard from "../../data/id/work/portfolio-dashboard.json";
-import idSupportTools from "../../data/id/work/support-tools.json";
 
 import { withLocale } from "@/lib/i18n";
 import type {
@@ -69,35 +51,13 @@ const privacyByLocale: Record<Locale, PrivacyData> = {
 };
 
 const workByLocale: Record<Locale, WorkContentData[]> = {
-  en: [
-    enPortfolioDashboard as WorkContentData,
-    enMaintenanceSystem as WorkContentData,
-    enCompanyProfile as WorkContentData,
-    enSupportTools as WorkContentData,
-    enApiIntegration as WorkContentData,
-    enFreelanceWebApp as WorkContentData,
-  ],
-  id: [
-    idPortfolioDashboard as WorkContentData,
-    idMaintenanceSystem as WorkContentData,
-    idCompanyProfile as WorkContentData,
-    idSupportTools as WorkContentData,
-    idApiIntegration as WorkContentData,
-    idFreelanceWebApp as WorkContentData,
-  ],
+  en: [],
+  id: [],
 };
 
 const articlesByLocale: Record<Locale, ArticleContentData[]> = {
-  en: [
-    enDashboardsArticle as ArticleContentData,
-    enFullstackArticle as ArticleContentData,
-    enItSupportArticle as ArticleContentData,
-  ],
-  id: [
-    idDashboardsArticle as ArticleContentData,
-    idFullstackArticle as ArticleContentData,
-    idItSupportArticle as ArticleContentData,
-  ],
+  en: [],
+  id: [],
 };
 
 export function getSiteData(locale: Locale) {
