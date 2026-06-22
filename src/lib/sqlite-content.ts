@@ -51,6 +51,20 @@ type ArticleRow = {
 
 export type CmsContentType = "work" | "articles";
 
+export type CmsWorkInput = WorkContentData & {
+  id?: number;
+  locale: Locale;
+  status: "draft" | "published";
+  sortOrder?: number;
+};
+
+export type CmsArticleInput = ArticleContentData & {
+  id?: number;
+  locale: Locale;
+  status: "draft" | "published";
+  sortOrder?: number;
+};
+
 function getDb() {
   if (!existsSync(dbPath)) {
     throw new Error(
@@ -96,6 +110,26 @@ function mapArticle(row: ArticleRow): ArticleContentData {
     publishedAt: row.published_at,
     lead: row.lead,
     blocks: parseJson(row.blocks_json, []),
+  };
+}
+
+function mapCmsWork(row: WorkRow): CmsWorkInput {
+  return {
+    ...mapWork(row),
+    id: row.id,
+    locale: row.locale,
+    status: row.status,
+    sortOrder: row.sort_order,
+  };
+}
+
+function mapCmsArticle(row: ArticleRow): CmsArticleInput {
+  return {
+    ...mapArticle(row),
+    id: row.id,
+    locale: row.locale,
+    status: row.status,
+    sortOrder: row.sort_order,
   };
 }
 
@@ -182,4 +216,120 @@ export function getWorkSlugsFromDb() {
 
 export function getArticleSlugsFromDb() {
   return listArticles("en").map((item) => item.slug);
+}
+
+export function listCmsContent(type: CmsContentType, locale: Locale) {
+  const db = getDb();
+
+  if (type === "work") {
+    const rows = db
+      .prepare(`
+        SELECT * FROM works
+        WHERE locale = ?
+        ORDER BY sort_order ASC, id DESC
+      `)
+      .all(locale) as WorkRow[];
+    db.close();
+    return rows.map(mapCmsWork);
+  }
+
+  const rows = db
+    .prepare(`
+      SELECT * FROM articles
+      WHERE locale = ?
+      ORDER BY sort_order ASC, published_at DESC, id DESC
+    `)
+    .all(locale) as ArticleRow[];
+  db.close();
+  return rows.map(mapCmsArticle);
+}
+
+export function upsertWork(input: CmsWorkInput) {
+  const db = getDb();
+  db.prepare(`
+    INSERT INTO works (
+      locale, slug, status, sort_order, title, year, description, image, alt,
+      category, role, client, summary, sections_json, gallery_json, updated_at
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+    ON CONFLICT(locale, slug) DO UPDATE SET
+      status = excluded.status,
+      sort_order = excluded.sort_order,
+      title = excluded.title,
+      year = excluded.year,
+      description = excluded.description,
+      image = excluded.image,
+      alt = excluded.alt,
+      category = excluded.category,
+      role = excluded.role,
+      client = excluded.client,
+      summary = excluded.summary,
+      sections_json = excluded.sections_json,
+      gallery_json = excluded.gallery_json,
+      updated_at = CURRENT_TIMESTAMP
+  `).run(
+    input.locale,
+    input.slug,
+    input.status,
+    input.sortOrder ?? 0,
+    input.title,
+    input.year,
+    input.description,
+    input.image,
+    input.alt,
+    input.category,
+    input.role,
+    input.client,
+    input.summary,
+    JSON.stringify(input.sections),
+    JSON.stringify(input.gallery),
+  );
+  db.close();
+}
+
+export function upsertArticle(input: CmsArticleInput) {
+  const db = getDb();
+  db.prepare(`
+    INSERT INTO articles (
+      locale, slug, status, sort_order, title, description, image, alt,
+      published_at, lead, blocks_json, updated_at
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+    ON CONFLICT(locale, slug) DO UPDATE SET
+      status = excluded.status,
+      sort_order = excluded.sort_order,
+      title = excluded.title,
+      description = excluded.description,
+      image = excluded.image,
+      alt = excluded.alt,
+      published_at = excluded.published_at,
+      lead = excluded.lead,
+      blocks_json = excluded.blocks_json,
+      updated_at = CURRENT_TIMESTAMP
+  `).run(
+    input.locale,
+    input.slug,
+    input.status,
+    input.sortOrder ?? 0,
+    input.title,
+    input.description,
+    input.image,
+    input.alt,
+    input.publishedAt,
+    input.lead,
+    JSON.stringify(input.blocks),
+  );
+  db.close();
+}
+
+export function deleteCmsContent(
+  type: CmsContentType,
+  locale: Locale,
+  slug: string,
+) {
+  const db = getDb();
+  db.prepare(
+    type === "work"
+      ? "DELETE FROM works WHERE locale = ? AND slug = ?"
+      : "DELETE FROM articles WHERE locale = ? AND slug = ?",
+  ).run(locale, slug);
+  db.close();
 }
