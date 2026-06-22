@@ -232,7 +232,7 @@ export function ContentCms() {
     };
 
     return (
-        <main className="min-h-screen bg-background px-5 py-8 text-foreground md:px-10">
+        <main className="relative z-10 min-h-screen bg-background px-5 py-8 text-foreground md:px-10">
             <div className="mx-auto grid max-w-[89.5rem] gap-8 md:grid-cols-[320px_1fr]">
                 <aside className="space-y-5">
                     <div>
