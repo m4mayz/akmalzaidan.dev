@@ -72,7 +72,7 @@ export function WorkDetailPage({
     const details = [
         [isIndonesian ? "Lingkup" : "Scope", project.category],
         [isIndonesian ? "Peran" : "Role", project.role],
-        [isIndonesian ? "Konteks" : "Client", project.client],
+        [isIndonesian ? "Klien" : "Client", project.client],
         [isIndonesian ? "Tahun" : "Year", project.year],
     ];
 

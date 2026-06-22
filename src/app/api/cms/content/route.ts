@@ -40,10 +40,12 @@ export async function POST(request: Request) {
   if (!devOnly()) return notFoundResponse();
 
   const body = await request.json();
+  const items = Array.isArray(body.items) ? body.items : [body.item];
+
   if (body.type === "articles") {
-    upsertArticle(body.item);
+    for (const item of items) upsertArticle(item);
   } else {
-    upsertWork(body.item);
+    for (const item of items) upsertWork(item);
   }
 
   return Response.json({ ok: true });
@@ -53,7 +55,14 @@ export async function DELETE(request: Request) {
   if (!devOnly()) return notFoundResponse();
 
   const body = await request.json();
-  deleteCmsContent(parseType(body.type), parseLocale(body.locale), body.slug);
+  const type = parseType(body.type);
+  if (body.locale) {
+    deleteCmsContent(type, parseLocale(body.locale), body.slug);
+  } else {
+    for (const locale of ["en", "id"] as Locale[]) {
+      deleteCmsContent(type, locale, body.slug);
+    }
+  }
 
   return Response.json({ ok: true });
 }

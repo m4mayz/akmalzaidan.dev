@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 export const runtime = "nodejs";
@@ -10,6 +10,16 @@ function devOnly() {
 
 function cleanSegment(value: string) {
   return value.toLowerCase().replace(/[^a-z0-9-]/g, "-").replace(/-+/g, "-");
+}
+
+function publicImagePath(src: string) {
+  if (!src.startsWith("/images/work/") && !src.startsWith("/images/articles/")) {
+    return null;
+  }
+
+  const publicRoot = path.resolve(process.cwd(), "public");
+  const filePath = path.resolve(publicRoot, `.${src}`);
+  return filePath.startsWith(`${publicRoot}${path.sep}`) ? filePath : null;
 }
 
 export async function POST(request: Request) {
@@ -38,4 +48,25 @@ export async function POST(request: Request) {
   return Response.json({
     src: `/images/${type}/${slug}/${fileName}`,
   });
+}
+
+export async function DELETE(request: Request) {
+  if (!devOnly()) {
+    return new Response("Not found", { status: 404 });
+  }
+
+  const body = (await request.json()) as { src?: string };
+  const filePath = publicImagePath(String(body.src ?? ""));
+
+  if (!filePath) {
+    return Response.json({ error: "Invalid asset path" }, { status: 400 });
+  }
+
+  try {
+    await unlink(filePath);
+  } catch {
+    return Response.json({ ok: true, deleted: false });
+  }
+
+  return Response.json({ ok: true, deleted: true });
 }

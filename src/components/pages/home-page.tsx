@@ -42,11 +42,15 @@ export function HomePage({ locale }: { locale: Locale }) {
                             : "Have a project, role, or technical problem to talk about?"
                     }
                     items={home.services}
-                    title={isIndonesian ? "Yang bisa saya bantu" : "What I can help with"}
+                    title={
+                        isIndonesian
+                            ? "Yang bisa saya bantu"
+                            : "What I can help with"
+                    }
                 />
                 <TestimonialSection
                     items={home.testimonials}
-                    title={isIndonesian ? "Testimoni" : "Testimonials"}
+                    title={isIndonesian ? "Cerita Mereka" : "Kind Words"}
                 />
                 <ArticlesSection
                     items={articles}
