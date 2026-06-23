@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Instrument_Sans, Newsreader } from "next/font/google";
 
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 import { SiteEffects } from "@/components/effects/site-effects";
 import { getSiteData } from "@/lib/content";
 
@@ -63,6 +66,8 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <SiteEffects />
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
