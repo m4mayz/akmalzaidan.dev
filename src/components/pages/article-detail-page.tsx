@@ -36,7 +36,7 @@ function ArticleContent({
     );
 }
 
-export function ArticleDetailPage({
+export async function ArticleDetailPage({
     locale,
     slug,
 }: {
@@ -44,14 +44,14 @@ export function ArticleDetailPage({
     slug: string;
 }) {
     const site = getSiteData(locale);
-    const article = getArticleDetail(locale, slug);
+    const article = await getArticleDetail(locale, slug);
     const isIndonesian = locale === "id";
 
     if (!article) {
         notFound();
     }
 
-    const moreArticles = getMoreArticleSummaries(locale, article.slug);
+    const moreArticles = await getMoreArticleSummaries(locale, article.slug);
 
     return (
         <>

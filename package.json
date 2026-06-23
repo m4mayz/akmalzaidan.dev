@@ -1,28 +1,14 @@
 {
-  "name": "ai-website-clone-template",
+  "name": "akmalzaidandev",
   "version": "0.3.1",
   "private": true,
-  "description": "Clone any website into a clean, modern Next.js codebase using AI coding agents",
-  "author": "JCodesMore",
+  "author": "m4mayz",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/JCodesMore/ai-website-cloner-template.git"
+    "url": "https://github.com/m4mayz/akmalzaidan.dev.git"
   },
-  "homepage": "https://github.com/JCodesMore/ai-website-cloner-template",
-  "bugs": {
-    "url": "https://github.com/JCodesMore/ai-website-cloner-template/issues"
-  },
-  "keywords": [
-    "claude-code",
-    "website-clone",
-    "reverse-engineering",
-    "nextjs",
-    "ai",
-    "template",
-    "tailwindcss",
-    "shadcn-ui"
-  ],
+  "homepage": "https://github.com/m4mayz/akmalzaidan.dev",
   "engines": {
     "node": ">=24"
   },
@@ -32,10 +18,13 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
+    "db:migrate-content": "node scripts/migrate-content-to-supabase.mjs",
+    "db:migrate-assets": "node scripts/migrate-assets-to-supabase.mjs",
     "check": "npm run lint && npm run typecheck && npm run build"
   },
   "dependencies": {
     "@base-ui/react": "^1.3.0",
+    "@supabase/supabase-js": "^2.108.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lenis": "^1.3.23",
@@ -55,6 +44,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.1",
+    "postgres": "^3.4.9",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

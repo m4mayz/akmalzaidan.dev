@@ -2,6 +2,6 @@ import { ArticlesIndexPage } from "@/components/pages/articles-index-page";
 
 export const dynamic = "force-static";
 
-export default function Page() {
+export default async function Page() {
     return <ArticlesIndexPage locale="id" />;
 }

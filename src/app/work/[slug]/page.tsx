@@ -4,8 +4,8 @@ import { getWorkSlugs } from "@/lib/content";
 export const dynamic = "force-static";
 export const dynamicParams = false;
 
-export function generateStaticParams() {
-    return getWorkSlugs().map((slug) => ({ slug }));
+export async function generateStaticParams() {
+    return (await getWorkSlugs()).map((slug) => ({ slug }));
 }
 
 export default async function Page({

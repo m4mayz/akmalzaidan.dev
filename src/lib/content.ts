@@ -16,7 +16,7 @@ import {
   getWorkSlugsFromDb,
   listArticleSummaries,
   listWorkSummaries,
-} from "@/lib/sqlite-content";
+} from "@/lib/supabase-content";
 import type {
   AboutData,
   ArticleDetailData,
@@ -75,22 +75,22 @@ export function getPrivacyData(locale: Locale) {
   return privacyByLocale[locale];
 }
 
-export function getWorkSummaries(locale: Locale): WorkSummaryData[] {
+export function getWorkSummaries(locale: Locale): Promise<WorkSummaryData[]> {
   return listWorkSummaries(locale);
 }
 
 export function getWorkDetail(
   locale: Locale,
   slug: string,
-): WorkDetailData | undefined {
+): Promise<WorkDetailData | undefined> {
   return getWorkBySlug(locale, slug);
 }
 
-export function getMoreWorkSummaries(
+export async function getMoreWorkSummaries(
   locale: Locale,
   slug: string,
-): WorkSummaryData[] {
-  const items = getWorkSummaries(locale);
+): Promise<WorkSummaryData[]> {
+  const items = await getWorkSummaries(locale);
   const index = items.findIndex((item) => item.slug === slug);
   const orderedItems =
     index === -1
@@ -104,22 +104,24 @@ export function getWorkSlugs() {
   return getWorkSlugsFromDb();
 }
 
-export function getArticleSummaries(locale: Locale): ArticleSummaryData[] {
+export function getArticleSummaries(
+  locale: Locale,
+): Promise<ArticleSummaryData[]> {
   return listArticleSummaries(locale);
 }
 
 export function getArticleDetail(
   locale: Locale,
   slug: string,
-): ArticleDetailData | undefined {
+): Promise<ArticleDetailData | undefined> {
   return getArticleBySlug(locale, slug);
 }
 
-export function getMoreArticleSummaries(
+export async function getMoreArticleSummaries(
   locale: Locale,
   slug: string,
-): ArticleSummaryData[] {
-  return getArticleSummaries(locale)
+): Promise<ArticleSummaryData[]> {
+  return (await getArticleSummaries(locale))
     .filter((item) => item.slug !== slug)
     .slice(0, 3);
 }

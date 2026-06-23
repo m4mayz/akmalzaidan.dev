@@ -5,12 +5,24 @@
 1. Run `npm run dev`.
 2. Open `http://localhost:3000/cms`.
 3. Create or edit Work / Articles.
-4. Upload images from the CMS.
+4. Upload images from the CMS. Files go to Supabase Storage.
 5. Publish the item.
 6. Check `/work`, `/work/<slug>`, `/articles`, or `/articles/<slug>`.
-7. Commit `data/content.sqlite` and any files under `public/images/...`.
-8. Push to GitHub.
-9. Vercel rebuilds and reads the updated SQLite file during build.
+7. Push to GitHub.
+8. Vercel rebuilds and reads the updated Supabase content during build.
+
+## Supabase setup
+
+Run this after pulling Vercel env vars locally:
+
+```bash
+npm run db:migrate-content
+npm run db:migrate-assets
+```
+
+The first command creates/imports content tables. The second uploads legacy
+`public/images/work` and `public/images/articles` assets to Supabase Storage and
+updates stored asset URLs.
 
 ## Production behavior
 
@@ -19,10 +31,11 @@ Production returns 404. There is no login because the CMS is local-only.
 
 ## Image locations
 
-- Work: `public/images/work/<slug>/`
-- Articles: `public/images/articles/<slug>/`
+- Bucket: `portfolio-assets`
+- Work object path: `work/<slug>/<file>`
+- Article object path: `articles/<slug>/<file>`
 
 ## Important
 
-SQLite is committed as a file. Do not edit content directly on Vercel.
-Always edit locally, commit, and push.
+Content now lives in Supabase. The local CMS writes to the Supabase project from
+`.env.local`; production still does not expose CMS routes.

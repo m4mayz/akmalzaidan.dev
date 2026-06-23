@@ -1,16 +1,15 @@
 import Link from "next/link";
 
 import { LazyImage } from "@/components/effects/lazy-image";
-import { getArticleSummaries } from "@/lib/content";
 import type { ArticleSummaryData } from "@/types/content";
 
 type ArticlesSectionProps = {
-    items?: ArticleSummaryData[];
+    items: ArticleSummaryData[];
     title?: string;
 };
 
 export function ArticlesSection({
-    items = getArticleSummaries("en"),
+    items,
     title = "Articles",
 }: ArticlesSectionProps) {
     if (items.length === 0) {

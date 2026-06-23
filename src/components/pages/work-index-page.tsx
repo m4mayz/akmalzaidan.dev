@@ -5,9 +5,9 @@ import { WorkFilteredGrid } from "@/components/work-filtered-grid";
 import { getSiteData, getWorkSummaries } from "@/lib/content";
 import type { Locale } from "@/types/content";
 
-export function WorkIndexPage({ locale }: { locale: Locale }) {
+export async function WorkIndexPage({ locale }: { locale: Locale }) {
     const site = getSiteData(locale);
-    const work = getWorkSummaries(locale);
+    const work = await getWorkSummaries(locale);
     const isIndonesian = locale === "id";
 
     return (

@@ -53,7 +53,7 @@ function ProjectGalleryItem({
     );
 }
 
-export function WorkDetailPage({
+export async function WorkDetailPage({
     locale,
     slug,
 }: {
@@ -61,14 +61,14 @@ export function WorkDetailPage({
     slug: string;
 }) {
     const site = getSiteData(locale);
-    const project = getWorkDetail(locale, slug);
+    const project = await getWorkDetail(locale, slug);
     const isIndonesian = locale === "id";
 
     if (!project) {
         notFound();
     }
 
-    const moreProjects = getMoreWorkSummaries(locale, project.slug);
+    const moreProjects = await getMoreWorkSummaries(locale, project.slug);
     const details = [
         [isIndonesian ? "Lingkup" : "Scope", project.category],
         [isIndonesian ? "Peran" : "Role", project.role],

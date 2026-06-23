@@ -16,11 +16,13 @@ import {
 import { withLocale } from "@/lib/i18n";
 import type { Locale } from "@/types/content";
 
-export function HomePage({ locale }: { locale: Locale }) {
+export async function HomePage({ locale }: { locale: Locale }) {
     const site = getSiteData(locale);
     const home = getHomeData(locale);
-    const work = getWorkSummaries(locale);
-    const articles = getArticleSummaries(locale);
+    const [work, articles] = await Promise.all([
+        getWorkSummaries(locale),
+        getArticleSummaries(locale),
+    ]);
     const isIndonesian = locale === "id";
 
     return (

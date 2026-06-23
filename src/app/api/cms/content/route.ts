@@ -4,7 +4,7 @@ import {
   type CmsContentType,
   upsertArticle,
   upsertWork,
-} from "@/lib/sqlite-content";
+} from "@/lib/supabase-content";
 import type { Locale } from "@/types/content";
 
 export const runtime = "nodejs";
@@ -26,14 +26,14 @@ function parseLocale(value: string | null): Locale {
   return value === "id" ? "id" : "en";
 }
 
-export function GET(request: Request) {
+export async function GET(request: Request) {
   if (!devOnly()) return notFoundResponse();
 
   const url = new URL(request.url);
   const type = parseType(url.searchParams.get("type"));
   const locale = parseLocale(url.searchParams.get("locale"));
 
-  return Response.json({ items: listCmsContent(type, locale) });
+  return Response.json({ items: await listCmsContent(type, locale) });
 }
 
 export async function POST(request: Request) {
@@ -43,9 +43,9 @@ export async function POST(request: Request) {
   const items = Array.isArray(body.items) ? body.items : [body.item];
 
   if (body.type === "articles") {
-    for (const item of items) upsertArticle(item);
+    for (const item of items) await upsertArticle(item);
   } else {
-    for (const item of items) upsertWork(item);
+    for (const item of items) await upsertWork(item);
   }
 
   return Response.json({ ok: true });
@@ -57,10 +57,10 @@ export async function DELETE(request: Request) {
   const body = await request.json();
   const type = parseType(body.type);
   if (body.locale) {
-    deleteCmsContent(type, parseLocale(body.locale), body.slug);
+    await deleteCmsContent(type, parseLocale(body.locale), body.slug);
   } else {
     for (const locale of ["en", "id"] as Locale[]) {
-      deleteCmsContent(type, locale, body.slug);
+      await deleteCmsContent(type, locale, body.slug);
     }
   }
 
