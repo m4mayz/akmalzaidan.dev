@@ -22,7 +22,27 @@ export function SiteHeader({ locale, site: siteData }: SiteHeaderProps) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [hasMenuInteracted, setHasMenuInteracted] = useState(false);
+    const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
+    const [isMobileLangDropdownOpen, setIsMobileLangDropdownOpen] = useState(false);
     const contactLabel = locale === "id" ? "Hubungi saya" : "Get in touch";
+
+    useEffect(() => {
+        if (!isLangDropdownOpen && !isMobileLangDropdownOpen) return;
+
+        const handleOutsideClick = (e: MouseEvent) => {
+            const target = e.target as HTMLElement;
+            if (isLangDropdownOpen && !target.closest(".lang-dropdown-container")) {
+                setIsLangDropdownOpen(false);
+            }
+            if (isMobileLangDropdownOpen && !target.closest(".mobile-lang-dropdown-container")) {
+                setIsMobileLangDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener("click", handleOutsideClick);
+        return () => document.removeEventListener("click", handleOutsideClick);
+    }, [isLangDropdownOpen, isMobileLangDropdownOpen]);
+
 
     useEffect(() => {
         const updateHeaderState = () => {
@@ -46,7 +66,10 @@ export function SiteHeader({ locale, site: siteData }: SiteHeaderProps) {
         };
     }, [isMenuOpen]);
 
-    const closeMenu = () => setIsMenuOpen(false);
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+        setIsMobileLangDropdownOpen(false);
+    };
 
     return (
         <>
@@ -86,18 +109,59 @@ export function SiteHeader({ locale, site: siteData }: SiteHeaderProps) {
                             </Link>
                         ))}
                         <div className="flex gap-2">
-                            <Link
-                                className="inline-flex h-9 items-center justify-between rounded-full border border-white/55 px-3.5 text-xs text-foreground transition-colors hover:border-white"
-                                data-cursor="pointer"
-                                href={switchHref}
-                            >
-                                {siteData.language.current}{" "}
-                                <ChevronDown
-                                    aria-hidden="true"
-                                    size={14}
-                                    strokeWidth={1.8}
-                                />
-                            </Link>
+                            <div className="relative lang-dropdown-container">
+                                <button
+                                    className={cn(
+                                        "inline-flex h-9 items-center justify-between gap-1.5 rounded-full border px-3.5 text-xs text-foreground transition-all duration-200 active:scale-95",
+                                        isLangDropdownOpen
+                                            ? "border-white bg-white/10"
+                                            : "border-white/55 hover:border-white"
+                                    )}
+                                    data-cursor="pointer"
+                                    onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
+                                    type="button"
+                                >
+                                    {siteData.language.current}{" "}
+                                    <ChevronDown
+                                        className={cn("transition-transform duration-200", isLangDropdownOpen && "rotate-180")}
+                                        aria-hidden="true"
+                                        size={14}
+                                        strokeWidth={1.8}
+                                    />
+                                </button>
+                                {isLangDropdownOpen && (
+                                    <div 
+                                        className="absolute right-0 mt-1.5 w-24 rounded-2xl border border-white/14 bg-background/90 backdrop-blur-md p-1 shadow-2xl z-50 animate-in fade-in slide-in-from-top-2 duration-200"
+                                    >
+                                        <Link
+                                            className={cn(
+                                                "flex h-8 items-center rounded-xl px-3 text-[11px] transition-colors",
+                                                locale === "en"
+                                                    ? "bg-white/10 text-foreground font-medium"
+                                                    : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
+                                            )}
+                                            href={getAlternateLocalePath(pathname, "en")}
+                                            onClick={() => setIsLangDropdownOpen(false)}
+                                            data-cursor="pointer"
+                                        >
+                                            English
+                                        </Link>
+                                        <Link
+                                            className={cn(
+                                                "flex h-8 items-center rounded-xl px-3 text-[11px] transition-colors mt-0.5",
+                                                locale === "id"
+                                                    ? "bg-white/10 text-foreground font-medium"
+                                                    : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
+                                            )}
+                                            href={getAlternateLocalePath(pathname, "id")}
+                                            onClick={() => setIsLangDropdownOpen(false)}
+                                            data-cursor="pointer"
+                                        >
+                                            Indonesia
+                                        </Link>
+                                    </div>
+                                )}
+                            </div>
                             <Link
                                 className="inline-flex h-9 items-center rounded-full border border-white bg-white px-4 text-black transition-colors hover:bg-transparent hover:text-white"
                                 data-cursor="pointer"
@@ -235,19 +299,65 @@ export function SiteHeader({ locale, site: siteData }: SiteHeaderProps) {
                             >
                                 {contactLabel}
                             </Link>
-                            <Link
-                                className="inline-flex h-14 items-center gap-2 rounded-full border border-white/60 px-5 text-[14px] uppercase tracking-[0.08em] text-foreground transition-colors hover:border-white active:scale-[0.96]"
-                                data-cursor="pointer"
-                                href={switchHref}
-                                onClick={closeMenu}
-                            >
-                                {siteData.language.current}
-                                <ChevronDown
-                                    aria-hidden="true"
-                                    size={14}
-                                    strokeWidth={1.8}
-                                />
-                            </Link>
+                            <div className="relative mobile-lang-dropdown-container">
+                                <button
+                                    className={cn(
+                                        "inline-flex h-14 items-center gap-2 rounded-full border px-5 text-[14px] uppercase tracking-[0.08em] text-foreground transition-colors active:scale-[0.96]",
+                                        isMobileLangDropdownOpen
+                                            ? "border-white bg-white/10"
+                                            : "border-white/60 hover:border-white"
+                                    )}
+                                    data-cursor="pointer"
+                                    onClick={() => setIsMobileLangDropdownOpen(!isMobileLangDropdownOpen)}
+                                    type="button"
+                                >
+                                    {siteData.language.current}
+                                    <ChevronDown
+                                        className={cn("transition-transform duration-200", isMobileLangDropdownOpen && "rotate-180")}
+                                        aria-hidden="true"
+                                        size={14}
+                                        strokeWidth={1.8}
+                                    />
+                                </button>
+                                {isMobileLangDropdownOpen && (
+                                    <div 
+                                        className="absolute left-0 bottom-full mb-2 w-32 rounded-2xl border border-white/14 bg-background/95 backdrop-blur-md p-1 shadow-2xl z-50 animate-in fade-in slide-in-from-bottom-2 duration-200"
+                                    >
+                                        <Link
+                                            className={cn(
+                                                "flex h-11 items-center rounded-xl px-4 text-sm transition-colors",
+                                                locale === "en"
+                                                    ? "bg-white/10 text-foreground font-medium"
+                                                    : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
+                                            )}
+                                            href={getAlternateLocalePath(pathname, "en")}
+                                            onClick={() => {
+                                                setIsMobileLangDropdownOpen(false);
+                                                closeMenu();
+                                            }}
+                                            data-cursor="pointer"
+                                        >
+                                            English
+                                        </Link>
+                                        <Link
+                                            className={cn(
+                                                "flex h-11 items-center rounded-xl px-4 text-sm transition-colors mt-0.5",
+                                                locale === "id"
+                                                    ? "bg-white/10 text-foreground font-medium"
+                                                    : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
+                                            )}
+                                            href={getAlternateLocalePath(pathname, "id")}
+                                            onClick={() => {
+                                                setIsMobileLangDropdownOpen(false);
+                                                closeMenu();
+                                            }}
+                                            data-cursor="pointer"
+                                        >
+                                            Indonesia
+                                        </Link>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </nav>
 

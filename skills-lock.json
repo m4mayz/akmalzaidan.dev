@@ -79,6 +79,12 @@
       "skillPath": "skills/systematic-debugging/SKILL.md",
       "computedHash": "792a368e074981d7e3138edb439e138489b2ac247cd1e5739fab52af680fb17b"
     },
+    "tailwind-css": {
+      "source": "paulrberg/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/tailwind-css/SKILL.md",
+      "computedHash": "8887a212642d9a11b8e76acd5e4464ab6281d99d19cddd9728eb28d2c508bbb5"
+    },
     "tdd": {
       "source": "mattpocock/skills",
       "sourceType": "github",

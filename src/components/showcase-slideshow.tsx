@@ -63,9 +63,9 @@ export function ShowcaseSlideshow({ images }: ShowcaseSlideshowProps) {
                         className="object-cover"
                         fill
                         loading="lazy"
+                        quality={100}
                         sizes="100vw"
                         src={image.src}
-                        unoptimized
                     />
                 </Link>
             ))}

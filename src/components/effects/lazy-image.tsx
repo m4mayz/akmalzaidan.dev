@@ -75,7 +75,7 @@ export function LazyImage({
                         setIsLoaded(true);
                         onLoad?.(event);
                     }}
-                    unoptimized
+                    quality={100}
                 />
             ) : null}
         </div>

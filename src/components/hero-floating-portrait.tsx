@@ -62,9 +62,9 @@ export function HeroFloatingPortrait() {
                 className="object-cover"
                 fill
                 preload
+                quality={100}
                 sizes="(min-width: 768px) 41vw, 100vw"
                 src="/images/akmal/me.png"
-                unoptimized
             />
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(140%_100%_at_50%_60%,rgba(255,99,34,0)_40%,rgba(255,99,34,0.35)_100%)]" />
         </div>
