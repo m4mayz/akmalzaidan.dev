@@ -1,6 +1,7 @@
 import type { ArticleContentData, Locale } from "@/types/content";
 
 import { Area, Field, LocaleGrid } from "@/components/cms/cms-field";
+import { CmsGalleryEditor } from "@/components/cms/cms-gallery-editor";
 import { CoverUpload } from "@/components/cms/cms-image-upload";
 
 type Status = "draft" | "published";
@@ -16,10 +17,7 @@ export type CmsArticle = ArticleContentData & {
 const locales: Locale[] = ["en", "id"];
 
 function splitParagraphs(value: string) {
-  return value
-    .split(/\n\s*\n/)
-    .map((p) => p.trim())
-    .filter(Boolean);
+  return value.split(/\r?\n\r?\n/);
 }
 
 function joinParagraphs(value: string[]) {
@@ -123,6 +121,10 @@ export function CmsArticleForm({
             onLocaleChange("id", { image });
           }
         }}
+        onUrl={(url) => {
+          onLocaleChange("en", { image: url });
+          onLocaleChange("id", { image: url });
+        }}
       />
 
       <LocaleGrid>
@@ -149,6 +151,16 @@ export function CmsArticleForm({
               value={item[locale].alt}
             />
             <Field
+              label="Lead / Excerpt"
+              onChange={(lead) => onLocaleChange(locale, { lead })}
+              value={item[locale].lead}
+            />
+            <Field
+              label="Category"
+              onChange={(category) => onLocaleChange(locale, { category })}
+              value={item[locale].category || ""}
+            />
+            <Field
               label="Published at"
               onChange={(publishedAt) =>
                 onLocaleChange(locale, { publishedAt })
@@ -165,35 +177,85 @@ export function CmsArticleForm({
         ))}
       </LocaleGrid>
 
-      <LocaleGrid>
-        {locales.map((locale) => {
-          const block = item[locale].blocks[0] ?? {
-            heading: "",
-            paragraphs: [""],
-          };
-          return (
-            <div className="grid gap-3 border border-border p-4" key={locale}>
-              <Field
-                label={`${locale} block heading`}
-                onChange={(heading) =>
-                  onLocaleChange(locale, { blocks: [{ ...block, heading }] })
-                }
-                value={block.heading ?? ""}
-              />
-              <Area
-                label={`${locale} article body`}
-                onChange={(value) =>
-                  onLocaleChange(locale, {
-                    blocks: [{ ...block, paragraphs: splitParagraphs(value) }],
-                  })
-                }
-                rows={15}
-                value={joinParagraphs(block.paragraphs)}
-              />
+      <div className="space-y-8 pt-4">
+        {Array.from({ length: Math.max(item.en.blocks?.length || 1, item.id.blocks?.length || 1) }).map((_, index) => (
+          <div className="space-y-4" key={index}>
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-medium">Block {index + 1}</h3>
+              <button
+                className="text-sm text-red-500 hover:text-red-400"
+                onClick={() => {
+                  locales.forEach((locale) => {
+                    const newBlocks = [...(item[locale].blocks || [])];
+                    newBlocks.splice(index, 1);
+                    onLocaleChange(locale, { blocks: newBlocks });
+                  });
+                }}
+                type="button"
+              >
+                Remove Block
+              </button>
             </div>
-          );
-        })}
-      </LocaleGrid>
+            <LocaleGrid>
+              {locales.map((locale) => {
+                const block = item[locale].blocks?.[index] ?? {
+                  heading: "",
+                  paragraphs: [""],
+                };
+                return (
+                  <div className="grid gap-3 border border-border p-4" key={locale}>
+                    <Field
+                      label={`${locale} block ${index + 1} heading`}
+                      onChange={(heading) => {
+                        const newBlocks = [...(item[locale].blocks || [])];
+                        newBlocks[index] = { ...block, heading };
+                        onLocaleChange(locale, { blocks: newBlocks });
+                      }}
+                      value={block.heading ?? ""}
+                    />
+                    <Area
+                      label={`${locale} article body`}
+                      onChange={(value) => {
+                        const newBlocks = [...(item[locale].blocks || [])];
+                        newBlocks[index] = {
+                          ...block,
+                          paragraphs: splitParagraphs(value),
+                        };
+                        onLocaleChange(locale, { blocks: newBlocks });
+                      }}
+                      rows={12}
+                      value={joinParagraphs(block.paragraphs)}
+                    />
+                  </div>
+                );
+              })}
+            </LocaleGrid>
+          </div>
+        ))}
+
+        <button
+          className="h-12 w-full border border-dashed border-border text-sm text-muted-foreground transition-colors hover:border-white hover:text-foreground"
+          onClick={() => {
+            locales.forEach((locale) => {
+              const newBlocks = [...(item[locale].blocks || []), { heading: "", paragraphs: [""] }];
+              onLocaleChange(locale, { blocks: newBlocks });
+            });
+          }}
+          type="button"
+        >
+          + Add Block
+        </button>
+      </div>
+
+      <CmsGalleryEditor
+        gallery={{ en: item.en.gallery || [], id: item.id.gallery || [] }}
+        onDeleteAsset={onDeleteAsset}
+        onGalleryChange={(locale, gallery) =>
+          onLocaleChange(locale, { gallery })
+        }
+        onUpload={onUpload}
+        withSlot={false}
+      />
     </div>
   );
 }

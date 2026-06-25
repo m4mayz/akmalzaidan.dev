@@ -47,9 +47,11 @@ const emptyArticle: CmsArticle = {
   description: "",
   image: "",
   alt: "",
+  category: "",
   publishedAt: "",
   lead: "",
   blocks: [{ heading: "", paragraphs: [""] }],
+  gallery: [],
 };
 
 function cloneWork(locale: Locale): CmsWork {
@@ -57,7 +59,16 @@ function cloneWork(locale: Locale): CmsWork {
 }
 
 function cloneArticle(locale: Locale): CmsArticle {
-  return structuredClone({ ...emptyArticle, locale });
+  const date = new Date();
+  const yyyy = date.getFullYear();
+  const mm = String(date.getMonth() + 1).padStart(2, "0");
+  const dd = String(date.getDate()).padStart(2, "0");
+
+  return structuredClone({ 
+    ...emptyArticle, 
+    locale,
+    publishedAt: `${yyyy}-${mm}-${dd}`
+  });
 }
 
 function makePair(type: ContentType): CmsPair {
@@ -201,24 +212,35 @@ export function ContentCms() {
       return;
     }
 
-    await fetch("/api/cms/content", {
-      body: JSON.stringify({
-        type,
-        items: [
-          { ...current.en, locale: "en", slug },
-          { ...current.id, locale: "id", slug },
-        ],
-      }),
-      headers: { "Content-Type": "application/json" },
-      method: "POST",
-    });
-    
-    await loadItems();
-    if (type !== "pages") {
-      setView("list");
-    } else {
-      setOriginalCurrent(structuredClone(current));
-      setMessage("Saved successfully.");
+    try {
+      const res = await fetch("/api/cms/content", {
+        body: JSON.stringify({
+          type,
+          items: [
+            { ...current.en, locale: "en", slug },
+            { ...current.id, locale: "id", slug },
+          ],
+        }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        setMessage(`Error: ${err.error || res.statusText}`);
+        return;
+      }
+      
+      await loadItems();
+      if (type !== "pages") {
+        setView("list");
+      } else {
+        setOriginalCurrent(structuredClone(current));
+        setMessage("Saved successfully.");
+      }
+    } catch (e: unknown) {
+      const msg = e instanceof Error ? e.message : String(e);
+      setMessage(`Error saving: ${msg}`);
     }
   };
 
@@ -227,14 +249,25 @@ export function ContentCms() {
     const slug = current.en.slug;
     if (!slug.trim()) return;
 
-    await fetch("/api/cms/content", {
-      body: JSON.stringify({ slug, type }),
-      headers: { "Content-Type": "application/json" },
-      method: "DELETE",
-    });
-    
-    await loadItems();
-    setView("list");
+    try {
+      const res = await fetch("/api/cms/content", {
+        body: JSON.stringify({ slug, type }),
+        headers: { "Content-Type": "application/json" },
+        method: "DELETE",
+      });
+      
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        setMessage(`Error: ${err.error || res.statusText}`);
+        return;
+      }
+      
+      await loadItems();
+      setView("list");
+    } catch (e: unknown) {
+      const msg = e instanceof Error ? e.message : String(e);
+      setMessage(`Error deleting: ${msg}`);
+    }
   };
 
   const upload = async (file: File) => {

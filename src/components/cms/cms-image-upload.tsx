@@ -6,6 +6,8 @@ export function ImageCard({
   onDelete,
   onEdit,
   onFile,
+  onMoveLeft,
+  onMoveRight,
   src,
 }: {
   alt: string;
@@ -13,6 +15,8 @@ export function ImageCard({
   onDelete: () => void;
   onEdit?: () => void;
   onFile?: (file: File) => void;
+  onMoveLeft?: () => void;
+  onMoveRight?: () => void;
   src: string;
 }) {
   return (
@@ -48,28 +52,52 @@ export function ImageCard({
           </button>
         )}
         <button
-          className="h-9 border border-border px-3 text-xs text-muted-foreground"
+          className="h-9 border border-border px-3 text-xs text-muted-foreground transition-colors hover:text-foreground"
           onClick={onDelete}
           type="button"
         >
           Delete
         </button>
+        {onMoveLeft && (
+          <button
+            className="h-9 border border-border px-3 text-xs text-muted-foreground transition-colors hover:text-foreground"
+            onClick={onMoveLeft}
+            type="button"
+          >
+            &lt;
+          </button>
+        )}
+        {onMoveRight && (
+          <button
+            className="h-9 border border-border px-3 text-xs text-muted-foreground transition-colors hover:text-foreground"
+            onClick={onMoveRight}
+            type="button"
+          >
+            &gt;
+          </button>
+        )}
       </div>
     </div>
   );
 }
 
+import { useState } from "react";
+
 export function CoverUpload({
   image,
   alt,
   onUpload,
+  onUrl,
   onDelete,
 }: {
   image: string;
   alt: string;
   onUpload: (file: File) => void;
+  onUrl: (url: string) => void;
   onDelete: () => void;
 }) {
+  const [urlInput, setUrlInput] = useState("");
+
   if (image) {
     return (
       <div className="max-w-xs">
@@ -85,17 +113,54 @@ export function CoverUpload({
   }
 
   return (
-    <label className="grid max-w-xs gap-2 text-sm text-muted-foreground">
-      Upload cover
-      <input
-        className="h-11 border border-border bg-black px-3 py-2 text-sm"
-        onChange={(event) => {
-          const file = event.target.files?.[0];
-          if (file) onUpload(file);
-          if (event.target) event.target.value = "";
-        }}
-        type="file"
-      />
-    </label>
+    <div className="flex max-w-sm flex-col gap-4">
+      <label className="grid gap-2 text-sm text-muted-foreground">
+        Upload cover file
+        <input
+          className="h-11 border border-border bg-black px-3 py-2 text-sm"
+          onChange={(event) => {
+            const file = event.target.files?.[0];
+            if (file) onUpload(file);
+            if (event.target) event.target.value = "";
+          }}
+          type="file"
+        />
+      </label>
+      <div className="flex items-center gap-4">
+        <div className="h-px flex-1 bg-border" />
+        <span className="text-[10px] uppercase tracking-wider text-muted-foreground">or</span>
+        <div className="h-px flex-1 bg-border" />
+      </div>
+      <label className="grid gap-2 text-sm text-muted-foreground">
+        Use image URL
+        <div className="flex gap-2">
+          <input
+            className="h-11 flex-1 border border-border bg-black px-3 py-2 text-sm text-foreground outline-none focus:border-white"
+            onChange={(e) => setUrlInput(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && urlInput) {
+                e.preventDefault();
+                onUrl(urlInput);
+                setUrlInput("");
+              }
+            }}
+            placeholder="https://..."
+            value={urlInput}
+          />
+          <button
+            className="h-11 border border-border px-4 text-sm transition-colors hover:border-white hover:text-foreground"
+            onClick={() => {
+              if (urlInput) {
+                onUrl(urlInput);
+                setUrlInput("");
+              }
+            }}
+            type="button"
+          >
+            Set
+          </button>
+        </div>
+      </label>
+    </div>
   );
 }

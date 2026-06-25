@@ -11,7 +11,43 @@ import {
   getMoreArticleSummaries,
   getSiteData,
 } from "@/lib/content";
-import type { ArticleDetailData, Locale } from "@/types/content";
+import type { ArticleDetailData, Locale, GalleryItemData } from "@/types/content";
+
+function getSpanClass(item: GalleryItemData) {
+  return item.span === "half" ? "md:col-span-6" : "md:col-span-12";
+}
+
+function getAspectClass(item: GalleryItemData) {
+  return item.aspect === "4/3" ? "aspect-[4/3]" : "aspect-[16/9]";
+}
+
+function ArticleGalleryItem({
+  item,
+  index,
+}: {
+  item: GalleryItemData;
+  index: number;
+}) {
+  return (
+    <div
+      className={`relative overflow-hidden bg-white/5 ${getAspectClass(item)} ${getSpanClass(item)}`}
+      data-reveal
+      style={
+        {
+          "--reveal-delay": `${Math.min(index, 3) * 70}ms`,
+        } as CSSProperties
+      }
+    >
+      <LazyImage
+        alt={item.alt}
+        className="object-cover"
+        fill
+        sizes={item.span === "half" ? "(max-width: 768px) 100vw, 50vw" : "100vw"}
+        src={item.src}
+      />
+    </div>
+  );
+}
 
 function ArticleContent({
   block,
@@ -94,6 +130,22 @@ export async function ArticleDetailPage({
             ))}
           </div>
         </section>
+
+        {article.gallery && article.gallery.length > 0 ? (
+          <section className="px-5 pb-16 md:px-10 md:pb-32">
+            <div className="mx-auto max-w-358">
+              <div className="grid gap-6 md:grid-cols-12">
+                {article.gallery.map((item, index) => (
+                  <ArticleGalleryItem
+                    index={index}
+                    item={item}
+                    key={`${item.src}-${index}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </section>
+        ) : null}
 
         <section className="px-5 py-16 md:px-10 md:py-32">
           <div className="mx-auto max-w-358">

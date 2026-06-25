@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 import { LazyImage } from "@/components/effects/lazy-image";
 import type { ArticleSummaryData } from "@/types/content";
@@ -6,23 +7,23 @@ import type { ArticleSummaryData } from "@/types/content";
 type ArticlesSectionProps = {
   items: ArticleSummaryData[];
   title?: string;
+  className?: string;
 };
 
-export function ArticlesSection({
-  items,
-  title = "Articles",
-}: ArticlesSectionProps) {
+export function ArticlesSection({ items, title = "", className }: ArticlesSectionProps) {
   if (items.length === 0) {
     return null;
   }
 
   return (
-    <section className="px-5 py-16 md:px-10 md:py-32">
-      <h2 className="font-heading text-3xl font-light leading-[1.05] tracking-normal md:text-[64px]">
-        {title}
-      </h2>
+    <section className={cn("px-5 py-16 md:px-10 md:py-32", className)}>
+      {title && (
+        <h2 className="font-heading text-3xl font-light leading-[1.05] tracking-normal md:text-[64px]">
+          {title}
+        </h2>
+      )}
 
-      <div className="mt-14 grid gap-8 md:grid-cols-3">
+      <div className={cn("grid gap-8 md:grid-cols-3", title && "mt-14")}>
         {items.map((article) => (
           <Link
             className="group block"

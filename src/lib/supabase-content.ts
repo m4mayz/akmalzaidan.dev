@@ -49,9 +49,11 @@ type ArticleRow = {
   description: string;
   image: string;
   alt: string;
+  category: string;
   published_at: string;
   lead: string;
   blocks_json: unknown;
+  gallery_json?: unknown;
 };
 
 export type CmsContentType = "work" | "articles" | "pages";
@@ -115,9 +117,11 @@ function mapArticle(row: ArticleRow): ArticleContentData {
     description: row.description,
     image: row.image,
     alt: row.alt,
+    category: row.category || "",
     publishedAt: row.published_at,
     lead: row.lead,
     blocks: parseJson(row.blocks_json, []),
+    gallery: parseJson(row.gallery_json, []),
   };
 }
 
@@ -226,6 +230,7 @@ export async function listArticleSummaries(
     href: withLocale(`/articles/${item.slug}`, locale),
     image: item.image,
     alt: item.alt,
+    category: item.category,
     publishedAt: item.publishedAt,
   }));
 }
@@ -312,9 +317,11 @@ export async function upsertArticle(input: CmsArticleInput) {
       description: input.description,
       image: input.image,
       alt: input.alt,
+      category: input.category,
       published_at: input.publishedAt,
       lead: input.lead,
       blocks_json: input.blocks,
+      gallery_json: input.gallery,
       updated_at: new Date().toISOString(),
     },
     { onConflict: "locale,slug" },

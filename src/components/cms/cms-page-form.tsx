@@ -1,7 +1,8 @@
 import type { CmsPageInput } from "@/lib/supabase-content";
-import type { Locale } from "@/types/content";
+import type { Locale, AboutData, ContactData, HomeData, PrivacyData } from "@/types/content";
 import { AboutForm } from "./forms/about-form";
 import { ContactForm } from "./forms/contact-form";
+import type { GlobalData } from "./forms/global-form";
 import { GlobalForm } from "./forms/global-form";
 import { HomeForm } from "./forms/home-form";
 import { PrivacyForm } from "./forms/privacy-form";
@@ -17,6 +18,8 @@ type CmsPageFormProps = {
   hasChanges?: boolean;
 };
 
+type PageDataDict = Record<string, unknown>;
+
 export function CmsPageForm({
   item,
   onLocaleChange,
@@ -26,36 +29,53 @@ export function CmsPageForm({
   hasChanges,
 }: CmsPageFormProps) {
   const data = {
-    en: item.en.data,
-    id: item.id.data,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } as any;
+    en: (item.en.data as PageDataDict) || {},
+    id: (item.id.data as PageDataDict) || {},
+  };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleChange = (locale: Locale, patch: any) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    onLocaleChange(locale, { data: { ...(data[locale] as any), ...patch } });
+  const handleChange = (locale: Locale, patch: PageDataDict) => {
+    onLocaleChange(locale, { data: { ...data[locale], ...patch } });
   };
 
   const renderForm = () => {
     switch (item.en.slug) {
       case "global":
-        return <GlobalForm data={data} onChange={handleChange} />;
+        return (
+          <GlobalForm
+            data={data as Record<Locale, GlobalData>}
+            onChange={handleChange as (locale: Locale, patch: Partial<GlobalData>) => void}
+          />
+        );
       case "home":
-        return <HomeForm data={data} onChange={handleChange} />;
+        return (
+          <HomeForm
+            data={data as Record<Locale, HomeData>}
+            onChange={handleChange as (locale: Locale, patch: Partial<HomeData>) => void}
+          />
+        );
       case "about":
         return (
           <AboutForm
-            data={data}
-            onChange={handleChange}
+            data={data as Record<Locale, AboutData>}
+            onChange={handleChange as (locale: Locale, patch: Partial<AboutData>) => void}
             onDeleteAsset={onDeleteAsset}
             onUpload={onUpload}
           />
         );
       case "contact":
-        return <ContactForm data={data} onChange={handleChange} />;
+        return (
+          <ContactForm
+            data={data as Record<Locale, ContactData>}
+            onChange={handleChange as (locale: Locale, patch: Partial<ContactData>) => void}
+          />
+        );
       case "privacy":
-        return <PrivacyForm data={data} onChange={handleChange} />;
+        return (
+          <PrivacyForm
+            data={data as Record<Locale, PrivacyData>}
+            onChange={handleChange as (locale: Locale, patch: Partial<PrivacyData>) => void}
+          />
+        );
       default:
         return (
           <div className="p-12 text-center text-sm text-muted-foreground">

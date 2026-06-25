@@ -23,10 +23,7 @@ const slots: WorkSectionSlot[] = [
 ];
 
 function splitParagraphs(value: string) {
-  return value
-    .split(/\n\s*\n/)
-    .map((p) => p.trim())
-    .filter(Boolean);
+  return value.split(/\r?\n\r?\n/);
 }
 
 function joinParagraphs(value: string[]) {
@@ -142,6 +139,10 @@ export function CmsWorkForm({
             onLocaleChange("en", { image });
             onLocaleChange("id", { image });
           }
+        }}
+        onUrl={(url) => {
+          onLocaleChange("en", { image: url });
+          onLocaleChange("id", { image: url });
         }}
       />
 

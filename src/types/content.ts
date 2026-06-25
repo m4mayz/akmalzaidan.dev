@@ -62,11 +62,14 @@ export type WorkSummaryData = {
 
 export type WorkSectionSlot = "overview" | "challenge" | "approach" | "outcome";
 
-export type WorkGalleryItemData = {
+export type GalleryItemData = {
   src: string;
   alt: string;
   aspect: "16/9" | "4/3";
   span?: "half" | "full";
+};
+
+export type WorkGalleryItemData = GalleryItemData & {
   slot: WorkSectionSlot;
 };
 
@@ -91,6 +94,7 @@ export type ArticleSummaryData = {
   href: string;
   image: string;
   alt: string;
+  category: string;
   publishedAt: string;
 };
 
@@ -100,6 +104,7 @@ export type ArticleDetailData = ArticleSummaryData & {
     heading?: string;
     paragraphs: string[];
   }[];
+  gallery: GalleryItemData[];
 };
 
 export type ArticleContentData = Omit<ArticleDetailData, "href">;

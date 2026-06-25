@@ -1,4 +1,4 @@
-import { ArticlesSection } from "@/components/articles-section";
+import { ArticlesFilteredGrid } from "@/components/articles-filtered-grid";
 import { ContactSection } from "@/components/contact-section";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -28,10 +28,13 @@ export async function ArticlesIndexPage({ locale }: { locale: Locale }) {
         </section>
 
         <div className="mx-auto max-w-358">
-          <ArticlesSection
-            items={articles}
-            title={isIndonesian ? "Artikel" : "Articles"}
-          />
+          {articles.length > 0 ? (
+            <ArticlesFilteredGrid
+              allLabel={isIndonesian ? "Semua" : "All"}
+              items={articles}
+              className="px-0 py-12 md:px-0 md:py-16"
+            />
+          ) : null}
         </div>
         <ContactSection locale={locale} site={site} />
       </main>
