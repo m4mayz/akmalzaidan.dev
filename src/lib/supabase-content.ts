@@ -307,3 +307,20 @@ export async function deleteCmsContent(
 
   if (error) throw new Error(error.message);
 }
+
+export async function reorderContent(
+  type: CmsContentType,
+  slugs: string[],
+) {
+  const table = type === "work" ? "works" : "articles";
+  const supabase = getSupabaseServiceClient();
+
+  for (let i = 0; i < slugs.length; i++) {
+    const { error } = await supabase
+      .from(table)
+      .update({ sort_order: i, updated_at: new Date().toISOString() })
+      .eq("slug", slugs[i]);
+
+    if (error) throw new Error(error.message);
+  }
+}

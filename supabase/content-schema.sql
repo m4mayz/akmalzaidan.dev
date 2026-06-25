@@ -1,3 +1,8 @@
+-- Portfolio content schema
+-- sort_order: lower values appear first. The CMS reorder endpoint
+-- updates sort_order for both locale rows of a slug atomically so
+-- ordering stays consistent across EN and ID.
+
 CREATE TABLE IF NOT EXISTS public.works (
   id BIGSERIAL PRIMARY KEY,
   locale TEXT NOT NULL CHECK (locale IN ('en', 'id')),
