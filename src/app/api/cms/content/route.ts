@@ -7,6 +7,7 @@ import {
   upsertPageContent,
 } from "@/lib/supabase-content";
 import type { Locale } from "@/types/content";
+import { revalidatePath } from "next/cache";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -53,6 +54,14 @@ export async function POST(request: Request) {
       for (const item of items) await upsertWork(item);
     }
 
+    revalidatePath("/", "layout");
+    
+    const prodUrl = process.env.NEXT_PUBLIC_SITE_URL;
+    const secret = process.env.REVALIDATE_SECRET;
+    if (prodUrl && secret) {
+      await fetch(`${prodUrl}/api/revalidate?secret=${secret}`).catch(() => {});
+    }
+
     return Response.json({ ok: true });
   } catch (error: unknown) {
     const msg = error instanceof Error ? error.message : String(error);
@@ -72,6 +81,14 @@ export async function DELETE(request: Request) {
       for (const locale of ["en", "id"] as Locale[]) {
         await deleteCmsContent(type, locale, body.slug);
       }
+    }
+
+    revalidatePath("/", "layout");
+    
+    const prodUrl = process.env.NEXT_PUBLIC_SITE_URL;
+    const secret = process.env.REVALIDATE_SECRET;
+    if (prodUrl && secret) {
+      await fetch(`${prodUrl}/api/revalidate?secret=${secret}`).catch(() => {});
     }
 
     return Response.json({ ok: true });
