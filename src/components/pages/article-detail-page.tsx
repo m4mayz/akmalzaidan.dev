@@ -19,7 +19,7 @@ function ArticleContent({
   block: ArticleDetailData["blocks"][number];
 }) {
   return (
-    <section className="mx-auto max-w-[52rem]" data-reveal>
+    <section className="mx-auto max-w-208" data-reveal>
       {block.heading ? (
         <h2 className="font-heading text-[24px] font-light leading-[1.1] tracking-[-0.02em] md:text-[32px]">
           {block.heading}
@@ -57,7 +57,7 @@ export async function ArticleDetailPage({
     <>
       <SiteHeader locale={locale} site={site} />
       <main className="relative z-10">
-        <section className="relative px-5 pt-32 md:px-10 md:pt-[8.75rem]">
+        <section className="relative px-5 pt-32 md:px-10 md:pt-35">
           <div className="mx-auto max-w-90 md:max-w-208" data-reveal>
             <p className="mb-6 text-[12px] uppercase tracking-[0.18em] text-muted-foreground">
               {article.publishedAt}
@@ -71,7 +71,7 @@ export async function ArticleDetailPage({
           </div>
 
           <div
-            className="relative mx-auto mt-16 aspect-[16/10] max-w-[52rem] overflow-hidden bg-white/5"
+            className="relative mx-auto mt-16 aspect-16/10 max-w-208 overflow-hidden bg-white/5"
             data-reveal
             style={{ "--reveal-delay": "120ms" } as CSSProperties}
           >
@@ -85,7 +85,7 @@ export async function ArticleDetailPage({
         </section>
 
         <section className="px-5 py-16 md:px-10 md:py-32">
-          <div className="mx-auto flex max-w-[89.5rem] flex-col gap-16 md:gap-24">
+          <div className="mx-auto flex max-w-358 flex-col gap-16 md:gap-24">
             {article.blocks.map((block, index) => (
               <ArticleContent
                 block={block}
@@ -96,7 +96,7 @@ export async function ArticleDetailPage({
         </section>
 
         <section className="px-5 py-16 md:px-10 md:py-32">
-          <div className="mx-auto max-w-[89.5rem]">
+          <div className="mx-auto max-w-358">
             <h2 className="font-heading text-[32px] font-light leading-[1.05] tracking-[-0.03em] md:text-[56px]">
               {isIndonesian ? "Artikel lainnya" : "More articles"}
             </h2>
@@ -109,7 +109,7 @@ export async function ArticleDetailPage({
                   href={item.href}
                   key={item.slug}
                 >
-                  <div className="relative aspect-[5/4] overflow-hidden bg-white/5">
+                  <div className="relative aspect-5/4 overflow-hidden bg-white/5">
                     <LazyImage
                       alt={item.alt}
                       className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
@@ -120,7 +120,7 @@ export async function ArticleDetailPage({
                   <h3 className="mt-7 text-[20px] leading-[1.35]">
                     {item.title}
                   </h3>
-                  <p className="mt-3 max-w-[430px] text-[15px] leading-[1.55] text-muted-foreground">
+                  <p className="mt-3 max-w-107.5 text-[15px] leading-[1.55] text-muted-foreground">
                     {item.description}
                   </p>
                 </Link>

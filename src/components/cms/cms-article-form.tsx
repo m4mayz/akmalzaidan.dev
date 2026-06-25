@@ -37,6 +37,7 @@ export function CmsArticleForm({
   onUpload,
   onDeleteAsset,
   onBack,
+  hasChanges,
 }: {
   item: Pair<CmsArticle>;
   slug: string;
@@ -48,6 +49,7 @@ export function CmsArticleForm({
   onUpload: (file: File) => Promise<string | null>;
   onDeleteAsset: (src: string) => Promise<void>;
   onBack: () => void;
+  hasChanges?: boolean;
 }) {
   const currentTitle = item.en.title || item.id.title || "Untitled";
 
@@ -66,7 +68,6 @@ export function CmsArticleForm({
             </button>
             <h2 className="text-2xl leading-tight">{currentTitle}</h2>
           </div>
-          <p className="mt-1 text-sm text-muted-foreground">articles / bilingual</p>
         </div>
         <div className="flex gap-2">
           <button
@@ -77,9 +78,10 @@ export function CmsArticleForm({
             Delete
           </button>
           <button
-            className="h-10 border border-white bg-white px-5 text-sm text-black transition-colors hover:bg-white/90"
+            className="h-10 border border-white bg-white px-5 text-sm text-black transition-colors hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed"
             onClick={onSave}
             type="button"
+            disabled={!hasChanges}
           >
             Save EN + ID
           </button>
@@ -126,7 +128,9 @@ export function CmsArticleForm({
       <LocaleGrid>
         {locales.map((locale) => (
           <div className="space-y-4 border border-border p-4" key={locale}>
-            <h3 className="text-sm uppercase text-muted-foreground">{locale}</h3>
+            <h3 className="text-sm uppercase text-muted-foreground">
+              {locale}
+            </h3>
             <Field
               label="Title"
               onChange={(title) => onLocaleChange(locale, { title })}
@@ -134,7 +138,9 @@ export function CmsArticleForm({
             />
             <Field
               label="Description"
-              onChange={(description) => onLocaleChange(locale, { description })}
+              onChange={(description) =>
+                onLocaleChange(locale, { description })
+              }
               value={item[locale].description}
             />
             <Field
@@ -144,7 +150,9 @@ export function CmsArticleForm({
             />
             <Field
               label="Published at"
-              onChange={(publishedAt) => onLocaleChange(locale, { publishedAt })}
+              onChange={(publishedAt) =>
+                onLocaleChange(locale, { publishedAt })
+              }
               value={item[locale].publishedAt}
             />
             <Area
@@ -159,7 +167,10 @@ export function CmsArticleForm({
 
       <LocaleGrid>
         {locales.map((locale) => {
-          const block = item[locale].blocks[0] ?? { heading: "", paragraphs: [""] };
+          const block = item[locale].blocks[0] ?? {
+            heading: "",
+            paragraphs: [""],
+          };
           return (
             <div className="grid gap-3 border border-border p-4" key={locale}>
               <Field

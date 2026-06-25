@@ -21,8 +21,8 @@ export async function PrivacyPage({ locale }: { locale: Locale }) {
     return (
         <>
             <SiteHeader locale={locale} site={site} />
-            <main className="relative z-10 px-5 pb-20 pt-32 md:px-10 md:pb-32 md:pt-[8.75rem]">
-                <article className="mx-auto max-w-[52rem]">
+            <main className="relative z-10 px-5 pb-20 pt-32 md:px-10 md:pb-32 md:pt-35">
+                <article className="mx-auto max-w-208">
                     <div data-reveal>
                         <p className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground">
                             {privacy.eyebrow}
@@ -30,14 +30,14 @@ export async function PrivacyPage({ locale }: { locale: Locale }) {
                         <h1 className="mt-6 font-heading text-4xl font-light leading-[1.05] tracking-normal text-foreground md:text-[80px]">
                             {privacy.title}
                         </h1>
-                        <p className="mt-8 text-[15px] leading-[1.5] text-muted-foreground md:text-[16px]">
+                        <p className="mt-8 text-[15px] leading-normal text-muted-foreground md:text-[16px]">
                             {privacy.lastUpdated}
                         </p>
                         <p className="mt-10 text-[17px] leading-[1.6] text-foreground/85 md:text-[20px]">
                             {privacy.intro}
                         </p>
                         <a
-                            className="gradient-text group relative mt-8 inline-block text-[18px] leading-[1.5] text-foreground"
+                            className="gradient-text group relative mt-8 inline-block text-[18px] leading-normal text-foreground"
                             data-cursor="link"
                             href={`mailto:${site.email}`}
                         >

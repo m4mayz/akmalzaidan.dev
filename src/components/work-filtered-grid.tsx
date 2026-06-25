@@ -84,7 +84,7 @@ export function WorkFilteredGrid({
               } as CSSProperties
             }
           >
-            <div className="relative h-[438px] overflow-hidden bg-white/5 md:h-[620px]">
+            <div className="relative h-109.5 overflow-hidden bg-white/5 md:h-155">
               <LazyImage
                 alt={project.alt}
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
@@ -95,7 +95,7 @@ export function WorkFilteredGrid({
             <div className="mt-6 grid gap-2 md:grid-cols-[1fr_auto] md:gap-6">
               <div>
                 <div className="flex items-center justify-between">
-                  <h2 className="text-[20px] leading-[1.25] md:text-[22px]">
+                  <h2 className="text-[20px] leading-tight md:text-[22px]">
                     {project.title}
                   </h2>
                   <p className="text-[15px] leading-[1.45] text-muted-foreground md:text-right">
@@ -103,7 +103,7 @@ export function WorkFilteredGrid({
                   </p>
                 </div>
 
-                <p className="mt-2 text-[14px] leading-[1.5] text-muted-foreground">
+                <p className="mt-2 text-[14px] leading-normal text-muted-foreground">
                   {project.category}
                 </p>
               </div>

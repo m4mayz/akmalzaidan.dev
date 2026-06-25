@@ -94,9 +94,11 @@ export function ContentCms() {
   const [type, setType] = useState<ContentType>("work");
   const [items, setItems] = useState<Pair<CmsItem[]> | null>(null);
   const [current, setCurrent] = useState<CmsPair | null>(null);
+  const [originalCurrent, setOriginalCurrent] = useState<CmsPair | null>(null);
   const [message, setMessage] = useState("");
   const [view, setView] = useState<"list" | "edit">("list");
   const [counts, setCounts] = useState({ work: 0, articles: 0, pages: 0 });
+  const [pendingSelect, setPendingSelect] = useState<string | null>(null);
 
   const loadItems = async () => {
     const [enResponse, idResponse] = await Promise.all(
@@ -113,7 +115,6 @@ export function ContentCms() {
 
     const slugCount = new Set([...enData.items, ...idData.items].map((i) => i.slug)).size;
     
-    // Also fetch the count for the other types
     const types: ContentType[] = ["work", "articles", "pages"];
     const otherTypes = types.filter(t => t !== type);
     
@@ -135,12 +136,18 @@ export function ContentCms() {
 
   useEffect(() => {
     let ignore = false;
-    setView("list");
-    setCurrent(null);
-    setMessage("");
+    
+    if (!pendingSelect) {
+      setView("list");
+      setCurrent(null);
+      setOriginalCurrent(null);
+      setMessage("");
+    }
 
     loadItems().then((loaded) => {
-      if (!ignore) setItems(loaded);
+      if (!ignore) {
+        setItems(loaded);
+      }
     });
 
     return () => {
@@ -148,6 +155,42 @@ export function ContentCms() {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type]);
+
+  const selectItem = (itemSlug: string, sourceItems = items) => {
+    const next = makePair(type);
+    for (const locale of locales) {
+      next[locale] =
+        sourceItems?.[locale].find((item) => item.slug === itemSlug) ?? next[locale];
+    }
+    next.en.slug = itemSlug;
+    next.id.slug = itemSlug;
+    const nextClone = structuredClone(next);
+    setCurrent(nextClone);
+    setOriginalCurrent(structuredClone(nextClone));
+    setView("edit");
+    setMessage("");
+  };
+
+  useEffect(() => {
+    if (pendingSelect && items && type === "pages") {
+      selectItem(pendingSelect, items);
+      setPendingSelect(null);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pendingSelect, items, type]);
+
+  const handlePageSelect = (slug: string) => {
+    if (type !== "pages") {
+      setType("pages");
+      setPendingSelect(slug);
+    } else {
+      if (items) {
+        selectItem(slug, items);
+      } else {
+        setPendingSelect(slug);
+      }
+    }
+  };
 
   const save = async () => {
     if (!current) return;
@@ -171,7 +214,12 @@ export function ContentCms() {
     });
     
     await loadItems();
-    setView("list");
+    if (type !== "pages") {
+      setView("list");
+    } else {
+      setOriginalCurrent(structuredClone(current));
+      setMessage("Saved successfully.");
+    }
   };
 
   const remove = async () => {
@@ -225,21 +273,10 @@ export function ContentCms() {
     });
   };
 
-  const selectItem = (itemSlug: string) => {
-    const next = makePair(type);
-    for (const locale of locales) {
-      next[locale] =
-        items?.[locale].find((item) => item.slug === itemSlug) ?? next[locale];
-    }
-    next.en.slug = itemSlug;
-    next.id.slug = itemSlug;
-    setCurrent(structuredClone(next));
-    setView("edit");
-    setMessage("");
-  };
-
   const handleNew = () => {
-    setCurrent(makePair(type));
+    const next = makePair(type);
+    setCurrent(next);
+    setOriginalCurrent(structuredClone(next));
     setView("edit");
     setMessage("");
   };
@@ -286,25 +323,37 @@ export function ContentCms() {
     };
   });
 
+  const hasChanges = JSON.stringify(current) !== JSON.stringify(originalCurrent);
+
   return (
-    <CmsLayout activeType={type} counts={counts} onTypeChange={setType}>
+    <CmsLayout
+      activeType={type}
+      activeSlug={current?.en.slug}
+      counts={counts}
+      onTypeChange={(newType) => {
+        setType(newType);
+        if (newType !== "pages") setPendingSelect(null);
+      }}
+      onPageSelect={handlePageSelect}
+    >
       {message ? (
-        <p className="mb-4 border border-border px-3 py-2 text-sm text-muted-foreground">
+        <p className="mb-4 rounded-md border border-border bg-card px-3 py-2 text-sm text-muted-foreground">
           {message}
         </p>
       ) : null}
 
-      {view === "list" ? (
+      {view === "list" && type !== "pages" ? (
         <CmsListView
           items={listItems}
           onNew={handleNew}
           onReorder={handleReorder}
-          onSelect={selectItem}
+          onSelect={(s) => selectItem(s)}
           type={type}
         />
       ) : current ? (
         isWorkPair(current) ? (
           <CmsWorkForm
+            hasChanges={hasChanges}
             item={current}
             onBack={() => setView("list")}
             onDelete={remove}
@@ -324,8 +373,8 @@ export function ContentCms() {
           />
         ) : isPagePair(current) ? (
           <CmsPageForm
+            hasChanges={hasChanges}
             item={current}
-            onBack={() => setView("list")}
             onLocaleChange={(locale, patch) => {
               setCurrent((pair) => pair ? { ...pair, [locale]: { ...pair[locale], ...patch } } : pair);
             }}
@@ -335,6 +384,7 @@ export function ContentCms() {
           />
         ) : (
           <CmsArticleForm
+            hasChanges={hasChanges}
             item={current as Pair<CmsArticle>}
             onBack={() => setView("list")}
             onDelete={remove}
@@ -353,6 +403,10 @@ export function ContentCms() {
             slug={current.en.slug}
           />
         )
+      ) : type === "pages" ? (
+        <div className="flex h-[50vh] items-center justify-center text-sm text-muted-foreground">
+          Pilih salah satu halaman dari menu di sebelah kiri untuk mengedit.
+        </div>
       ) : null}
     </CmsLayout>
   );

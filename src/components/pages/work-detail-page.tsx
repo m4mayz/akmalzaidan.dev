@@ -76,8 +76,8 @@ export async function WorkDetailPage({
     <>
       <SiteHeader locale={locale} site={site} />
       <main className="relative z-10">
-        <section className="px-5 pt-32 md:px-10 md:pt-[8.75rem]">
-          <div className="mx-auto max-w-[89.5rem]">
+        <section className="px-5 pt-32 md:px-10 md:pt-35">
+          <div className="mx-auto max-w-358">
             <p
               className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground"
               data-reveal
@@ -117,7 +117,7 @@ export async function WorkDetailPage({
           </div>
 
           <div
-            className="relative mt-10 h-[430px] overflow-hidden bg-white/5 md:mt-16 md:h-[780px]"
+            className="relative mt-10 h-107.5 overflow-hidden bg-white/5 md:mt-16 md:h-195"
             data-reveal
           >
             <LazyImage
@@ -132,7 +132,7 @@ export async function WorkDetailPage({
         </section>
 
         <div className="px-5 py-16 md:px-10 md:py-28">
-          <div className="mx-auto max-w-[89.5rem]">
+          <div className="mx-auto max-w-358">
             {project.sections.map((section) => {
               const sectionGallery = project.gallery.filter(
                 (item) => item.slot === section.slot,
@@ -175,7 +175,7 @@ export async function WorkDetailPage({
         </div>
 
         <section className="px-5 py-16 md:px-10 md:py-28">
-          <div className="mx-auto max-w-[89.5rem]">
+          <div className="mx-auto max-w-358">
             <p className="text-[12px] uppercase tracking-[0.18em] text-muted-foreground">
               {isIndonesian ? "Project lainnya" : "More projects"}
             </p>
@@ -193,7 +193,7 @@ export async function WorkDetailPage({
                     } as CSSProperties
                   }
                 >
-                  <div className="relative aspect-[4/5] overflow-hidden bg-white/5">
+                  <div className="relative aspect-4/5 overflow-hidden bg-white/5">
                     <LazyImage
                       alt={item.alt}
                       className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
@@ -203,10 +203,10 @@ export async function WorkDetailPage({
                   </div>
                   <div className="mt-5 flex items-start justify-between gap-4">
                     <div>
-                      <h2 className="text-[20px] leading-[1.25] text-foreground md:text-[22px]">
+                      <h2 className="text-[20px] leading-tight text-foreground md:text-[22px]">
                         {item.title}
                       </h2>
-                      <p className="mt-2 text-[14px] leading-[1.5] text-muted-foreground">
+                      <p className="mt-2 text-[14px] leading-normal text-muted-foreground">
                         {item.category}
                       </p>
                     </div>

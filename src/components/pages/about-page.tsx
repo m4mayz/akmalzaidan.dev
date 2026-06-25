@@ -36,14 +36,14 @@ function TimelineList({ items }: { items: TimelineItemData[] }) {
           key={`${item.title}-${item.organization}-${item.period}`}
         >
           <div className="flex min-w-0 flex-wrap items-baseline gap-x-3 gap-y-0.5">
-            <span className="text-[15px] leading-[1.5] text-foreground md:text-[16px]">
+            <span className="text-[15px] leading-normal text-foreground md:text-[16px]">
               {item.title}
             </span>
-            <span className="text-[14px] leading-[1.5] text-muted-foreground md:text-[15px]">
+            <span className="text-[14px] leading-normal text-muted-foreground md:text-[15px]">
               {item.organization}
             </span>
           </div>
-          <span className="shrink-0 text-[13px] leading-[1.5] text-muted-foreground md:text-[14px]">
+          <span className="shrink-0 text-[13px] leading-normal text-muted-foreground md:text-[14px]">
             {item.period}
           </span>
         </li>
@@ -77,8 +77,8 @@ export async function AboutPage({ locale }: { locale: Locale }) {
     <>
       <SiteHeader locale={locale} site={site} />
       <main className="relative z-10">
-        <section className="relative px-5 pb-16 pt-32 md:px-10 md:pb-24 md:pt-[8.75rem]">
-          <div className="mx-auto max-w-[89.5rem]">
+        <section className="relative px-5 pb-16 pt-32 md:px-10 md:pb-24 md:pt-35">
+          <div className="mx-auto max-w-358">
             <div data-reveal>
               <h1 className="max-w-[22ch] font-heading text-[36px] font-light leading-[0.95] tracking-tighter text-foreground md:text-[clamp(56px,5.4vw,80px)]">
                 {about.headline}
@@ -93,7 +93,7 @@ export async function AboutPage({ locale }: { locale: Locale }) {
 
             {heroImage?.src ? (
               <div
-                className="relative mt-16 aspect-[16/9] w-full overflow-hidden bg-white/5 md:mt-20"
+                className="relative mt-16 aspect-video w-full overflow-hidden bg-white/5 md:mt-20"
                 data-reveal
                 style={{ "--reveal-delay": "120ms" } as CSSProperties}
               >
@@ -109,7 +109,7 @@ export async function AboutPage({ locale }: { locale: Locale }) {
         </section>
 
         <section className="relative px-5 py-16 md:px-10 md:py-24">
-          <div className="mx-auto grid max-w-[89.5rem] gap-12 md:grid-cols-2 md:gap-20">
+          <div className="mx-auto grid max-w-358 gap-12 md:grid-cols-2 md:gap-20">
             <div data-reveal>
               <AboutHeading>{about.philosophyTitle}</AboutHeading>
               <div className="mt-8 flex flex-col gap-6 text-[17px] leading-[1.55] text-foreground/85 md:mt-12 md:max-w-200">
@@ -121,7 +121,7 @@ export async function AboutPage({ locale }: { locale: Locale }) {
 
             {sideImage?.src ? (
               <div
-                className="relative min-h-[439px] overflow-hidden bg-white/5 md:min-h-0"
+                className="relative min-h-109.75 overflow-hidden bg-white/5 md:min-h-0"
                 data-reveal
                 style={{ "--reveal-delay": "120ms" } as CSSProperties}
               >
@@ -137,7 +137,7 @@ export async function AboutPage({ locale }: { locale: Locale }) {
         </section>
 
         <section className="relative px-5 py-16 md:px-10 md:py-24">
-          <div className="mx-auto grid max-w-[89.5rem] gap-x-12 gap-y-14 md:grid-cols-2">
+          <div className="mx-auto grid max-w-358 gap-x-12 gap-y-14 md:grid-cols-2">
             <div data-reveal>
               <AboutHeading size="medium">{about.experienceTitle}</AboutHeading>
               <TimelineList items={about.experiences} />
@@ -153,7 +153,7 @@ export async function AboutPage({ locale }: { locale: Locale }) {
         </section>
 
         <section className="relative px-5 py-16 md:px-10 md:py-24">
-          <div className="mx-auto grid max-w-[89.5rem] gap-x-12 gap-y-14 md:grid-cols-2">
+          <div className="mx-auto grid max-w-358 gap-x-12 gap-y-14 md:grid-cols-2">
             <div data-reveal>
               <AboutHeading size="medium">{about.skillsTitle}</AboutHeading>
               <TagList items={about.skills} />
@@ -169,13 +169,13 @@ export async function AboutPage({ locale }: { locale: Locale }) {
         </section>
 
         <section className="relative px-5 py-16 md:px-10 md:py-24">
-          <div className="mx-auto max-w-[89.5rem]">
+          <div className="mx-auto max-w-358">
             <div className="grid gap-x-12 gap-y-8 md:grid-cols-12" data-reveal>
               <div className="md:col-span-4">
                 <AboutHeading>{about.beyondTitle}</AboutHeading>
               </div>
               <div className="md:col-span-8">
-                <div className="max-w-[52rem] space-y-5 text-[17px] leading-[1.55] text-foreground/85 md:text-[19px]">
+                <div className="max-w-208 space-y-5 text-[17px] leading-[1.55] text-foreground/85 md:text-[19px]">
                   {about.beyond.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                   ))}
@@ -183,27 +183,29 @@ export async function AboutPage({ locale }: { locale: Locale }) {
               </div>
             </div>
 
-            {about.images.filter(img => img.src).length > 0 ? (
+            {about.images.filter((img) => img.src).length > 0 ? (
               <div className="mt-14 grid grid-cols-2 gap-3 md:mt-20 md:grid-cols-4 md:gap-6">
-                {about.images.filter(img => img.src).map((image, index) => (
-                  <div
-                    className="relative aspect-[4/5] w-full overflow-hidden bg-white/5"
-                    data-reveal
-                    key={image.src}
-                    style={
-                      {
-                        "--reveal-delay": `${Math.min(index, 3) * 70}ms`,
-                      } as CSSProperties
-                    }
-                  >
-                    <LazyImage
-                      alt={image.alt}
-                      className="object-cover"
-                      fill
-                      src={image.src}
-                    />
-                  </div>
-                ))}
+                {about.images
+                  .filter((img) => img.src)
+                  .map((image, index) => (
+                    <div
+                      className="relative aspect-4/5 w-full overflow-hidden bg-white/5"
+                      data-reveal
+                      key={image.src}
+                      style={
+                        {
+                          "--reveal-delay": `${Math.min(index, 3) * 70}ms`,
+                        } as CSSProperties
+                      }
+                    >
+                      <LazyImage
+                        alt={image.alt}
+                        className="object-cover"
+                        fill
+                        src={image.src}
+                      />
+                    </div>
+                  ))}
               </div>
             ) : null}
           </div>

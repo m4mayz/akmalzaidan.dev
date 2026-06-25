@@ -21,14 +21,14 @@ export async function PlaceholderPage({
         <>
             <SiteHeader locale="en" site={site} />
             <main className="relative z-10 min-h-screen px-5 pb-20 pt-36 md:px-10 md:pt-44">
-                <section className="max-w-[980px]" data-reveal>
+                <section className="max-w-245" data-reveal>
                     <p className="mb-8 text-[11px] uppercase leading-none text-muted-foreground">
                         {eyebrow}
                     </p>
                     <h1 className="font-heading text-[56px] font-light leading-[1.02] tracking-normal text-foreground md:text-[96px]">
                         {title}
                     </h1>
-                    <p className="mt-8 max-w-[620px] text-[17px] leading-[1.65] text-muted-foreground">
+                    <p className="mt-8 max-w-155 text-[17px] leading-[1.65] text-muted-foreground">
                         {description}
                     </p>
                     <Link

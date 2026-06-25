@@ -1,10 +1,8 @@
 import Link from "next/link";
 
-import { getSiteData } from "@/lib/content";
 import type { Locale } from "@/types/content";
 
 async function NotFoundContent({ locale }: { locale: Locale }) {
-  const site = await getSiteData(locale);
   const isIndonesian = locale === "id";
 
   return (
