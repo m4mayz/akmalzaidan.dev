@@ -21,37 +21,39 @@ const newsreader = Newsreader({
   weight: ["300", "400"],
 });
 
-const site = getSiteData("en");
+export async function generateMetadata(): Promise<Metadata> {
+  const site = await getSiteData("en");
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://akmalzaidan.dev"),
-  title: site.metadata.title,
-  description: site.metadata.description,
-  authors: [{ name: site.name }],
-  creator: site.name,
-  openGraph: {
+  return {
+    metadataBase: new URL("https://akmalzaidan.dev"),
     title: site.metadata.title,
     description: site.metadata.description,
-    images: [
-      {
-        url: "/seo/og.png",
-        width: 1200,
-        height: 630,
-        alt: site.metadata.ogAlt,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: site.metadata.title,
-    description: site.metadata.description,
-    images: ["/seo/og.png"],
-  },
-  icons: {
-    icon: "/seo/icon.png",
-    apple: "/seo/apple-icon.png",
-  },
-};
+    authors: [{ name: site.name }],
+    creator: site.name,
+    openGraph: {
+      title: site.metadata.title,
+      description: site.metadata.description,
+      images: [
+        {
+          url: "/seo/og.png",
+          width: 1200,
+          height: 630,
+          alt: site.metadata.ogAlt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: site.metadata.title,
+      description: site.metadata.description,
+      images: ["/seo/og.png"],
+    },
+    icons: {
+      icon: "/seo/icon.png",
+      apple: "/seo/apple-icon.png",
+    },
+  };
+}
 
 export default function RootLayout({
   children,

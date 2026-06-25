@@ -50,9 +50,9 @@ function TextField({
     );
 }
 
-export function ContactPage({ locale }: { locale: Locale }) {
-    const site = getSiteData(locale);
-    const contact = getContactData(locale);
+export async function ContactPage({ locale }: { locale: Locale }) {
+    const site = await getSiteData(locale);
+    const contact = await getContactData(locale);
 
     return (
         <>

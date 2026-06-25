@@ -10,6 +10,14 @@ import type {
   WorkSummaryData,
 } from "@/types/content";
 
+export type PageId = "global" | "home" | "about" | "contact" | "privacy";
+
+export type PageContentRow = {
+  id: PageId;
+  locale: Locale;
+  data: unknown;
+};
+
 type Status = "draft" | "published";
 
 type WorkRow = {
@@ -46,7 +54,7 @@ type ArticleRow = {
   blocks_json: unknown;
 };
 
-export type CmsContentType = "work" | "articles";
+export type CmsContentType = "work" | "articles" | "pages";
 
 export type CmsWorkInput = WorkContentData & {
   id?: number;
@@ -60,6 +68,13 @@ export type CmsArticleInput = ArticleContentData & {
   locale: Locale;
   status: Status;
   sortOrder?: number;
+};
+
+export type CmsPageInput = {
+  locale: Locale;
+  slug: string; // equals to PageId
+  status: Status; // always 'published'
+  data: unknown;
 };
 
 function parseJson<T>(value: unknown, fallback: T): T {
@@ -235,6 +250,20 @@ export async function listCmsContent(type: CmsContentType, locale: Locale) {
     return requireRows(data as WorkRow[] | null, error).map(mapCmsWork);
   }
 
+  if (type === "pages") {
+    const { data, error } = await getSupabaseServiceClient()
+      .from("page_content")
+      .select("*")
+      .eq("locale", locale);
+
+    return requireRows(data as PageContentRow[] | null, error).map((row) => ({
+      locale: row.locale,
+      slug: row.id,
+      status: "published" as Status,
+      data: row.data,
+    } satisfies CmsPageInput));
+  }
+
   const { data, error } = await getSupabaseServiceClient()
     .from("articles")
     .select("*")
@@ -323,4 +352,36 @@ export async function reorderContent(
 
     if (error) throw new Error(error.message);
   }
+}
+
+export async function getPageContent<T>(
+  id: PageId,
+  locale: Locale,
+): Promise<Partial<T>> {
+  const { data, error } = await getSupabaseServiceClient()
+    .from("page_content")
+    .select("data")
+    .eq("id", id)
+    .eq("locale", locale)
+    .single();
+
+  if (error || !data) {
+    return {} as Partial<T>;
+  }
+
+  return parseJson<Partial<T>>(data.data, {});
+}
+
+export async function upsertPageContent(input: CmsPageInput) {
+  const { error } = await getSupabaseServiceClient().from("page_content").upsert(
+    {
+      id: input.slug,
+      locale: input.locale,
+      data: input.data,
+      updated_at: new Date().toISOString(),
+    },
+    { onConflict: "id,locale" },
+  );
+
+  if (error) throw new Error(error.message);
 }

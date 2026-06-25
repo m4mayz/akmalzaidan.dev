@@ -8,8 +8,8 @@ type ContactSectionProps = {
     site?: SiteData;
 };
 
-export function ContactSection({ locale = "en", site }: ContactSectionProps) {
-    const siteData = site ?? getSiteData(locale);
+export async function ContactSection({ locale = "en", site }: ContactSectionProps) {
+    const siteData = site ?? await getSiteData(locale);
 
     return (
         <section

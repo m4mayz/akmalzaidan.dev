@@ -14,9 +14,9 @@ function PolicyParagraph({ children }: { children: string }) {
     );
 }
 
-export function PrivacyPage({ locale }: { locale: Locale }) {
-    const site = getSiteData(locale);
-    const privacy = getPrivacyData(locale);
+export async function PrivacyPage({ locale }: { locale: Locale }) {
+    const site = await getSiteData(locale);
+    const privacy = await getPrivacyData(locale);
 
     return (
         <>

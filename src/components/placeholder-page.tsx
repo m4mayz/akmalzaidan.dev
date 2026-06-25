@@ -10,12 +10,12 @@ type PlaceholderPageProps = {
     eyebrow?: string;
 };
 
-export function PlaceholderPage({
+export async function PlaceholderPage({
     title,
     description,
     eyebrow = "In progress",
 }: PlaceholderPageProps) {
-    const site = getSiteData("en");
+    const site = await getSiteData("en");
 
     return (
         <>

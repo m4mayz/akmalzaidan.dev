@@ -174,7 +174,6 @@ export type HomeData = {
   hero: {
     headline: string;
     highlightedWord: string;
-    body: string;
   };
   stats: StatItemData[];
   services: ServiceItemData[];

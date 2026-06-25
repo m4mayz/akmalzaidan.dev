@@ -7,11 +7,12 @@ import type { Locale, WorkSectionSlot } from "@/types/content";
 import { CmsArticleForm, type CmsArticle } from "@/components/cms/cms-article-form";
 import { CmsLayout } from "@/components/cms/cms-layout";
 import { CmsListView, type ListItem } from "@/components/cms/cms-list-view";
+import { CmsPageForm, type Pair } from "@/components/cms/cms-page-form";
 import { CmsWorkForm, type CmsWork } from "@/components/cms/cms-work-form";
+import type { CmsPageInput } from "@/lib/supabase-content";
 
-type ContentType = "work" | "articles";
-type Pair<T> = Record<Locale, T>;
-type CmsItem = CmsWork | CmsArticle;
+type ContentType = "work" | "articles" | "pages";
+type CmsItem = CmsWork | CmsArticle | CmsPageInput;
 type CmsPair = Pair<CmsItem>;
 
 const locales: Locale[] = ["en", "id"];
@@ -60,6 +61,13 @@ function cloneArticle(locale: Locale): CmsArticle {
 }
 
 function makePair(type: ContentType): CmsPair {
+  // `pages` can't be created via `makePair` because they are fixed. This is just for TypeScript.
+  if (type === "pages") {
+    return {
+      en: { locale: "en", slug: "global", status: "published", data: {} } as CmsPageInput,
+      id: { locale: "id", slug: "global", status: "published", data: {} } as CmsPageInput,
+    };
+  }
   return {
     en: type === "work" ? cloneWork("en") : cloneArticle("en"),
     id: type === "work" ? cloneWork("id") : cloneArticle("id"),
@@ -67,11 +75,19 @@ function makePair(type: ContentType): CmsPair {
 }
 
 function isWorkItem(item: CmsItem): item is CmsWork {
-  return "sections" in item;
+  return "sections" in item && "year" in item;
 }
 
 function isWorkPair(pair: CmsPair): pair is Pair<CmsWork> {
   return isWorkItem(pair.en) && isWorkItem(pair.id);
+}
+
+function isPageItem(item: CmsItem): item is CmsPageInput {
+  return "data" in item;
+}
+
+function isPagePair(pair: CmsPair): pair is Pair<CmsPageInput> {
+  return isPageItem(pair.en) && isPageItem(pair.id);
 }
 
 export function ContentCms() {
@@ -80,7 +96,7 @@ export function ContentCms() {
   const [current, setCurrent] = useState<CmsPair | null>(null);
   const [message, setMessage] = useState("");
   const [view, setView] = useState<"list" | "edit">("list");
-  const [counts, setCounts] = useState({ work: 0, articles: 0 });
+  const [counts, setCounts] = useState({ work: 0, articles: 0, pages: 0 });
 
   const loadItems = async () => {
     const [enResponse, idResponse] = await Promise.all(
@@ -97,15 +113,22 @@ export function ContentCms() {
 
     const slugCount = new Set([...enData.items, ...idData.items].map((i) => i.slug)).size;
     
-    // Also fetch the count for the other type
-    const otherType = type === "work" ? "articles" : "work";
-    const otherRes = await fetch(`/api/cms/content?type=${otherType}&locale=en`);
-    const otherData = (await otherRes.json()) as { items: CmsItem[] };
+    // Also fetch the count for the other types
+    const types: ContentType[] = ["work", "articles", "pages"];
+    const otherTypes = types.filter(t => t !== type);
+    
+    const [res1, res2] = await Promise.all([
+      fetch(`/api/cms/content?type=${otherTypes[0]}&locale=en`),
+      fetch(`/api/cms/content?type=${otherTypes[1]}&locale=en`),
+    ]);
+    const data1 = (await res1.json()) as { items: CmsItem[] };
+    const data2 = (await res2.json()) as { items: CmsItem[] };
     
     setCounts({
       [type]: slugCount,
-      [otherType]: otherData.items.length,
-    } as { work: number; articles: number });
+      [otherTypes[0]]: data1.items.length,
+      [otherTypes[1]]: data2.items.length,
+    } as { work: number; articles: number; pages: number });
 
     return { en: enData.items, id: idData.items };
   };
@@ -255,11 +278,11 @@ export function ContentCms() {
     const item = en ?? id;
     return {
       slug: itemSlug,
-      enTitle: en?.title ?? "",
-      idTitle: id?.title ?? "",
-      image: item?.image ?? "",
+      enTitle: en ? (!isPageItem(en) ? en.title : en.slug) : "",
+      idTitle: id ? (!isPageItem(id) ? id.title : id.slug) : "",
+      image: item && !isPageItem(item) ? item.image : "",
       status: (item?.status ?? "draft") as "draft" | "published",
-      meta: item ? (isWorkItem(item) ? (item as CmsWork).year : (item as CmsArticle).publishedAt) : "",
+      meta: item ? (isWorkItem(item) ? item.year : isPageItem(item) ? "Page" : (item as CmsArticle).publishedAt) : "",
     };
   });
 
@@ -298,6 +321,17 @@ export function ContentCms() {
             }}
             onUpload={upload}
             slug={current.en.slug}
+          />
+        ) : isPagePair(current) ? (
+          <CmsPageForm
+            item={current}
+            onBack={() => setView("list")}
+            onLocaleChange={(locale, patch) => {
+              setCurrent((pair) => pair ? { ...pair, [locale]: { ...pair[locale], ...patch } } : pair);
+            }}
+            onSave={save}
+            onUpload={upload}
+            onDeleteAsset={deleteAsset}
           />
         ) : (
           <CmsArticleForm

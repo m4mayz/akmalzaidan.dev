@@ -6,7 +6,7 @@ import { getArticleSummaries, getSiteData } from "@/lib/content";
 import type { Locale } from "@/types/content";
 
 export async function ArticlesIndexPage({ locale }: { locale: Locale }) {
-    const site = getSiteData(locale);
+    const site = await getSiteData(locale);
     const articles = await getArticleSummaries(locale);
     const isIndonesian = locale === "id";
 

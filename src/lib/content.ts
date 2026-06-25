@@ -16,6 +16,7 @@ import {
   getWorkSlugsFromDb,
   listArticleSummaries,
   listWorkSummaries,
+  getPageContent,
 } from "@/lib/supabase-content";
 import type {
   AboutData,
@@ -55,24 +56,53 @@ const privacyByLocale: Record<Locale, PrivacyData> = {
   id: idPrivacy as PrivacyData,
 };
 
-export function getSiteData(locale: Locale) {
-  return siteByLocale[locale];
+export async function getSiteData(locale: Locale): Promise<SiteData> {
+  const localData = siteByLocale[locale];
+  const dynamic = await getPageContent<{
+    role: string;
+    location: string;
+    availability: string;
+    metadataDescription: string;
+  }>("global", locale);
+
+  return {
+    ...localData,
+    role: dynamic.role ?? localData.role,
+    location: dynamic.location ?? localData.location,
+    availability: dynamic.availability ?? localData.availability,
+    metadata: {
+      ...localData.metadata,
+      description: dynamic.metadataDescription ?? localData.metadata.description,
+    },
+  };
 }
 
-export function getHomeData(locale: Locale) {
-  return homeByLocale[locale];
+export async function getHomeData(locale: Locale): Promise<HomeData> {
+  const localData = homeByLocale[locale];
+  const dynamic = await getPageContent<HomeData>("home", locale);
+
+  return { ...localData, ...dynamic };
 }
 
-export function getAboutData(locale: Locale) {
-  return aboutByLocale[locale];
+export async function getAboutData(locale: Locale): Promise<AboutData> {
+  const localData = aboutByLocale[locale];
+  const dynamic = await getPageContent<AboutData>("about", locale);
+
+  return { ...localData, ...dynamic };
 }
 
-export function getContactData(locale: Locale) {
-  return contactByLocale[locale];
+export async function getContactData(locale: Locale): Promise<ContactData> {
+  const localData = contactByLocale[locale];
+  const dynamic = await getPageContent<ContactData>("contact", locale);
+
+  return { ...localData, ...dynamic };
 }
 
-export function getPrivacyData(locale: Locale) {
-  return privacyByLocale[locale];
+export async function getPrivacyData(locale: Locale): Promise<PrivacyData> {
+  const localData = privacyByLocale[locale];
+  const dynamic = await getPageContent<PrivacyData>("privacy", locale);
+
+  return { ...localData, ...dynamic };
 }
 
 export function getWorkSummaries(locale: Locale): Promise<WorkSummaryData[]> {

@@ -12,7 +12,6 @@ export function HeroSection({ data, stats }: HeroSectionProps) {
     const [beforeHighlight, afterHighlight] = data.headline.split(
         data.highlightedWord,
     );
-    const body = data.body.trim();
 
     return (
         <section className="relative flex min-h-[920px] flex-col px-5 pb-12 pt-32 md:min-h-[1200px] md:px-10 md:pt-[140px]">
@@ -25,11 +24,6 @@ export function HeroSection({ data, stats }: HeroSectionProps) {
                     <br />
                     {afterHighlight.trim()}
                 </h1>
-                {body ? (
-                    <p className="mt-8 max-w-[640px] text-[15px] leading-[1.55] text-muted-foreground md:text-[17px]">
-                        {body}
-                    </p>
-                ) : null}
             </div>
 
             <div

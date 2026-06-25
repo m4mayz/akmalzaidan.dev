@@ -67,9 +67,9 @@ function TagList({ items }: { items: string[] }) {
   );
 }
 
-export function AboutPage({ locale }: { locale: Locale }) {
-  const site = getSiteData(locale);
-  const about = getAboutData(locale);
+export async function AboutPage({ locale }: { locale: Locale }) {
+  const site = await getSiteData(locale);
+  const about = await getAboutData(locale);
   const heroImage = about.images[0];
   const sideImage = about.images[1];
 
@@ -91,7 +91,7 @@ export function AboutPage({ locale }: { locale: Locale }) {
               </div>
             </div>
 
-            {heroImage ? (
+            {heroImage?.src ? (
               <div
                 className="relative mt-16 aspect-[16/9] w-full overflow-hidden bg-white/5 md:mt-20"
                 data-reveal
@@ -119,7 +119,7 @@ export function AboutPage({ locale }: { locale: Locale }) {
               </div>
             </div>
 
-            {sideImage ? (
+            {sideImage?.src ? (
               <div
                 className="relative min-h-[439px] overflow-hidden bg-white/5 md:min-h-0"
                 data-reveal
@@ -183,9 +183,9 @@ export function AboutPage({ locale }: { locale: Locale }) {
               </div>
             </div>
 
-            {about.images.length > 0 ? (
+            {about.images.filter(img => img.src).length > 0 ? (
               <div className="mt-14 grid grid-cols-2 gap-3 md:mt-20 md:grid-cols-4 md:gap-6">
-                {about.images.map((image, index) => (
+                {about.images.filter(img => img.src).map((image, index) => (
                   <div
                     className="relative aspect-[4/5] w-full overflow-hidden bg-white/5"
                     data-reveal

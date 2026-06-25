@@ -4,6 +4,7 @@ import {
   type CmsContentType,
   upsertArticle,
   upsertWork,
+  upsertPageContent,
 } from "@/lib/supabase-content";
 import type { Locale } from "@/types/content";
 
@@ -19,6 +20,7 @@ function notFoundResponse() {
 }
 
 function parseType(value: string | null): CmsContentType {
+  if (value === "pages") return "pages";
   return value === "articles" ? "articles" : "work";
 }
 
@@ -44,6 +46,8 @@ export async function POST(request: Request) {
 
   if (body.type === "articles") {
     for (const item of items) await upsertArticle(item);
+  } else if (body.type === "pages") {
+    for (const item of items) await upsertPageContent(item);
   } else {
     for (const item of items) await upsertWork(item);
   }

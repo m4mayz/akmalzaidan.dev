@@ -56,7 +56,7 @@ export async function WorkDetailPage({
   locale: Locale;
   slug: string;
 }) {
-  const site = getSiteData(locale);
+  const site = await getSiteData(locale);
   const project = await getWorkDetail(locale, slug);
   const isIndonesian = locale === "id";
 

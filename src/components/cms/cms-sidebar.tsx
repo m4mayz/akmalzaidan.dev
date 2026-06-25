@@ -1,16 +1,17 @@
 import { cn } from "@/lib/utils";
 
-type ContentType = "work" | "articles";
+type ContentType = "work" | "articles" | "pages";
 
 type CmsSidebarProps = {
   activeType: ContentType;
   onTypeChange: (type: ContentType) => void;
-  counts: { work: number; articles: number };
+  counts: { work: number; articles: number; pages: number };
 };
 
 const sections: { type: ContentType; label: string }[] = [
   { type: "work", label: "Work" },
   { type: "articles", label: "Articles" },
+  { type: "pages", label: "Pages" },
 ];
 
 export function CmsSidebar({ activeType, onTypeChange, counts }: CmsSidebarProps) {

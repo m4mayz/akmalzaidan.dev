@@ -3,8 +3,8 @@ import Link from "next/link";
 import { getSiteData } from "@/lib/content";
 import type { Locale } from "@/types/content";
 
-function NotFoundContent({ locale }: { locale: Locale }) {
-  const site = getSiteData(locale);
+async function NotFoundContent({ locale }: { locale: Locale }) {
+  const site = await getSiteData(locale);
   const isIndonesian = locale === "id";
 
   return (
@@ -40,7 +40,7 @@ function NotFoundContent({ locale }: { locale: Locale }) {
   );
 }
 
-export default function NotFound() {
+export default async function NotFound() {
   const locales: Locale[] = ["en", "id"];
 
   return (

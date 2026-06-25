@@ -43,9 +43,17 @@ CREATE TABLE IF NOT EXISTS public.articles (
   UNIQUE (locale, slug)
 );
 
+CREATE TABLE IF NOT EXISTS public.page_content (
+  id TEXT NOT NULL,
+  locale TEXT NOT NULL CHECK (locale IN ('en', 'id')),
+  data JSONB NOT NULL DEFAULT '{}'::jsonb,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  PRIMARY KEY (id, locale)
+);
+
 GRANT USAGE ON SCHEMA public TO anon, authenticated, service_role;
-GRANT SELECT ON public.works, public.articles TO anon, authenticated;
-GRANT ALL ON public.works, public.articles TO service_role;
+GRANT SELECT ON public.works, public.articles, public.page_content TO anon, authenticated;
+GRANT ALL ON public.works, public.articles, public.page_content TO service_role;
 GRANT USAGE, SELECT ON SEQUENCE public.works_id_seq, public.articles_id_seq TO service_role;
 
 INSERT INTO storage.buckets (id, name, public)

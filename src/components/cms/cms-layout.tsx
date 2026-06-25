@@ -1,11 +1,11 @@
 import { CmsSidebar } from "@/components/cms/cms-sidebar";
 
-type ContentType = "work" | "articles";
+type ContentType = "work" | "articles" | "pages";
 
 type CmsLayoutProps = {
   activeType: ContentType;
   onTypeChange: (type: ContentType) => void;
-  counts: { work: number; articles: number };
+  counts: { work: number; articles: number; pages: number };
   children: React.ReactNode;
 };
 

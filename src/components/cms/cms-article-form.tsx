@@ -53,7 +53,7 @@ export function CmsArticleForm({
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border pb-5">
+      <div className="sticky top-0 z-40 -mx-8 mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-border bg-background px-8 py-5">
         <div>
           <div className="flex items-center gap-3">
             <button

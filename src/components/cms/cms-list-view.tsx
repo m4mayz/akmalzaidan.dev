@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 
-type ContentType = "work" | "articles";
+type ContentType = "work" | "articles" | "pages";
 
 export type ListItem = {
   slug: string;
@@ -75,15 +75,17 @@ export function CmsListView({
     <div>
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-xl font-light">
-          {type === "work" ? "Work" : "Articles"}
+          {type === "work" ? "Work" : type === "articles" ? "Articles" : "Pages"}
         </h2>
-        <button
-          className="h-9 rounded-lg border border-white bg-white px-4 text-sm text-black transition-colors hover:bg-white/90"
-          onClick={onNew}
-          type="button"
-        >
-          + New {type === "work" ? "work" : "article"}
-        </button>
+        {type !== "pages" && (
+          <button
+            className="h-9 rounded-lg border border-white bg-white px-4 text-sm text-black transition-colors hover:bg-white/90"
+            onClick={onNew}
+            type="button"
+          >
+            + New {type === "work" ? "work" : "article"}
+          </button>
+        )}
       </div>
 
       {items.length === 0 ? (
@@ -107,12 +109,16 @@ export function CmsListView({
               onDragStart={() => handleDragStart(index)}
               onDrop={() => handleDrop(index)}
             >
-              <span
-                className="cursor-grab select-none text-muted-foreground active:cursor-grabbing"
-                title="Drag to reorder"
-              >
-                ⠿
-              </span>
+              {type === "pages" ? (
+                <span className="w-4" />
+              ) : (
+                <span
+                  className="cursor-grab select-none text-muted-foreground active:cursor-grabbing"
+                  title="Drag to reorder"
+                >
+                  ⠿
+                </span>
+              )}
 
               <div className="relative h-12 w-12 shrink-0 overflow-hidden bg-white/5">
                 {item.image ? (
@@ -144,41 +150,47 @@ export function CmsListView({
                 </span>
               </button>
 
-              <span
-                className={cn(
-                  "shrink-0 rounded-full px-2 py-0.5 text-[11px]",
-                  item.status === "published"
-                    ? "bg-green-500/20 text-green-400"
-                    : "bg-white/10 text-muted-foreground",
-                )}
-              >
-                {item.status}
-              </span>
-
-              <span className="w-16 shrink-0 text-right text-xs text-muted-foreground">
-                {item.meta}
-              </span>
-
-              <div className="flex shrink-0 gap-1 opacity-0 transition-opacity group-hover:opacity-100">
-                <button
-                  className="h-7 w-7 rounded border border-border text-xs text-muted-foreground transition-colors hover:border-white hover:text-foreground disabled:opacity-30"
-                  disabled={index === 0}
-                  onClick={() => moveItem(index, -1)}
-                  title="Move up"
-                  type="button"
+              {type !== "pages" && (
+                <span
+                  className={cn(
+                    "shrink-0 rounded-full px-2 py-0.5 text-[11px]",
+                    item.status === "published"
+                      ? "bg-green-500/20 text-green-400"
+                      : "bg-white/10 text-muted-foreground",
+                  )}
                 >
-                  ↑
-                </button>
-                <button
-                  className="h-7 w-7 rounded border border-border text-xs text-muted-foreground transition-colors hover:border-white hover:text-foreground disabled:opacity-30"
-                  disabled={index === items.length - 1}
-                  onClick={() => moveItem(index, 1)}
-                  title="Move down"
-                  type="button"
-                >
-                  ↓
-                </button>
-              </div>
+                  {item.status}
+                </span>
+              )}
+
+              {type !== "pages" && (
+                <span className="w-16 shrink-0 text-right text-xs text-muted-foreground">
+                  {item.meta}
+                </span>
+              )}
+
+              {type !== "pages" && (
+                <div className="flex shrink-0 gap-1 opacity-0 transition-opacity group-hover:opacity-100">
+                  <button
+                    className="h-7 w-7 rounded border border-border text-xs text-muted-foreground transition-colors hover:border-white hover:text-foreground disabled:opacity-30"
+                    disabled={index === 0}
+                    onClick={() => moveItem(index, -1)}
+                    title="Move up"
+                    type="button"
+                  >
+                    ↑
+                  </button>
+                  <button
+                    className="h-7 w-7 rounded border border-border text-xs text-muted-foreground transition-colors hover:border-white hover:text-foreground disabled:opacity-30"
+                    disabled={index === items.length - 1}
+                    onClick={() => moveItem(index, 1)}
+                    title="Move down"
+                    type="button"
+                  >
+                    ↓
+                  </button>
+                </div>
+              )}
             </div>
           ))}
         </div>
