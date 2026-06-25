@@ -40,7 +40,6 @@ Generate your response as a markdown artifact (e.g., `article_draft.md`) using a
 | **Lead / Excerpt** | [1-2 paragraphs EN] | [1-2 paragraphs ID] |
 | **Category** | [Category] | [Category] |
 | **Published at** | [YYYY-MM-DD] | [YYYY-MM-DD] |
-| **Lead** | [1-2 paragraphs EN, same as above] | [1-2 paragraphs ID, same as above] |
 | **Blocks (Block 1 Heading)** | [Heading 1 EN] | [Heading 1 ID] |
 | **Blocks (Block 1 Article Body)** | [Content 1 EN. Use `<br><br>` for new paragraphs.] | [Content 1 ID. Use `<br><br>` for new paragraphs.] |
 | **Blocks (Block 2 Heading)** | [Heading 2 EN] | [Heading 2 ID] |

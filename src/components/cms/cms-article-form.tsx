@@ -150,11 +150,7 @@ export function CmsArticleForm({
               onChange={(alt) => onLocaleChange(locale, { alt })}
               value={item[locale].alt}
             />
-            <Field
-              label="Lead / Excerpt"
-              onChange={(lead) => onLocaleChange(locale, { lead })}
-              value={item[locale].lead}
-            />
+
             <Field
               label="Category"
               onChange={(category) => onLocaleChange(locale, { category })}
@@ -168,7 +164,7 @@ export function CmsArticleForm({
               value={item[locale].publishedAt}
             />
             <Area
-              label="Lead"
+              label="Lead / Excerpt"
               onChange={(lead) => onLocaleChange(locale, { lead })}
               rows={3}
               value={item[locale].lead}
