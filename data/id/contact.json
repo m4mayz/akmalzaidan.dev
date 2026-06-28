@@ -1,0 +1,21 @@
+{
+  "headline": "Butuh bantuan membangun atau memperbaiki sesuatu yang teknis?",
+  "body": "Kesempatan magang, kerja freelance, website, dashboard, backend system, IT support, atau pertanyaan teknis singkat — kirim catatan pendek dan saya akan membalas secepat yang saya bisa.",
+  "labels": {
+    "name": "Nama",
+    "email": "Email",
+    "subject": "Subjek",
+    "message": "Pesan",
+    "company": "Perusahaan"
+  },
+  "placeholders": {
+    "name": "Nama Anda",
+    "email": "anda@domain.com",
+    "subject": "Magang, proyek freelance, atau bantuan teknis",
+    "message": "Ceritakan role, project, timeline, stack, atau hal penting lainnya."
+  },
+  "submitLabel": "Kirim pesan",
+  "privacyPrefix": "Dengan mengirimkan pesan ini, Anda menyetujui",
+  "privacyLinkLabel": "Kebijakan Privasi",
+  "privacySuffix": " saya."
+}

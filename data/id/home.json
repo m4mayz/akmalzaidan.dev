@@ -1,0 +1,74 @@
+{
+    "hero": {
+        "headline": "Developer dan IT support. Membangun software web, sistem fullstack, dan bantuan teknis praktis.",
+        "highlightedWord": "software",
+        "body": ""
+    },
+    "stats": [
+        {
+            "label": "Domisili",
+            "value": "Indonesia, siap bekerja di mana saja"
+        },
+        {
+            "label": "Fokus",
+            "value": "Web, software, fullstack, IT support"
+        },
+        {
+            "label": "Bahasa",
+            "value": "Indonesia, English"
+        },
+        {
+            "label": "Terbuka untuk",
+            "value": "Remote work, magang, dan project freelance"
+        }
+    ],
+    "services": [
+        {
+            "number": "01",
+            "title": "Web software",
+            "description": "Saya membangun website dan aplikasi web yang jelas dipakai dan mudah dikembangkan lagi. Tujuannya bukan hanya tampilan yang rapi, tapi produk yang benar-benar berjalan di situasi nyata."
+        },
+        {
+            "number": "02",
+            "title": "Fullstack systems",
+            "description": "Saya bekerja di frontend, backend, dan logic yang menghubungkan keduanya. Ini membantu saya memahami bagaimana sebuah fitur harus terlihat, berjalan, menyimpan data, dan tetap mudah dirawat."
+        },
+        {
+            "number": "03",
+            "title": "Dashboard",
+            "description": "Saya membangun dashboard untuk informasi yang perlu dicek, dibandingkan, dan dipakai berulang. Saya peduli pada struktur yang jelas, data yang mudah dibaca, dan workflow yang tidak memperlambat orang."
+        },
+        {
+            "number": "04",
+            "title": "Backend dan API",
+            "description": "Saya membuat alur backend, integrasi API, dan struktur data untuk mendukung aplikasi praktis. Fokusnya pada reliability, clarity, dan membuat sisi frontend lebih mudah dibangun."
+        },
+        {
+            "number": "05",
+            "title": "Technical IT support",
+            "description": "Saya membantu troubleshooting, setup, bug maintenance, dan masalah teknis sehari-hari. Kadang solusi terbaik bukan fitur baru, tapi menemukan bagian yang rusak dan membuatnya mudah dipahami."
+        },
+        {
+            "number": "06",
+            "title": "AI-assisted development",
+            "description": "Saya memakai AI tools sebagai bagian dari workflow development untuk eksplorasi ide, debugging lebih cepat, dan mengurangi pekerjaan repetitif. Bagian pentingnya tetap tahu apa yang harus dicek, dipakai, dan dikontrol."
+        }
+    ],
+    "testimonials": [
+        {
+            "quote": "Akmal masih di tahap awal kariernya, tapi cara kerjanya tenang dan teknis. Ia bertanya dengan jelas, memecah masalah menjadi bagian kecil, dan terus mencari sampai sumber masalahnya masuk akal.",
+            "author": "Placeholder magang / HR",
+            "role": "Seed testimoni"
+        },
+        {
+            "quote": "Arah project mudah diikuti, mulai dari keputusan interface sampai pertimbangan backend dan deployment.",
+            "author": "Seed testimoni",
+            "role": "Placeholder client freelance"
+        },
+        {
+            "quote": "Ia memperhatikan clarity, maintainability, dan support setelah delivery, sehingga hasilnya lebih mudah dipakai oleh tim kecil.",
+            "author": "Seed testimoni",
+            "role": "Placeholder kolaborasi tim"
+        }
+    ]
+}

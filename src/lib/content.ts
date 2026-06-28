@@ -1,4 +1,12 @@
+import enAbout from "../../data/en/about.json";
+import enContact from "../../data/en/contact.json";
+import enHome from "../../data/en/home.json";
+import enPrivacy from "../../data/en/privacy.json";
 import enSite from "../../data/en/site.json";
+import idAbout from "../../data/id/about.json";
+import idContact from "../../data/id/contact.json";
+import idHome from "../../data/id/home.json";
+import idPrivacy from "../../data/id/privacy.json";
 import idSite from "../../data/id/site.json";
 
 import {
@@ -28,6 +36,26 @@ const siteByLocale: Record<Locale, SiteData> = {
   id: idSite as SiteData,
 };
 
+const homeByLocale: Record<Locale, HomeData> = {
+  en: enHome as HomeData,
+  id: idHome as HomeData,
+};
+
+const aboutByLocale: Record<Locale, AboutData> = {
+  en: enAbout as AboutData,
+  id: idAbout as AboutData,
+};
+
+const contactByLocale: Record<Locale, ContactData> = {
+  en: enContact as ContactData,
+  id: idContact as ContactData,
+};
+
+const privacyByLocale: Record<Locale, PrivacyData> = {
+  en: enPrivacy as PrivacyData,
+  id: idPrivacy as PrivacyData,
+};
+
 export async function getSiteData(locale: Locale): Promise<SiteData> {
   const localData = siteByLocale[locale];
   const dynamic = await getPageContent<{
@@ -50,41 +78,54 @@ export async function getSiteData(locale: Locale): Promise<SiteData> {
 }
 
 export async function getHomeData(locale: Locale): Promise<HomeData> {
+  const localData = homeByLocale[locale];
   const dynamic = await getPageContent<HomeData>("home", locale);
   return {
+    ...localData,
     ...dynamic,
-    stats: dynamic?.stats || [],
-    services: dynamic?.services || [],
-    testimonials: dynamic?.testimonials || [],
-  } as HomeData;
+    hero: { ...localData.hero, ...dynamic.hero },
+    stats: dynamic.stats ?? localData.stats,
+    services: dynamic.services ?? localData.services,
+    testimonials: dynamic.testimonials ?? localData.testimonials,
+  };
 }
 
 export async function getAboutData(locale: Locale): Promise<AboutData> {
+  const localData = aboutByLocale[locale];
   const dynamic = await getPageContent<AboutData>("about", locale);
   return {
+    ...localData,
     ...dynamic,
-    intro: dynamic?.intro || [],
-    philosophy: dynamic?.philosophy || [],
-    experiences: dynamic?.experiences || [],
-    education: dynamic?.education || [],
-    skills: dynamic?.skills || [],
-    tools: dynamic?.tools || [],
-    beyond: dynamic?.beyond || [],
-    images: dynamic?.images || [],
-  } as AboutData;
+    intro: dynamic.intro ?? localData.intro,
+    philosophy: dynamic.philosophy ?? localData.philosophy,
+    experiences: dynamic.experiences ?? localData.experiences,
+    education: dynamic.education ?? localData.education,
+    skills: dynamic.skills ?? localData.skills,
+    tools: dynamic.tools ?? localData.tools,
+    beyond: dynamic.beyond ?? localData.beyond,
+    images: dynamic.images ?? localData.images,
+  };
 }
 
 export async function getContactData(locale: Locale): Promise<ContactData> {
+  const localData = contactByLocale[locale];
   const dynamic = await getPageContent<ContactData>("contact", locale);
-  return (dynamic || {}) as ContactData;
+  return {
+    ...localData,
+    ...dynamic,
+    labels: { ...localData.labels, ...dynamic.labels },
+    placeholders: { ...localData.placeholders, ...dynamic.placeholders },
+  };
 }
 
 export async function getPrivacyData(locale: Locale): Promise<PrivacyData> {
+  const localData = privacyByLocale[locale];
   const dynamic = await getPageContent<PrivacyData>("privacy", locale);
   return {
+    ...localData,
     ...dynamic,
-    sections: dynamic?.sections || [],
-  } as PrivacyData;
+    sections: dynamic.sections ?? localData.sections,
+  };
 }
 
 export function getWorkSummaries(locale: Locale): Promise<WorkSummaryData[]> {

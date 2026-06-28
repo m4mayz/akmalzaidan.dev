@@ -1,0 +1,95 @@
+{
+  "eyebrow": "Legal",
+  "title": "Privacy Policy",
+  "lastUpdated": "Last updated: 20 June 2026",
+  "intro": "This page explains what personal data is collected when you use Akmal Zaidan's portfolio website, why it is processed, and what rights you may have under Indonesian personal data protection rules and international privacy frameworks such as the GDPR where they apply.",
+  "sections": [
+    {
+      "heading": "Data controller",
+      "paragraphs": [
+        "Akmal Zaidan, a developer and IT support person based in Sukabumi, Indonesia. The simplest way to reach me is by email at akmalzaidan960@gmail.com."
+      ]
+    },
+    {
+      "heading": "What data is processed and why",
+      "groups": [
+        {
+          "subheading": "Contact form",
+          "paragraphs": [
+            "When you use the contact form, it opens your email client and sends your message to my inbox. The data may include your name, email address, subject, message, and the time the message was sent.",
+            "The purpose is to receive your message, reply to internship, freelance, support, or collaboration inquiries, and keep reasonable follow-up records."
+          ]
+        },
+        {
+          "subheading": "Hosting",
+          "paragraphs": [
+            "This site is hosted on Vercel. Vercel may process standard technical data needed to deliver the website, keep it reliable, and protect it from abuse."
+          ]
+        },
+        {
+          "subheading": "Email",
+          "paragraphs": [
+            "Messages are delivered to my Gmail inbox. Your message may be stored there so I can reply and follow up on the conversation."
+          ]
+        },
+        {
+          "subheading": "Analytics",
+          "paragraphs": [
+            "This site may use Vercel Web Analytics. It is used to understand general website traffic and improve the site without relying on advertising tracking cookies."
+          ]
+        },
+        {
+          "subheading": "Third-party assets",
+          "paragraphs": [
+            "Some assets, scripts, libraries, or services used by this website may be provided by third parties. Those providers may receive standard technical request data as part of normal website delivery."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Legal basis and privacy framework",
+      "paragraphs": [
+        "For visitors in Indonesia, this policy is written with Law No. 27 of 2022 concerning Personal Data Protection in mind.",
+        "For international visitors, similar practical rights are respected where applicable, including access, correction, deletion, objection, restriction, portability, and the right to raise a complaint with a relevant authority."
+      ]
+    },
+    {
+      "heading": "International transfers",
+      "paragraphs": [
+        "Some services used by this website or for communication, such as Vercel, Gmail, and analytics providers, may process data outside Indonesia or outside your country. Where this happens, the processing depends on the safeguards and privacy terms provided by those services."
+      ]
+    },
+    {
+      "heading": "Retention",
+      "paragraphs": [
+        "Messages are kept only as long as needed to handle the conversation and reasonable follow-up, and no longer than 24 months from the last interaction unless a legal, security, or contractual reason requires longer retention. You can ask for earlier deletion at any time."
+      ]
+    },
+    {
+      "heading": "Your rights",
+      "paragraphs": [
+        "Under applicable privacy rules, you may have the right to:"
+      ],
+      "list": [
+        "Access the data I hold about you.",
+        "Have inaccurate data corrected.",
+        "Request deletion.",
+        "Restrict or object to processing.",
+        "Receive your data in a portable format.",
+        "Raise a complaint with a relevant Indonesian authority or, where applicable, an EU supervisory authority."
+      ]
+    },
+    {
+      "heading": "Exercising your rights",
+      "paragraphs": [
+        "To exercise these rights, email akmalzaidan960@gmail.com."
+      ]
+    },
+    {
+      "heading": "Changes",
+      "paragraphs": [
+        "This policy may be updated from time to time. The \"Last updated\" date at the top reflects the current version."
+      ]
+    }
+  ]
+}
