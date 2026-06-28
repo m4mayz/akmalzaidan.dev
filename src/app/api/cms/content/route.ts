@@ -6,8 +6,8 @@ import {
   upsertWork,
   upsertPageContent,
 } from "@/lib/supabase-content";
+import { revalidateSite } from "@/lib/revalidate-site";
 import type { Locale } from "@/types/content";
-import { revalidatePath } from "next/cache";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -54,15 +54,9 @@ export async function POST(request: Request) {
       for (const item of items) await upsertWork(item);
     }
 
-    revalidatePath("/", "layout");
-    
-    const prodUrl = process.env.NEXT_PUBLIC_SITE_URL;
-    const secret = process.env.REVALIDATE_SECRET;
-    if (prodUrl && secret) {
-      await fetch(`${prodUrl}/api/revalidate?secret=${secret}`).catch(() => {});
-    }
+    const revalidation = await revalidateSite();
 
-    return Response.json({ ok: true });
+    return Response.json({ ok: true, revalidation });
   } catch (error: unknown) {
     const msg = error instanceof Error ? error.message : String(error);
     return Response.json({ error: msg || "Unknown error" }, { status: 500 });
@@ -83,15 +77,9 @@ export async function DELETE(request: Request) {
       }
     }
 
-    revalidatePath("/", "layout");
-    
-    const prodUrl = process.env.NEXT_PUBLIC_SITE_URL;
-    const secret = process.env.REVALIDATE_SECRET;
-    if (prodUrl && secret) {
-      await fetch(`${prodUrl}/api/revalidate?secret=${secret}`).catch(() => {});
-    }
+    const revalidation = await revalidateSite();
 
-    return Response.json({ ok: true });
+    return Response.json({ ok: true, revalidation });
   } catch (error: unknown) {
     const msg = error instanceof Error ? error.message : String(error);
     return Response.json({ error: msg || "Unknown error" }, { status: 500 });

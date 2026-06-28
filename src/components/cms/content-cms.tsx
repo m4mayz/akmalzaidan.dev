@@ -328,13 +328,20 @@ export function ContentCms() {
     });
 
     try {
-      await fetch("/api/cms/reorder", {
+      const response = await fetch("/api/cms/reorder", {
         body: JSON.stringify({ type, order: slugs }),
         headers: { "Content-Type": "application/json" },
         method: "PATCH",
       });
-    } catch {
+
+      if (!response.ok) {
+        const error = (await response.json().catch(() => ({}))) as { error?: string };
+        throw new Error(error.error || response.statusText);
+      }
+    } catch (error) {
       await loadItems();
+      const message = error instanceof Error ? error.message : "Reorder failed.";
+      setMessage(`Order saved locally, but production revalidation failed: ${message}`);
     }
   };
 

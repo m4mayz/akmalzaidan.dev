@@ -1,4 +1,5 @@
 import { reorderContent, type CmsContentType } from "@/lib/supabase-content";
+import { revalidateSite } from "@/lib/revalidate-site";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -25,5 +26,7 @@ export async function PATCH(request: Request) {
   }
 
   await reorderContent(type, order);
-  return Response.json({ ok: true });
+  const revalidation = await revalidateSite();
+
+  return Response.json({ ok: true, revalidation });
 }

@@ -1,36 +1,36 @@
 {
-    "name": "Akmal Zaidan",
-    "role": "Fullstack Developer and IT Support",
-    "email": "akmalzaidan960@gmail.com",
-    "location": "Sukabumi, Indonesia",
-    "availability": "Open to internships, freelance work, and remote opportunities",
-    "metadata": {
-        "title": "Akmal Zaidan - Fullstack Developer and IT Support",
-        "description": "Web software, fullstack systems, dashboards, and practical IT support by Akmal Zaidan.",
-        "ogAlt": "Akmal Zaidan - Fullstack Developer and IT Support"
+  "name": "Akmal Zaidan",
+  "role": "Fullstack Developer and IT Support",
+  "email": "akmalzaidan960@gmail.com",
+  "location": "Sukabumi, Indonesia",
+  "availability": "Open to internships, freelance work, and remote opportunities",
+  "metadata": {
+    "title": "Akmal Zaidan - Fullstack Developer and IT Support",
+    "description": "Web software, fullstack systems, dashboards, and practical IT support by Akmal Zaidan.",
+    "ogAlt": "Akmal Zaidan - Fullstack Developer and IT Support"
+  },
+  "nav": [
+    { "label": "Work", "href": "/work" },
+    { "label": "Articles", "href": "/articles" },
+    { "label": "About", "href": "/about" }
+  ],
+  "socials": [
+    { "label": "GitHub", "href": "https://github.com/m4mayz" },
+    {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/m4mayz"
     },
-    "nav": [
-        { "label": "Work", "href": "/work" },
-        { "label": "Articles", "href": "/articles" },
-        { "label": "About", "href": "/about" }
-    ],
-    "socials": [
-        { "label": "GitHub", "href": "https://github.com/m4mayz" },
-        {
-            "label": "LinkedIn",
-            "href": "https://www.linkedin.com/in/m4mayz"
-        },
-        {
-            "label": "Instagram",
-            "href": "https://www.instagram.com/m4mayz"
-        }
-    ],
-    "footer": {
-        "credit": "Design inspired by Kristian Ulrych. Built by Akmal Zaidan",
-        "privacyLabel": "Privacy Policy"
-    },
-    "language": {
-        "current": "EN",
-        "switchTo": "ID"
+    {
+      "label": "Instagram",
+      "href": "https://www.instagram.com/m4mayz"
     }
+  ],
+  "footer": {
+    "credit": "Design inspired by Kristian Ulrych.",
+    "privacyLabel": "Privacy Policy"
+  },
+  "language": {
+    "current": "EN",
+    "switchTo": "ID"
+  }
 }
