@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 import type { Locale, WorkSectionSlot } from "@/types/content";
 
@@ -106,7 +107,6 @@ export function ContentCms() {
   const [items, setItems] = useState<Pair<CmsItem[]> | null>(null);
   const [current, setCurrent] = useState<CmsPair | null>(null);
   const [originalCurrent, setOriginalCurrent] = useState<CmsPair | null>(null);
-  const [message, setMessage] = useState("");
   const [view, setView] = useState<"list" | "edit">("list");
   const [counts, setCounts] = useState({ work: 0, articles: 0, pages: 0 });
   const [pendingSelect, setPendingSelect] = useState<string | null>(null);
@@ -152,7 +152,6 @@ export function ContentCms() {
       setView("list");
       setCurrent(null);
       setOriginalCurrent(null);
-      setMessage("");
     }
 
     loadItems().then((loaded) => {
@@ -179,7 +178,6 @@ export function ContentCms() {
     setCurrent(nextClone);
     setOriginalCurrent(structuredClone(nextClone));
     setView("edit");
-    setMessage("");
   };
 
   useEffect(() => {
@@ -208,7 +206,7 @@ export function ContentCms() {
     const slug = current.en.slug;
     
     if (!slug.trim()) {
-      setMessage("Slug is required.");
+      toast.error("Slug is required.");
       return;
     }
 
@@ -227,20 +225,20 @@ export function ContentCms() {
 
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
-        setMessage(`Error: ${err.error || res.statusText}`);
+        toast.error(`Error: ${err.error || res.statusText}`);
         return;
       }
       
       await loadItems();
+      toast.success("Saved successfully.");
       if (type !== "pages") {
         setView("list");
       } else {
         setOriginalCurrent(structuredClone(current));
-        setMessage("Saved successfully.");
       }
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : String(e);
-      setMessage(`Error saving: ${msg}`);
+      toast.error(`Error saving: ${msg}`);
     }
   };
 
@@ -258,15 +256,16 @@ export function ContentCms() {
       
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
-        setMessage(`Error: ${err.error || res.statusText}`);
+        toast.error(`Error: ${err.error || res.statusText}`);
         return;
       }
       
       await loadItems();
       setView("list");
+      toast.success("Deleted successfully.");
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : String(e);
-      setMessage(`Error deleting: ${msg}`);
+      toast.error(`Error deleting: ${msg}`);
     }
   };
 
@@ -275,7 +274,7 @@ export function ContentCms() {
     const slug = current.en.slug;
     
     if (!slug.trim()) {
-      alert("Set slug before uploading.");
+      toast.error("Set slug before uploading.");
       return null;
     }
 
@@ -291,7 +290,7 @@ export function ContentCms() {
     const data = (await response.json()) as { src?: string; error?: string };
 
     if (!data.src) {
-      alert(data.error ?? "Upload failed.");
+      toast.error(data.error ?? "Upload failed.");
       return null;
     }
 
@@ -311,7 +310,6 @@ export function ContentCms() {
     setCurrent(next);
     setOriginalCurrent(structuredClone(next));
     setView("edit");
-    setMessage("");
   };
 
   const handleReorder = async (slugs: string[]) => {
@@ -341,7 +339,7 @@ export function ContentCms() {
     } catch (error) {
       await loadItems();
       const message = error instanceof Error ? error.message : "Reorder failed.";
-      setMessage(`Order saved locally, but production revalidation failed: ${message}`);
+      toast.error(`Order update failed: ${message}`);
     }
   };
 
@@ -376,12 +374,6 @@ export function ContentCms() {
       }}
       onPageSelect={handlePageSelect}
     >
-      {message ? (
-        <p className="mb-4 rounded-md border border-border bg-card px-3 py-2 text-sm text-muted-foreground">
-          {message}
-        </p>
-      ) : null}
-
       {view === "list" && type !== "pages" ? (
         <CmsListView
           items={listItems}

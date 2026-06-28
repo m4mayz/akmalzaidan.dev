@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { SiteEffects } from "@/components/effects/site-effects";
+import { Toaster } from "@/components/ui/sonner";
 import { getSiteData } from "@/lib/content";
 
 import "./globals.css";
@@ -68,6 +69,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <SiteEffects />
         {children}
+        <Toaster position="bottom-right" />
         <Analytics />
         <SpeedInsights />
       </body>
