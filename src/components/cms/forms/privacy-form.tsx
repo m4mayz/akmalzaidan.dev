@@ -1,6 +1,14 @@
 import { Area, Field, LocaleGrid } from "@/components/cms/cms-field";
 import type { Locale, PrivacyData } from "@/types/content";
 
+function splitLines(value: string) {
+  return value.split(/\r?\n/);
+}
+
+function splitParagraphs(value: string) {
+  return value.split(/\r?\n\r?\n/);
+}
+
 export function PrivacyForm({
   data,
   onChange,
@@ -50,10 +58,10 @@ export function PrivacyForm({
             {data.en.sections[i]?.paragraphs !== undefined && (
               <LocaleGrid>
                 <Area label="EN Paragraphs (Separated by double newlines)" rows={6} value={(data.en.sections[i]?.paragraphs ?? []).join("\n\n")} onChange={(v) => {
-                  const arr = [...data.en.sections]; arr[i] = { ...arr[i], paragraphs: v.split("\n\n").map(s => s.trim()).filter(Boolean) }; updateEn({ sections: arr });
+                  const arr = [...data.en.sections]; arr[i] = { ...arr[i], paragraphs: splitParagraphs(v) }; updateEn({ sections: arr });
                 }} />
                 <Area label="ID Paragraphs (Separated by double newlines)" rows={6} value={(data.id.sections[i]?.paragraphs ?? []).join("\n\n")} onChange={(v) => {
-                  const arr = [...data.id.sections]; arr[i] = { ...arr[i], paragraphs: v.split("\n\n").map(s => s.trim()).filter(Boolean) }; updateId({ sections: arr });
+                  const arr = [...data.id.sections]; arr[i] = { ...arr[i], paragraphs: splitParagraphs(v) }; updateId({ sections: arr });
                 }} />
               </LocaleGrid>
             )}
@@ -61,10 +69,10 @@ export function PrivacyForm({
             {data.en.sections[i]?.list !== undefined && (
               <LocaleGrid>
                 <Area label="EN List (Separated by newlines)" rows={6} value={(data.en.sections[i]?.list ?? []).join("\n")} onChange={(v) => {
-                  const arr = [...data.en.sections]; arr[i] = { ...arr[i], list: v.split("\n").map(s => s.trim()).filter(Boolean) }; updateEn({ sections: arr });
+                  const arr = [...data.en.sections]; arr[i] = { ...arr[i], list: splitLines(v) }; updateEn({ sections: arr });
                 }} />
                 <Area label="ID List (Separated by newlines)" rows={6} value={(data.id.sections[i]?.list ?? []).join("\n")} onChange={(v) => {
-                  const arr = [...data.id.sections]; arr[i] = { ...arr[i], list: v.split("\n").map(s => s.trim()).filter(Boolean) }; updateId({ sections: arr });
+                  const arr = [...data.id.sections]; arr[i] = { ...arr[i], list: splitLines(v) }; updateId({ sections: arr });
                 }} />
               </LocaleGrid>
             )}
@@ -82,10 +90,10 @@ export function PrivacyForm({
                 </LocaleGrid>
                 <LocaleGrid>
                   <Area label="EN Paragraphs" rows={4} value={(data.en.sections[i]?.groups![j]?.paragraphs ?? []).join("\n\n")} onChange={(v) => {
-                    const arr = [...data.en.sections]; const groups = [...arr[i].groups!]; groups[j] = { ...groups[j], paragraphs: v.split("\n\n").map(s => s.trim()).filter(Boolean) }; arr[i] = { ...arr[i], groups }; updateEn({ sections: arr });
+                    const arr = [...data.en.sections]; const groups = [...arr[i].groups!]; groups[j] = { ...groups[j], paragraphs: splitParagraphs(v) }; arr[i] = { ...arr[i], groups }; updateEn({ sections: arr });
                   }} />
                   <Area label="ID Paragraphs" rows={4} value={(data.id.sections[i]?.groups![j]?.paragraphs ?? []).join("\n\n")} onChange={(v) => {
-                    const arr = [...data.id.sections]; const groups = [...arr[i].groups!]; groups[j] = { ...groups[j], paragraphs: v.split("\n\n").map(s => s.trim()).filter(Boolean) }; arr[i] = { ...arr[i], groups }; updateId({ sections: arr });
+                    const arr = [...data.id.sections]; const groups = [...arr[i].groups!]; groups[j] = { ...groups[j], paragraphs: splitParagraphs(v) }; arr[i] = { ...arr[i], groups }; updateId({ sections: arr });
                   }} />
                 </LocaleGrid>
               </div>

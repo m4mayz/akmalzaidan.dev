@@ -1,6 +1,21 @@
+import { useState } from "react";
+
 import { Area, Field, LocaleGrid } from "@/components/cms/cms-field";
-import { ImageCard } from "@/components/cms/cms-image-upload";
+import { ImageCard, ImageCropModal } from "@/components/cms/cms-image-upload";
 import type { Locale, AboutData } from "@/types/content";
+
+type CropTarget = {
+  aspect: "16/9" | "4/5";
+  index: number;
+};
+
+function splitLines(value: string) {
+  return value.split(/\r?\n/);
+}
+
+function splitParagraphs(value: string) {
+  return value.split(/\r?\n\r?\n/);
+}
 
 export function AboutForm({
   data,
@@ -13,6 +28,7 @@ export function AboutForm({
   onUpload?: (file: File) => Promise<string | null>;
   onDeleteAsset?: (src: string) => Promise<void>;
 }) {
+  const [cropTarget, setCropTarget] = useState<CropTarget | null>(null);
   const updateEn = (patch: Partial<AboutData>) => onChange("en", patch);
   const updateId = (patch: Partial<AboutData>) => onChange("id", patch);
 
@@ -54,6 +70,21 @@ export function AboutForm({
     }
   };
 
+  const saveCrop = async (file: File) => {
+    if (!cropTarget || !onUpload) return;
+    const oldSrc = data.en.images?.[cropTarget.index]?.src;
+    const src = await onUpload(file);
+    if (!src) return;
+
+    for (const locale of ["en", "id"] as const) {
+      const arr = [...(data[locale].images ?? [])];
+      arr[cropTarget.index] = { ...arr[cropTarget.index], src };
+      onChange(locale, { images: arr });
+    }
+
+    if (oldSrc && onDeleteAsset) await onDeleteAsset(oldSrc);
+  };
+
   const renderImageSlot = (index: number, label: string) => {
     const image = data.en.images?.[index];
     return (
@@ -65,6 +96,7 @@ export function AboutForm({
               alt={image.alt}
               meta={label}
               onDelete={() => void removeImage(index)}
+              onEdit={() => setCropTarget({ aspect: index === 0 ? "16/9" : "4/5", index })}
               src={image.src}
             />
             <LocaleGrid>
@@ -106,8 +138,8 @@ export function AboutForm({
           <Field label="ID Subhead" value={data.id.subhead ?? ""} onChange={(v) => updateId({ subhead: v })} />
         </LocaleGrid>
         <LocaleGrid>
-          <Area label="EN Intro (Separate paragraphs by double newlines)" rows={8} value={(data.en.intro ?? []).join("\n\n")} onChange={(v) => updateEn({ intro: v.split("\n\n").map((s) => s.trim()).filter(Boolean) })} />
-          <Area label="ID Intro (Separate paragraphs by double newlines)" rows={8} value={(data.id.intro ?? []).join("\n\n")} onChange={(v) => updateId({ intro: v.split("\n\n").map((s) => s.trim()).filter(Boolean) })} />
+          <Area label="EN Intro (Separate paragraphs by double newlines)" rows={8} value={(data.en.intro ?? []).join("\n\n")} onChange={(v) => updateEn({ intro: splitParagraphs(v) })} />
+          <Area label="ID Intro (Separate paragraphs by double newlines)" rows={8} value={(data.id.intro ?? []).join("\n\n")} onChange={(v) => updateId({ intro: splitParagraphs(v) })} />
         </LocaleGrid>
         {renderImageSlot(0, "Hero Image")}
       </section>
@@ -119,8 +151,8 @@ export function AboutForm({
           <Field label="ID Philosophy Title" value={data.id.philosophyTitle ?? ""} onChange={(v) => updateId({ philosophyTitle: v })} />
         </LocaleGrid>
         <LocaleGrid>
-          <Area label="EN Philosophy (Separate paragraphs by double newlines)" rows={8} value={(data.en.philosophy ?? []).join("\n\n")} onChange={(v) => updateEn({ philosophy: v.split("\n\n").map((s) => s.trim()).filter(Boolean) })} />
-          <Area label="ID Philosophy (Separate paragraphs by double newlines)" rows={8} value={(data.id.philosophy ?? []).join("\n\n")} onChange={(v) => updateId({ philosophy: v.split("\n\n").map((s) => s.trim()).filter(Boolean) })} />
+          <Area label="EN Philosophy (Separate paragraphs by double newlines)" rows={8} value={(data.en.philosophy ?? []).join("\n\n")} onChange={(v) => updateEn({ philosophy: splitParagraphs(v) })} />
+          <Area label="ID Philosophy (Separate paragraphs by double newlines)" rows={8} value={(data.id.philosophy ?? []).join("\n\n")} onChange={(v) => updateId({ philosophy: splitParagraphs(v) })} />
         </LocaleGrid>
         {renderImageSlot(1, "Philosophy Image")}
       </section>
@@ -316,8 +348,8 @@ export function AboutForm({
           <Field label="ID Skills Title" value={data.id.skillsTitle ?? ""} onChange={(v) => updateId({ skillsTitle: v })} />
         </LocaleGrid>
         <LocaleGrid>
-          <Area label="EN Skills (Separate by newlines)" rows={6} value={(data.en.skills ?? []).join("\n")} onChange={(v) => updateEn({ skills: v.split("\n").map((s) => s.trim()).filter(Boolean) })} />
-          <Area label="ID Skills (Separate by newlines)" rows={6} value={(data.id.skills ?? []).join("\n")} onChange={(v) => updateId({ skills: v.split("\n").map((s) => s.trim()).filter(Boolean) })} />
+          <Area label="EN Skills (Separate by newlines)" rows={6} value={(data.en.skills ?? []).join("\n")} onChange={(v) => updateEn({ skills: splitLines(v) })} />
+          <Area label="ID Skills (Separate by newlines)" rows={6} value={(data.id.skills ?? []).join("\n")} onChange={(v) => updateId({ skills: splitLines(v) })} />
         </LocaleGrid>
       </section>
 
@@ -328,8 +360,8 @@ export function AboutForm({
           <Field label="ID Tools Title" value={data.id.toolsTitle ?? ""} onChange={(v) => updateId({ toolsTitle: v })} />
         </LocaleGrid>
         <LocaleGrid>
-          <Area label="EN Tools (Separate by newlines)" rows={6} value={(data.en.tools ?? []).join("\n")} onChange={(v) => updateEn({ tools: v.split("\n").map((s) => s.trim()).filter(Boolean) })} />
-          <Area label="ID Tools (Separate by newlines)" rows={6} value={(data.id.tools ?? []).join("\n")} onChange={(v) => updateId({ tools: v.split("\n").map((s) => s.trim()).filter(Boolean) })} />
+          <Area label="EN Tools (Separate by newlines)" rows={6} value={(data.en.tools ?? []).join("\n")} onChange={(v) => updateEn({ tools: splitLines(v) })} />
+          <Area label="ID Tools (Separate by newlines)" rows={6} value={(data.id.tools ?? []).join("\n")} onChange={(v) => updateId({ tools: splitLines(v) })} />
         </LocaleGrid>
       </section>
 
@@ -340,8 +372,8 @@ export function AboutForm({
           <Field label="ID Beyond Title" value={data.id.beyondTitle ?? ""} onChange={(v) => updateId({ beyondTitle: v })} />
         </LocaleGrid>
         <LocaleGrid>
-          <Area label="EN Beyond (Separate paragraphs by double newlines)" rows={8} value={(data.en.beyond ?? []).join("\n\n")} onChange={(v) => updateEn({ beyond: v.split("\n\n").map((s) => s.trim()).filter(Boolean) })} />
-          <Area label="ID Beyond (Separate paragraphs by double newlines)" rows={8} value={(data.id.beyond ?? []).join("\n\n")} onChange={(v) => updateId({ beyond: v.split("\n\n").map((s) => s.trim()).filter(Boolean) })} />
+          <Area label="EN Beyond (Separate paragraphs by double newlines)" rows={8} value={(data.en.beyond ?? []).join("\n\n")} onChange={(v) => updateEn({ beyond: splitParagraphs(v) })} />
+          <Area label="ID Beyond (Separate paragraphs by double newlines)" rows={8} value={(data.id.beyond ?? []).join("\n\n")} onChange={(v) => updateId({ beyond: splitParagraphs(v) })} />
         </LocaleGrid>
         
         <div className="space-y-3 pt-6 border-t border-border mt-6">
@@ -369,6 +401,7 @@ export function AboutForm({
                     alt={image.alt}
                     meta={`Gallery Image ${sliceIndex + 1}`}
                     onDelete={() => void removeImage(index)}
+                    onEdit={() => setCropTarget({ aspect: "4/5", index })}
                     src={image.src}
                   />
                   <LocaleGrid>
@@ -387,6 +420,15 @@ export function AboutForm({
           </div>
         </div>
       </section>
+      {cropTarget ? (
+        <ImageCropModal
+          alt={data.en.images?.[cropTarget.index]?.alt ?? ""}
+          aspect={cropTarget.aspect}
+          onClose={() => setCropTarget(null)}
+          onSave={saveCrop}
+          src={data.en.images?.[cropTarget.index]?.src ?? ""}
+        />
+      ) : null}
     </div>
   );
 }

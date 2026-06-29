@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { useState } from "react";
 
-import type { Locale, GalleryItemData, WorkGalleryItemData, WorkSectionSlot } from "@/types/content";
+import type { Locale, GalleryItemData, WorkSectionSlot } from "@/types/content";
 
 import { Field, LocaleGrid } from "@/components/cms/cms-field";
-import { ImageCard } from "@/components/cms/cms-image-upload";
+import { ImageCard, ImageCropModal } from "@/components/cms/cms-image-upload";
 
 type Pair<T> = Record<Locale, T>;
 
@@ -41,11 +41,13 @@ export function CmsGalleryEditor<T extends GalleryItemData>({
 }) {
   const [draft, setDraft] = useState<GalleryDraft | null>(null);
   const [editIndex, setEditIndex] = useState<number | null>(null);
+  const [cropOpen, setCropOpen] = useState(false);
   const [urlInput, setUrlInput] = useState("");
 
   const openGalleryUrl = (src: string) => {
     if (!src) return;
     setEditIndex(null);
+    setCropOpen(false);
     setDraft({
       src,
       alt: { en: "", id: "" },
@@ -59,6 +61,7 @@ export function CmsGalleryEditor<T extends GalleryItemData>({
     const src = await onUpload(file);
     if (!src) return;
     setEditIndex(null);
+    setCropOpen(false);
     setDraft({
       src,
       alt: { en: "", id: "" },
@@ -73,6 +76,7 @@ export function CmsGalleryEditor<T extends GalleryItemData>({
     const id = gallery.id[index] as T & { slot?: import("@/types/content").WorkSectionSlot };
     if (!en) return;
     setEditIndex(index);
+    setCropOpen(false);
     setDraft({
       src: en.src,
       alt: { en: en.alt, id: id?.alt ?? "" },
@@ -107,6 +111,15 @@ export function CmsGalleryEditor<T extends GalleryItemData>({
 
     setDraft(null);
     setEditIndex(null);
+  };
+
+  const saveCrop = async (file: File) => {
+    if (!draft) return;
+    const oldSrc = draft.src;
+    const src = await onUpload(file);
+    if (!src) return;
+    setDraft({ ...draft, src });
+    if (oldSrc) await onDeleteAsset(oldSrc);
   };
 
   const removeGallery = async (index: number) => {
@@ -219,6 +232,7 @@ export function CmsGalleryEditor<T extends GalleryItemData>({
                 onClick={() => {
                   setDraft(null);
                   setEditIndex(null);
+                  setCropOpen(false);
                 }}
                 type="button"
               >
@@ -230,6 +244,13 @@ export function CmsGalleryEditor<T extends GalleryItemData>({
                 <Image alt={draft.alt.en} className="object-cover" fill src={draft.src} />
               </div>
               <div className="grid content-start gap-4">
+                <button
+                  className="h-10 w-full border border-border px-5 text-sm text-muted-foreground transition-colors hover:border-white hover:text-foreground"
+                  onClick={() => setCropOpen(true)}
+                  type="button"
+                >
+                  Edit crop
+                </button>
                 <LocaleGrid>
                   {locales.map((locale) => (
                     <Field
@@ -287,6 +308,15 @@ export function CmsGalleryEditor<T extends GalleryItemData>({
               </div>
             </div>
           </div>
+          {cropOpen ? (
+            <ImageCropModal
+              alt={draft.alt.en}
+              aspect={draft.aspect}
+              onClose={() => setCropOpen(false)}
+              onSave={saveCrop}
+              src={draft.src}
+            />
+          ) : null}
         </div>
       ) : null}
     </div>

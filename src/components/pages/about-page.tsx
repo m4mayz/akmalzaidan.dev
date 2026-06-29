@@ -72,6 +72,7 @@ export async function AboutPage({ locale }: { locale: Locale }) {
   const about = await getAboutData(locale);
   const heroImage = about.images[0];
   const sideImage = about.images[1];
+  const galleryImages = about.images.slice(2).filter((img) => img.src);
 
   return (
     <>
@@ -183,29 +184,27 @@ export async function AboutPage({ locale }: { locale: Locale }) {
               </div>
             </div>
 
-            {about.images.filter((img) => img.src).length > 0 ? (
+            {galleryImages.length > 0 ? (
               <div className="mt-14 grid grid-cols-2 gap-3 md:mt-20 md:grid-cols-4 md:gap-6">
-                {about.images
-                  .filter((img) => img.src)
-                  .map((image, index) => (
-                    <div
-                      className="relative aspect-4/5 w-full overflow-hidden bg-white/5"
-                      data-reveal
-                      key={image.src}
-                      style={
-                        {
-                          "--reveal-delay": `${Math.min(index, 3) * 70}ms`,
-                        } as CSSProperties
-                      }
-                    >
-                      <LazyImage
-                        alt={image.alt}
-                        className="object-cover"
-                        fill
-                        src={image.src}
-                      />
-                    </div>
-                  ))}
+                {galleryImages.map((image, index) => (
+                  <div
+                    className="relative aspect-4/5 w-full overflow-hidden bg-white/5"
+                    data-reveal
+                    key={image.src}
+                    style={
+                      {
+                        "--reveal-delay": `${Math.min(index, 3) * 70}ms`,
+                      } as CSSProperties
+                    }
+                  >
+                    <LazyImage
+                      alt={image.alt}
+                      className="object-cover"
+                      fill
+                      src={image.src}
+                    />
+                  </div>
+                ))}
               </div>
             ) : null}
           </div>
