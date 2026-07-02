@@ -39,6 +39,8 @@ type WorkRow = {
   gallery_json: unknown;
 };
 
+type WorkImageRow = Pick<WorkRow, "slug" | "image" | "alt" | "gallery_json">;
+
 type ArticleRow = {
   id: number;
   locale: Locale;
@@ -150,6 +152,18 @@ function requireRows<T>(data: T[] | null, error: { message: string } | null) {
   return data ?? [];
 }
 
+function addLoaderImage(
+  images: { src: string; alt: string }[],
+  seen: Set<string>,
+  src?: unknown,
+  alt?: unknown,
+) {
+  if (typeof src !== "string" || !src || seen.has(src)) return false;
+  seen.add(src);
+  images.push({ src, alt: typeof alt === "string" ? alt : "" });
+  return true;
+}
+
 export async function listWork(
   locale: Locale,
   includeDrafts = false,
@@ -165,6 +179,39 @@ export async function listWork(
 
   const { data, error } = await query;
   return requireRows(data as WorkRow[] | null, error).map(mapWork);
+}
+
+export async function listWorkLoaderImages() {
+  const { data, error } = await getSupabaseServiceClient()
+    .from("works")
+    .select("slug, image, alt, gallery_json")
+    .eq("status", "published")
+    .order("sort_order", { ascending: true })
+    .order("id", { ascending: false });
+
+  const images: { src: string; alt: string }[] = [];
+  const seen = new Set<string>();
+  const workCounts = new Map<string, number>();
+
+  for (const row of requireRows(data as WorkImageRow[] | null, error)) {
+    let count = workCounts.get(row.slug) ?? 0;
+
+    if (count < 2 && addLoaderImage(images, seen, row.image, row.alt)) {
+      count++;
+    }
+
+    for (const item of parseJson<{ src?: string; alt?: string }[]>(
+      row.gallery_json,
+      [],
+    )) {
+      if (count >= 2) break;
+      if (addLoaderImage(images, seen, item.src, item.alt)) count++;
+    }
+
+    workCounts.set(row.slug, count);
+  }
+
+  return images;
 }
 
 export async function listArticles(

@@ -14,6 +14,7 @@ import {
   getArticleSlugsFromDb,
   getWorkBySlug,
   getWorkSlugsFromDb,
+  listWorkLoaderImages,
   listArticleSummaries,
   listWorkSummaries,
   getPageContent,
@@ -130,6 +131,10 @@ export async function getPrivacyData(locale: Locale): Promise<PrivacyData> {
 
 export function getWorkSummaries(locale: Locale): Promise<WorkSummaryData[]> {
   return listWorkSummaries(locale);
+}
+
+export function getWorkLoaderImages() {
+  return listWorkLoaderImages();
 }
 
 export function getWorkDetail(

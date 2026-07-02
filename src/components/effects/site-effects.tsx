@@ -3,17 +3,23 @@
 import { Suspense } from "react";
 
 import { CustomCursor } from "@/components/effects/custom-cursor";
+import { InitialLoader } from "@/components/effects/initial-loader";
 import { LenisProvider } from "@/components/effects/lenis-provider";
 import { RouteTransition } from "@/components/effects/route-transition";
 import { ScrollReveal } from "@/components/effects/scroll-reveal";
 import Galaxy from "@/components/galaxy";
 
-export function SiteEffects() {
+type SiteEffectsProps = {
+    initialLoaderImages: { src: string; alt: string }[];
+};
+
+export function SiteEffects({ initialLoaderImages }: SiteEffectsProps) {
     return (
         <>
             <LenisProvider />
             <ScrollReveal />
             <CustomCursor />
+            <InitialLoader images={initialLoaderImages} />
             <Suspense fallback={null}>
                 <RouteTransition />
             </Suspense>

@@ -6,7 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { SiteEffects } from "@/components/effects/site-effects";
 import { Toaster } from "@/components/ui/sonner";
-import { getSiteData } from "@/lib/content";
+import { getSiteData, getWorkLoaderImages } from "@/lib/content";
 
 import "./globals.css";
 
@@ -63,18 +63,20 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const initialLoaderImages = await getWorkLoaderImages();
+
   return (
     <html
       lang="en"
       className={`${instrumentSans.variable} ${newsreader.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <SiteEffects />
+        <SiteEffects initialLoaderImages={initialLoaderImages} />
         {children}
         <Toaster position="bottom-right" />
         <Analytics />
