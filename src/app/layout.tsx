@@ -10,6 +10,9 @@ import { getSiteData } from "@/lib/content";
 
 import "./globals.css";
 
+const siteUrl = "https://akmalzaidan.dev";
+const ogImageUrl = `${siteUrl}/seo/og.png`;
+
 const instrumentSans = Instrument_Sans({
   variable: "--font-instrument-sans",
   subsets: ["latin"],
@@ -26,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const site = await getSiteData("en");
 
   return {
-    metadataBase: new URL("https://akmalzaidan.dev"),
+    metadataBase: new URL(siteUrl),
     title: site.metadata.title,
     description: site.metadata.description,
     authors: [{ name: site.name }],
@@ -34,12 +37,16 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: site.metadata.title,
       description: site.metadata.description,
+      url: siteUrl,
+      siteName: site.name,
+      type: "website",
       images: [
         {
-          url: "/seo/og.png",
+          url: ogImageUrl,
           width: 1200,
           height: 630,
           alt: site.metadata.ogAlt,
+          type: "image/png",
         },
       ],
     },
@@ -47,7 +54,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: site.metadata.title,
       description: site.metadata.description,
-      images: ["/seo/og.png"],
+      images: [ogImageUrl],
     },
     icons: {
       icon: "/seo/icon.png",

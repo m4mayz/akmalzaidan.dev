@@ -1,0 +1,4 @@
+interface:
+  display_name: "Writing Developer CVs"
+  short_description: "Write and tailor software developer CVs."
+  default_prompt: "Help me write or improve a software developer CV for a specific role."
