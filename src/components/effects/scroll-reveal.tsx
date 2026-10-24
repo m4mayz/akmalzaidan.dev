@@ -31,18 +31,6 @@ export function ScrollReveal() {
 
         const targets = new Set<HTMLElement>();
 
-        const revealVisibleTargets = () => {
-            for (const target of targets) {
-                if (target.dataset.revealed === "true") {
-                    continue;
-                }
-
-                if (isVisibleInViewport(target)) {
-                    revealTarget(target);
-                }
-            }
-        };
-
         if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
             const reducedMotionTargets = document.querySelectorAll("[data-reveal]");
 
@@ -81,8 +69,6 @@ export function ScrollReveal() {
                 targets.add(target);
                 observer.observe(target);
             }
-
-            revealVisibleTargets();
         };
 
         const mutationObserver = new MutationObserver(observeTargets);
@@ -90,8 +76,6 @@ export function ScrollReveal() {
         observeTargets();
         window.setTimeout(observeTargets, 80);
         window.setTimeout(observeTargets, 320);
-        window.addEventListener("scroll", revealVisibleTargets, { passive: true });
-        window.addEventListener("resize", revealVisibleTargets);
         mutationObserver.observe(document.body, {
             childList: true,
             subtree: true,
@@ -100,8 +84,6 @@ export function ScrollReveal() {
         return () => {
             observer.disconnect();
             mutationObserver.disconnect();
-            window.removeEventListener("scroll", revealVisibleTargets);
-            window.removeEventListener("resize", revealVisibleTargets);
             document.documentElement.classList.remove("scroll-reveal-ready");
         };
     }, [pathname]);
