@@ -6,7 +6,6 @@ import { ServicesSection } from "@/components/services-section";
 import { ShowcaseStrip } from "@/components/showcase-strip";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { TestimonialSection } from "@/components/testimonial-section";
 import {
   getArticleSummaries,
   getHomeData,
@@ -46,10 +45,7 @@ export async function HomePage({ locale }: { locale: Locale }) {
           items={home.services}
           title={isIndonesian ? "Yang bisa saya bantu" : "What I can help with"}
         />
-        <TestimonialSection
-          items={home.testimonials}
-          title={isIndonesian ? "Cerita Mereka" : "Kind Words"}
-        />
+        {/* Testimonials hidden until real ones replace the placeholders; data stays in Supabase. */}
         <ArticlesSection
           items={articles}
           title={isIndonesian ? "Layak untuk dibagikan" : "Worth the Share"}
