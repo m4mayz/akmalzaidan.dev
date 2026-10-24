@@ -1,13 +1,13 @@
 {
   "name": "Akmal Zaidan",
-  "role": "Fullstack Developer and IT Support",
+  "role": "Fullstack and DevOps Developer",
   "email": "akmalzaidan960@gmail.com",
   "location": "Sukabumi, Indonesia",
   "availability": "Open to internships, freelance work, and remote opportunities",
   "metadata": {
-    "title": "Akmal Zaidan - Fullstack Developer and IT Support",
-    "description": "Web software, fullstack systems, dashboards, and practical IT support by Akmal Zaidan.",
-    "ogAlt": "Akmal Zaidan - Fullstack Developer and IT Support"
+    "title": "Akmal Zaidan - Fullstack and DevOps Developer",
+    "description": "Internal tools, fullstack web apps, and CI/CD automation by Akmal Zaidan.",
+    "ogAlt": "Akmal Zaidan - Fullstack and DevOps Developer"
   },
   "nav": [
     { "label": "Work", "href": "/work" },
