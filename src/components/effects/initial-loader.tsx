@@ -7,6 +7,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 const loadingDuration = 1900;
 const exitDuration = 1050;
 const imageSwitchDuration = 475;
+// Only this many frames fit in loadingDuration; extra images would load eagerly for nothing.
+const maxImages = Math.floor(loadingDuration / imageSwitchDuration);
 const stripCount = 4;
 
 type InitialLoaderImage = { src: string; alt: string };
@@ -17,7 +19,8 @@ type InitialLoaderProps = {
     images: InitialLoaderImage[];
 };
 
-export function InitialLoader({ images }: InitialLoaderProps) {
+export function InitialLoader({ images: allImages }: InitialLoaderProps) {
+    const images = allImages.slice(0, maxImages);
     const [percent, setPercent] = useState(0);
     const [phase, setPhase] = useState<LoaderPhase>("loading");
     const frameRef = useRef<number | null>(null);
