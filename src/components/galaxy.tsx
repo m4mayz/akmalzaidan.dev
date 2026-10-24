@@ -280,6 +280,14 @@ export default function Galaxy({
       },
     });
 
+    const mesh = new Mesh(gl, { geometry, program });
+    let animateId = 0;
+    let running = !window.matchMedia("(prefers-reduced-motion: reduce)")
+      .matches;
+    let windowStart = 0;
+    let lastTime = 0;
+    const frameDeltas: number[] = [];
+
     function resize() {
       renderer.setSize(ctn.offsetWidth, ctn.offsetHeight);
       program.uniforms.uResolution.value = new Color(
@@ -287,13 +295,52 @@ export default function Galaxy({
         gl.canvas.height,
         gl.canvas.width / gl.canvas.height,
       );
+
+      // Resizing clears the canvas, so a frozen galaxy needs one fresh frame.
+      if (!running) {
+        renderer.render({ scene: mesh });
+      }
     }
 
     window.addEventListener("resize", resize, false);
     resize();
 
-    const mesh = new Mesh(gl, { geometry, program });
-    let animateId = 0;
+    function resetFrameWindow() {
+      frameDeltas.length = 0;
+      lastTime = 0;
+    }
+
+    // ponytail: one-way downgrade from median frame time, add re-upgrade if fast devices get stuck low.
+    function degradeIfSlow(time: number) {
+      if (lastTime) {
+        frameDeltas.push(time - lastTime);
+      } else {
+        windowStart = time;
+      }
+      lastTime = time;
+
+      if (time - windowStart < 1000) {
+        return;
+      }
+
+      const median = frameDeltas.sort((a, b) => a - b)[frameDeltas.length >> 1];
+      resetFrameWindow();
+
+      // Below ~45fps: halve the render resolution first, then freeze on the last frame.
+      if (median <= 22) {
+        return;
+      }
+
+      if (renderer.dpr > 0.5) {
+        renderer.dpr = 0.5;
+        resize();
+      } else {
+        running = false;
+        cancelAnimationFrame(animateId);
+      }
+    }
+
+    document.addEventListener("visibilitychange", resetFrameWindow);
 
     function update(time: number) {
       animateId = requestAnimationFrame(update);
@@ -316,9 +363,12 @@ export default function Galaxy({
       program.uniforms.uMouseActiveFactor.value = smoothMouseActive.current;
 
       renderer.render({ scene: mesh });
+      degradeIfSlow(time);
     }
 
-    animateId = requestAnimationFrame(update);
+    if (running) {
+      animateId = requestAnimationFrame(update);
+    }
     ctn.appendChild(gl.canvas);
 
     function handlePointerMove(event: PointerEvent) {
@@ -342,6 +392,7 @@ export default function Galaxy({
     return () => {
       cancelAnimationFrame(animateId);
       window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", resetFrameWindow);
 
       if (mouseInteraction) {
         window.removeEventListener("pointermove", handlePointerMove);
