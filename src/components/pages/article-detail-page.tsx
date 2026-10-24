@@ -13,6 +13,9 @@ import {
 } from "@/lib/content";
 import type { ArticleDetailData, Locale, GalleryItemData } from "@/types/content";
 
+// object-cover crops 16:9 images in this 5:4 box, so the image renders ~1.4x the slot width.
+const relatedSizes = "(min-width: 768px) 48vw, 143vw";
+
 function getSpanClass(item: GalleryItemData) {
   return item.span === "half" ? "md:col-span-6" : "md:col-span-12";
 }
@@ -166,6 +169,7 @@ export async function ArticleDetailPage({
                       alt={item.alt}
                       className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                       fill
+                      sizes={relatedSizes}
                       src={item.image}
                     />
                   </div>

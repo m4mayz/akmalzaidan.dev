@@ -17,6 +17,9 @@ type ShowcaseSlideshowProps = {
   images: ShowcaseSlide[];
 };
 
+// object-cover crops 16:9 slides in a box 52vh (mobile) or 100vh tall, so width follows height.
+const slideSizes =
+  "(min-width: 768px) and (max-aspect-ratio: 16/9) 178vh, (max-aspect-ratio: 1/1) 100vh, 100vw";
 const slideDuration = 5200;
 const progressRadius = 26;
 const progressCircumference = 2 * Math.PI * progressRadius;
@@ -64,7 +67,7 @@ export function ShowcaseSlideshow({ images }: ShowcaseSlideshowProps) {
             fill
             loading="lazy"
             quality={100}
-            sizes="100vw"
+            sizes={slideSizes}
             src={image.src}
           />
         </Link>

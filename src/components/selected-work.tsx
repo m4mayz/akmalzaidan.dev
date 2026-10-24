@@ -4,6 +4,9 @@ import type { CSSProperties } from "react";
 import { LazyImage } from "@/components/effects/lazy-image";
 import type { WorkSummaryData } from "@/types/content";
 
+// object-cover crops 16:9 covers in this 4:5 box, so the image renders ~2.2x the slot width.
+const coverSizes = "(min-width: 768px) calc(112vw - 124px), 225vw";
+
 type SelectedWorkProps = {
   items: WorkSummaryData[];
   title: string;
@@ -42,6 +45,7 @@ export function SelectedWork({ items, title }: SelectedWorkProps) {
                   alt={work.alt}
                   className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   fill
+                  sizes={coverSizes}
                   src={work.image}
                 />
               </div>

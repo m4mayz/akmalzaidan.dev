@@ -37,6 +37,7 @@ export function ArticlesSection({ items, title = "", className }: ArticlesSectio
                 alt={article.alt}
                 className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                 fill
+                sizes="(min-width: 768px) 34vw, 100vw"
                 src={article.image}
               />
             </div>

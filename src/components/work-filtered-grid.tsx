@@ -15,6 +15,9 @@ const spanClasses = [
   "md:col-span-4",
 ];
 
+// object-cover crops 16:9 covers in a 438px (mobile) or 620px tall box, so width follows height.
+const coverSizes = "(min-width: 1648px) 67vw, (min-width: 768px) 1104px, 780px";
+
 function splitCategories(value: string) {
   return value
     .split(",")
@@ -89,6 +92,7 @@ export function WorkFilteredGrid({
                 alt={project.alt}
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 fill
+                sizes={coverSizes}
                 src={project.image}
               />
             </div>

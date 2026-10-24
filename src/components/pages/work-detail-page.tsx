@@ -13,6 +13,11 @@ import {
 } from "@/lib/content";
 import type { Locale, WorkGalleryItemData } from "@/types/content";
 
+// object-cover crops 16:9 images in these boxes, so the image renders wider than the slot.
+const heroSizes = "(min-width: 1468px) 100vw, (min-width: 768px) 1388px, 765px";
+const halfGallerySizes = "(min-width: 768px) 67vw, 134vw";
+const moreWorkSizes = "(min-width: 768px) 75vw, 225vw";
+
 function getSpanClass(item: WorkGalleryItemData) {
   return item.span === "half" ? "md:col-span-6" : "md:col-span-12";
 }
@@ -42,7 +47,7 @@ function ProjectGalleryItem({
         alt={item.alt}
         className="object-cover"
         fill
-        sizes={item.span === "half" ? "(min-width: 768px) 47vw, 100vw" : "94vw"}
+        sizes={item.span === "half" ? halfGallerySizes : "94vw"}
         src={item.src}
       />
     </div>
@@ -125,7 +130,7 @@ export async function WorkDetailPage({
               className="object-cover"
               fill
               rootMargin="400px 0px"
-              sizes="100vw"
+              sizes={heroSizes}
               src={project.image}
             />
           </div>
@@ -198,6 +203,7 @@ export async function WorkDetailPage({
                       alt={item.alt}
                       className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                       fill
+                      sizes={moreWorkSizes}
                       src={item.image}
                     />
                   </div>

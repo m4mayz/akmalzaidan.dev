@@ -7,6 +7,9 @@ import { SiteHeader } from "@/components/site-header";
 import { getAboutData, getSiteData } from "@/lib/content";
 import type { Locale, TimelineItemData } from "@/types/content";
 
+// object-cover fills a 439px-tall box on mobile and a text-height row on tablet, so width follows height.
+const sideImageSizes = "(min-width: 1024px) 100vw, (min-width: 768px) 150vw, 780px";
+
 function AboutHeading({
   children,
   size = "large",
@@ -130,6 +133,7 @@ export async function AboutPage({ locale }: { locale: Locale }) {
                   alt={sideImage.alt}
                   className="object-cover"
                   fill
+                  sizes={sideImageSizes}
                   src={sideImage.src}
                 />
               </div>
@@ -201,6 +205,7 @@ export async function AboutPage({ locale }: { locale: Locale }) {
                       alt={image.alt}
                       className="object-cover"
                       fill
+                      sizes="(min-width: 768px) 25vw, 50vw"
                       src={image.src}
                     />
                   </div>
