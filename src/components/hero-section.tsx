@@ -16,7 +16,7 @@ export function HeroSection({ data, stats }: HeroSectionProps) {
   return (
     <section className="relative flex min-h-230 flex-col px-5 pb-12 pt-32 md:min-h-300 md:px-10 md:pt-35">
       <div className="max-w-252.5" data-reveal>
-        <h1 className="font-heading text-[40px] font-light leading-[1.02] tracking-tight text-foreground md:text-[96px]">
+        <h1 className="font-heading text-[40px] font-light leading-[1.02] tracking-tight text-foreground md:text-[clamp(56px,7vw,96px)]">
           {beforeHighlight}
           <span className="gradient-text inline-block italic underline decoration-current underline-offset-8">
             {data.highlightedWord}
@@ -35,7 +35,7 @@ export function HeroSection({ data, stats }: HeroSectionProps) {
       </div>
 
       <dl
-        className="order-2 grid max-w-175 grid-cols-2 gap-x-10 gap-y-7 pt-16 md:absolute md:left-10 md:top-138.75 md:order-0 md:pt-8"
+        className="order-2 grid max-w-175 grid-cols-2 gap-x-10 gap-y-7 pt-16 md:absolute md:left-10 md:top-138.75 md:order-0 md:w-[calc(59%-104px)] md:pt-8"
         data-reveal
         style={{ "--reveal-delay": "220ms" } as CSSProperties}
       >

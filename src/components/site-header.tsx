@@ -89,7 +89,7 @@ export function SiteHeader({ locale, site: siteData }: SiteHeaderProps) {
             >
               {siteData.name}
             </Link>
-            <span className="hidden text-muted-foreground md:inline">
+            <span className="hidden text-muted-foreground lg:inline">
               {siteData.role}
             </span>
           </div>
@@ -162,7 +162,7 @@ export function SiteHeader({ locale, site: siteData }: SiteHeaderProps) {
                 )}
               </div>
               <Link
-                className="inline-flex h-9 items-center rounded-full border border-white bg-white px-4 text-black transition-colors hover:bg-transparent hover:text-white"
+                className="inline-flex h-9 items-center whitespace-nowrap rounded-full border border-white bg-white px-4 text-black transition-colors hover:bg-transparent hover:text-white"
                 data-cursor="pointer"
                 href={withLocale("/contact", locale)}
               >
